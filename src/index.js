@@ -33,7 +33,7 @@ import api from '@xq/api'
 export const $api = api
 
 // channel
-import { channel } from './channel.js'
+import { channel } from './utils/channel.js'
 
 import { notifications } from './utils/notification.js'
 export let $notification = notifications

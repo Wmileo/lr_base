@@ -10,15 +10,15 @@ function storage(name) {
   }
 }
 
-// 这里统一管理所有存储数据
-let keys = [
-  "userInfo", // 用户信息
-]
-
 let obj = {}
-keys.forEach(srg => {
-  obj[srg] = storage(srg)
-})
+function setStorages(storages) {
+  storages.forEach(srg => {
+    obj[srg] = storage(srg)
+  })
+}
 
-export default obj
+export default {
+  setStorages
+}
 
+export let storages = obj

@@ -1,11 +1,13 @@
-import { fetchs, fetchCode } from 'server/fetch.js'
-import { $api, $storage } from 'utils'
+import { fetchs } from '../server/fetch.js'
+import $api from '@xq/api'
 import server from '@xq/server'
 
-let Fetchs = fetchs.wx
+let Fetchs = fetchs.user
 
 let isLogin = false
 let logging = false
+
+let loginType = ''
 
 function autoLogin() {
   if (isLogin) {
@@ -20,7 +22,7 @@ function autoLogin() {
         logging = true
         $api.login().then(res => {
           console.log(res)
-          wxLogin(res.code).then(() => {
+          login(res.code).then(() => {
             resolve()
             isLogin = true
             logging = false
@@ -31,33 +33,14 @@ function autoLogin() {
   }
 }
 
-function wxLogin(authorizationCode) {
-  let type = $api.isQy() ? "Q" : "A"
+function login(authorizationCode) {
+  let type = loginType
   return Fetchs.login().fetch({ authorizationCode, type }).then(res => {
     server.auth.setInfo({
       Authorization : res.data.token.access_token
     })
-    getInfo()
     return res
   })
-}
-
-let userInfo = null
-let isUpdate = false
-function getInfo(success) {
-  userInfo = $storage.userInfo.get()
-  if (userInfo && success) {
-    success(userInfo)
-  }
-  if (!isUpdate) {
-    Fetchs.info().fetch().then(res => {
-      isUpdate = true
-      $storage.userInfo.set(res.data)
-      if (success) {
-        success(res.data)
-      }
-    })
-  }
 }
 
 function update(data) {
@@ -74,11 +57,14 @@ function authPhone(data) {
   return Fetchs.phone().fetch(data)
 }
 
+function setLoginType(type) {
+  loginType = type
+}
 
 export default {
   autoLogin,
-  getInfo,
   update,
   auth,
-  authPhone
+  authPhone,
+  setLoginType
 }

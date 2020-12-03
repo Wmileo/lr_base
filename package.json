@@ -1,26 +1,26 @@
 {
-  "name": "@xq/api",
-  "version": "0.1.6",
-  "description": "api",
+  "name": "@xq/base",
+  "version": "0.0.1",
+  "description": "base",
   "main": "src/index.js",
   "publishConfig": {
     "registry": "https://npm.xqkxf.com/"
   },
-  "scripts": {
-    "build": "webpack --mode production"
-  },
   "repository": {
     "type": "git",
-    "url": "git@codeup.aliyun.com:5f59dbed769820a3e8184400/frontend/npm/xq_api.git"
+    "url": "git@codeup.aliyun.com:5f59dbed769820a3e8184400/frontend/npm/xq_base.git"
   },
   "keywords": [
-    "api"
+    "base"
   ],
   "author": "leo",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
     "@xq/api": "^0.1.6",
-    "@xq/server": "^1.0.7"
+    "@xq/component": "^0.2.5",
+    "@xq/image": "^0.2.2",
+    "@xq/server": "^1.0.7",
+    "moment": "^2.29.1"
   }
 }

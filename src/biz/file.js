@@ -1,5 +1,5 @@
-import { fetchs, fetchCode } from 'server/fetch.js'
-import { $api } from 'utils'
+import { fetchs } from '../server/fetch.js'
+import $api from '@xq/api'
 
 let Fetchs = fetchs.file
 

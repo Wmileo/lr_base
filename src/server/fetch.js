@@ -1,6 +1,4 @@
 import server from '@xq/server'
-import config from './env.js'
-import code from './code.js'
 
 let {
   get,
@@ -13,7 +11,7 @@ let apis = {
   config: {
     info: get('/app/config/info/[appKey]')
   },
-  wx: {
+  user: {
     login: post('/customer/wxLogin'),
     auth: post('/customer/getWxUserInfo'),
     phone: post('/customer/getWxUserPhone')
@@ -33,9 +31,13 @@ for (let mk in apis) {
   list[mk] = builders(m, extras)
 }
 
-function init(baseURL) {
-  extras.url = baseURL
+function setBaseURL(url) {
+  extras.url = url
 }
 
 export const fetchs = list
-export const fetchCode = code
+
+export default {
+  setBaseURL
+}
+

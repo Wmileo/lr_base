@@ -15,19 +15,15 @@ function notification(name) {
   }
 }
 
-// 这里统一管理所有通知
-let notify = [
-  "onCity", // 选择城市更新通知
-]
-
 let obj = {}
-notify.forEach(ntf => {
-  obj[ntf] = notification(ntf)
-})
+function setNotifications(notifications) {
+  notifications.forEach(ntf => {
+    obj[ntf] = notification(ntf)
+  })
+}
 
-export default obj
+export default {
+  setNotifications
+}
 
-
-
-
-
+export let notifications = obj

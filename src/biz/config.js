@@ -1,11 +1,19 @@
-import { fetchs } from 'server/fetch.js'
+import { fetchs } from '../server/fetch.js'
 
 let Fetchs = fetchs.config
 
+let configs = {}
+
 function getDetail(appKey) {
-  return Fetchs.info().fetch({ appKey }).then(res => {
-    return res.data
-  })
+  let value = configs[appKey]
+  if (value) {
+    return Promise.resolve(value)
+  } else {
+    return Fetchs.info().fetch({ appKey }).then(res => {
+      configs[appKey] = res.data
+      return res.data
+    })
+  }
 }
 
 export default {

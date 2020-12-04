@@ -53,6 +53,7 @@ function initVue(Vue) {
   Vue.prototype.$channel = channel
   Vue.prototype.$notification = notifications
   Vue.prototype.$storage = storages
+  Vue.prototype.$moment = moment
 }
 
 import server from './server/index.js'

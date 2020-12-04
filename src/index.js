@@ -2,6 +2,13 @@ import fetch from './server/fetch.js'
 import image from './server/image.js'
 
 import user from './biz/user.js'
+export const userMgr = user
+
+import file from './biz/file.js'
+export const fileMgr = file
+
+import config from './biz/config.js'
+export const configMgr = config
 
 import notification from './utils/notification.js'
 import storage from './utils/storage.js'
@@ -43,7 +50,6 @@ export let $storage = storages
 
 function initVue(Vue) {
   Vue.prototype.$api = api
-  Vue.prototype.$moment = moment
   Vue.prototype.$channel = channel
   Vue.prototype.$notification = notifications
   Vue.prototype.$storage = storages

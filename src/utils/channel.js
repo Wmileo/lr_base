@@ -16,17 +16,9 @@ function url(url, obj) {
  */
 function params(options) {
   let result = {}
-  
-  //#ifdef MP-WEIXIN
   for (let key in options) {
     result[key] = decodeURIComponent(options[key])
   }
-  //#endif
-
-  //#ifdef APP-PLUS
-  result = options
-  //#endif
-
   return result
 }
 

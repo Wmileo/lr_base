@@ -49,12 +49,28 @@ function update(data) {
   })
 }
 
+let authInfo = null
 function auth(data) {
-  return Fetchs.auth().fetch(data)
+  if (authInfo) {
+    return Promise.resolve(authInfo)
+  } else {
+    return Fetchs.auth().fetch(data).then(res => {
+      authInfo = res.data
+      return res.data
+    })
+  }
 }
 
+let authPhoneInfo = null
 function authPhone(data) {
-  return Fetchs.phone().fetch(data)
+  if (authPhoneInfo) {
+    return Promise.resolve(authPhoneInfo)
+  } else {
+    return Fetchs.phone().fetch(data).then(res => {
+      authPhoneInfo = res.data
+      return res.data
+    })
+  }
 }
 
 function setLoginType(type) {

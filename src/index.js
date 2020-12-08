@@ -71,21 +71,11 @@ function initConfig() {
     })
   })
   
-  let handleUserInfo = false
   btnMgr.bindingUserInfo(auth => {
-    if (!handleUserInfo) {
-      user.auth(auth).then(res => {
-        handleUserInfo = true
-      })
-    }
+    return user.auth(auth)
   })
-  let handlePhoneNumber = false
   btnMgr.bingdingPhoneNumber(auth => {
-    if (!handlePhoneNumber) {
-      user.authPhone(auth).then(() => {
-        handlePhoneNumber = true
-      })
-    }
+    return user.authPhone(auth)
   })
 }
 

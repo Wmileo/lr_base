@@ -33,6 +33,13 @@ function autoLogin() {
   }
 }
 
+let first = true
+function once() {
+  if (first) {
+    
+  }
+}
+
 function login(authorizationCode) {
   let type = loginType
   return Fetchs.login().fetch({ authorizationCode, type }).then(res => {

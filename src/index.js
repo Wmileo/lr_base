@@ -15,6 +15,7 @@ import storage from './utils/storage.js'
 
 function init(config, Vue) {
   fetch.setBaseURL(config.baseURL)  // baseURL
+  image.setBaseUrl(config.imageUrl) // imageUrl
   image.setImageUrlKey(config.imageUrlKey) // imageUrlKey
   image.setImages(config.images) // images
   

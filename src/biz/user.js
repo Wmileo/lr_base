@@ -17,7 +17,7 @@ function autoLogin() {
       if (logging) {
         setTimeout(() => {
           autoLogin().then(resolve, reject)
-        }, 100)
+        }, 40)
       } else {
         logging = true
         $api.login().then(res => {
@@ -30,13 +30,6 @@ function autoLogin() {
         }, reject)
       }
     })
-  }
-}
-
-let first = true
-function once() {
-  if (first) {
-    
   }
 }
 

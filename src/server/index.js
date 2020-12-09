@@ -15,17 +15,8 @@ function init() {
       console.log(err.message)
     }
   })
-  server.config.needRetry((err, retry) => {
-    return err.status == 401
-  })
-  server.config.onRetry((err, retry) => {
-    if (err.status == 401) {
-      return userMgr.autoLogin().then(() => {
-        return retry()
-      })
-    } else {
-      return retry()
-    }
+  server.config.onAuth(() => {
+    return userMgr.autoLogin()
   })
   server.auth.passList.push(fetchs.user.login().path)
 }

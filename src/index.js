@@ -14,6 +14,9 @@ import notification from './utils/notification.js'
 import storage from './utils/storage.js'
 
 function init(config, Vue) {
+  initVue(Vue)
+  initConfig()
+  
   fetch.setBaseURL(config.baseURL)  // baseURL
   image.setBaseUrl(config.imageUrl) // imageUrl
   image.setImageUrlKey(config.imageUrlKey) // imageUrlKey
@@ -23,9 +26,6 @@ function init(config, Vue) {
   
   notification.setNotifications(config.notifications) // notifications
   storage.setStorages(config.storages) // storages
-  
-  initVue(Vue)
-  initConfig()
 }
 
 export default {

@@ -21,7 +21,6 @@ function autoLogin() {
       } else {
         logging = true
         $api.login().then(res => {
-          console.log(res)
           login(res.code).then(() => {
             resolve()
             isLogin = true

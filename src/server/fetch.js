@@ -12,9 +12,9 @@ let apis = {
     info: get('/app/config/info/[appKey]')
   },
   user: {
-    login: post('/customer/wxLogin'),
-    auth: post('/customer/getWxUserInfo'),
-    phone: post('/customer/getWxUserPhone')
+    login: post('/v1/consultant/wxLogin'),
+    auth: post('/v1/consultant/getWxUserInfo'),
+    phone: post('/v1/consultant/getWxUserPhone')
   },
   file: {
     upload: upload('/upload')

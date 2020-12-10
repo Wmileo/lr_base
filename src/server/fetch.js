@@ -9,7 +9,7 @@ let {
 
 let apis = {
   config: {
-    info: get('/app/config/info/[appKey]')
+    info: get('/v1/getConfigByKey')
   },
   user: {
     login: post('/v1/consultant/wxLogin'),

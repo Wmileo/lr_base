@@ -10,7 +10,7 @@ function getDetail(appKey) {
     return Promise.resolve(value)
   } else {
     return Fetchs.info().fetch({ appKey }).then(res => {
-      configs[appKey] = res.data
+      configs.appValue[appKey] = res.data
       return res.data
     })
   }

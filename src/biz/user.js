@@ -36,7 +36,7 @@ function login(authorizationCode) {
   let type = loginType
   return Fetchs.login().fetch({ authorizationCode, type }).then(res => {
     server.auth.setInfo({
-      Authorization : res.data.token.access_token
+      Authorization : res.data.token
     })
     return res
   })
@@ -53,6 +53,7 @@ function auth(data) {
   if (authInfo) {
     return Promise.resolve(authInfo)
   } else {
+    data.type = loginType
     return Fetchs.auth().fetch(data).then(res => {
       authInfo = res.data
       return res.data
@@ -65,6 +66,7 @@ function authPhone(data) {
   if (authPhoneInfo) {
     return Promise.resolve(authPhoneInfo)
   } else {
+    data.type = loginType
     return Fetchs.phone().fetch(data).then(res => {
       authPhoneInfo = res.data
       return res.data

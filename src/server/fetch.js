@@ -9,12 +9,12 @@ let {
 
 let apis = {
   config: {
-    info: get('/v1/getConfigByKey')
+    info: get('/v1/config/getByAppkey')
   },
   user: {
-    login: post('/v1/consultant/wxLogin'),
-    auth: post('/v1/consultant/getWxUserInfo'),
-    phone: post('/v1/consultant/getWxUserPhone')
+    login: post('/v1/user/wxLogin'),
+    auth: post('/v1/user/getWxUserInfo'),
+    phone: post('/v1/user/getWxUserPhone')
   },
   file: {
     upload: upload('/upload')

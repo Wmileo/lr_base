@@ -83,5 +83,7 @@ export default {
   update,
   auth,
   authPhone,
-  setLoginType
+  setLoginType,
+  
+  info
 }

@@ -9,6 +9,8 @@ let logging = false
 
 let loginType = ''
 
+let authInfo = {}
+
 function autoLogin() {
   if (isLogin) {
     return Promise.resolve()
@@ -38,6 +40,7 @@ function login(authorizationCode) {
     server.auth.setInfo({
       Authorization : res.data.token
     })
+    authInfo.login = res.data
     return res
   })
 }
@@ -48,27 +51,25 @@ function update(data) {
   })
 }
 
-let authInfo = null
 function auth(data) {
-  if (authInfo) {
-    return Promise.resolve(authInfo)
+  if (authInfo.auth) {
+    return Promise.resolve(authInfo.auth)
   } else {
     data.type = loginType
     return Fetchs.auth().fetch(data).then(res => {
-      authInfo = res.data
+      authInfo.auth = res.data
       return res.data
     })
   }
 }
 
-let authPhoneInfo = null
 function authPhone(data) {
-  if (authPhoneInfo) {
-    return Promise.resolve(authPhoneInfo)
+  if (authInfo.phone) {
+    return Promise.resolve(authInfo.phone)
   } else {
     data.type = loginType
     return Fetchs.phone().fetch(data).then(res => {
-      authPhoneInfo = res.data
+      authInfo.phone = res.data
       return res.data
     })
   }
@@ -76,6 +77,10 @@ function authPhone(data) {
 
 function setLoginType(type) {
   loginType = type
+}
+
+function info() {
+  return authInfo
 }
 
 export default {

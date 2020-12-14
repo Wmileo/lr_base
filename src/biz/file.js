@@ -25,7 +25,12 @@ function uploadVoice(file, path = 'app'){
 	return upload(file, path, 'mp4')
 }
 
+function uploadAudio(file, path = 'app'){
+	return upload(file, path, 'mp3')
+}
+
 export default {
   uploadImage,
-  uploadVoice
+  uploadVoice,
+  uploadAudio
 }

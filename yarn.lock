@@ -12,10 +12,10 @@
   resolved "https://npm.xqkxf.com/@xq%2fapi/-/api-0.1.6.tgz#0514c89fc2122567e0ded9b4181967ab2aef76e9"
   integrity sha512-g9R/yQ9Bv/pqdBjeU7W/KRYIhKhXmGxhvRpPfmWCHRbHXJv4XPmBcuJAblQnvHTFphKvh1NJWWvGTPuzqQQmaA==
 
-"@xq/component@^0.2.5":
-  version "0.2.5"
-  resolved "https://npm.xqkxf.com/@xq%2fcomponent/-/component-0.2.5.tgz#a319f57299e06b5b84539de82f5259e9863cc082"
-  integrity sha512-kuqncCOnLmDyCEvIuANWFUyEbKa+rDdV/DEziUagOeh0saX17shX2rPVXXVubi805RqktS6stRNJSNLk8HA9/A==
+"@xq/component@^0.3.4":
+  version "0.3.4"
+  resolved "https://npm.xqkxf.com/@xq%2fcomponent/-/component-0.3.4.tgz#64a3d309673a79c8584e0af794101cfccc948780"
+  integrity sha512-kQ5jN8GyjY/EVCI+/YSjmeREVsAWG/2BzdzSi49YVIV1xMYpOYT9500qbCM7X1dI3z4Wjyt2YnrwF6MkN+sS2w==
   dependencies:
     "@dcloudio/uni-ui" "^1.2.8"
 

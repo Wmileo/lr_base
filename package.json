@@ -1,6 +1,6 @@
 {
   "name": "@xq/base",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "base",
   "main": "src/index.js",
   "publishConfig": {
@@ -18,7 +18,7 @@
   "devDependencies": {},
   "dependencies": {
     "@xq/api": "^0.1.6",
-    "@xq/component": "^0.2.5",
+    "@xq/component": "^0.3.4",
     "@xq/image": "^0.2.2",
     "@xq/server": "^1.0.7",
     "moment": "^2.29.1"

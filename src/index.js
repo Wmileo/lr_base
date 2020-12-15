@@ -10,10 +10,19 @@ export const fileMgr = file
 import config from './biz/config.js'
 export const configMgr = config
 
+// api
+import api from '@xq/api'
+export const $api = api
+
 import notification from './utils/notification.js'
 import storage from './utils/storage.js'
 
 function init(config, Vue) {
+  
+  const updateManager = api.getUpdateManager()
+  updateManager.onUpdateReady(function () {
+    updateManager.applyUpdate()
+  })
   
   initVue(Vue)
   
@@ -37,10 +46,6 @@ export default {
 // moment
 import moment from 'moment'
 export const $moment = moment
-
-// api
-import api from '@xq/api'
-export const $api = api
 
 // channel
 import { channel } from './utils/channel.js'

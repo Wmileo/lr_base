@@ -22,13 +22,17 @@ function autoLogin() {
         }, 40)
       } else {
         logging = true
+        let fail = (err) => {
+          reject()
+          logging = false
+        }
         $api.login().then(res => {
           login(res.code).then(() => {
             resolve()
             isLogin = true
             logging = false
-          }, reject)
-        }, reject)
+          }, fail)
+        }, fail)
       }
     })
   }

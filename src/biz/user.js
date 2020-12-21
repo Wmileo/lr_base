@@ -23,7 +23,7 @@ function autoLogin() {
       } else {
         logging = true
         let fail = (err) => {
-          reject()
+          reject(err)
           logging = false
         }
         $api.login().then(res => {

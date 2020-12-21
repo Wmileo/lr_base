@@ -6,6 +6,9 @@ function storage(name) {
     },
     set(data) {
       uni.setStorageSync(name, data)
+    },
+    remove() {
+      uni.removeStorageSync(name)
     }
   }
 }

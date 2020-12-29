@@ -68,15 +68,10 @@ function auth(data) {
 }
 
 function authPhone(data) {
-  if (authInfo.phone) {
-    return Promise.resolve(authInfo.phone)
-  } else {
-    data.type = loginType
-    return Fetchs.phone().fetch(data).then(res => {
-      authInfo.phone = res.data
-      return res.data
-    })
-  }
+  data.type = loginType
+  return Fetchs.phone().fetch(data).then(res => {
+    return res.data
+  })
 }
 
 function setLoginType(type) {

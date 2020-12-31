@@ -22,6 +22,7 @@ function init() {
   if (server.auth.needAuth()) {
     userMgr.autoLogin()
   }
+  userMgr.log()
 }
 
 export default {

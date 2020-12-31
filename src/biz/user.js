@@ -74,6 +74,10 @@ function authPhone(data) {
   })
 }
 
+function log() {
+  Fetchs.log().fetch({type:loginType})
+}
+
 function setLoginType(type) {
   loginType = type
 }
@@ -87,6 +91,7 @@ export default {
   update,
   auth,
   authPhone,
+  log,
   setLoginType,
   
   info

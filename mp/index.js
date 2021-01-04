@@ -14,6 +14,7 @@ export const configMgr = config
 
 // api
 import api from '@xq/api'
+export const $api = api
 
 import notification from './utils/notification.js'
 import storage from './utils/storage.js'

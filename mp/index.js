@@ -1,4 +1,4 @@
-import '@xq/stats/mp.js'
+import '@xq/stats/mp'
 
 import fetch from './server/fetch.js'
 import image from './server/image.js'

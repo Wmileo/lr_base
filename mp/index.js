@@ -2,22 +2,24 @@ import '@xq/stats/mp'
 
 import fetch from './server/fetch.js'
 import image from './server/image.js'
-
 import user from './biz/user.js'
-export const userMgr = user
-
 import file from './biz/file.js'
-export const fileMgr = file
-
 import config from './biz/config.js'
-export const configMgr = config
-
 // api
 import api from '@xq/api'
-export const $api = api
-
 import notification from './utils/notification.js'
 import storage from './utils/storage.js'
+
+// moment
+import moment from 'moment'
+// channel
+import { channel } from './utils/channel.js'
+import { notifications } from './utils/notification.js'
+import { storages } from './utils/storage.js'
+
+import server from './server/index.js'
+import componentMgr from '@xq/component'
+import { btnMgr } from '@xq/component'
 
 function init(config, Vue) {
   
@@ -41,23 +43,6 @@ function init(config, Vue) {
   storage.setStorages(config.storages) // storages
 }
 
-export default {
-  init
-}
-
-// moment
-import moment from 'moment'
-export const $moment = moment
-
-// channel
-import { channel } from './utils/channel.js'
-
-import { notifications } from './utils/notification.js'
-export let $notification = notifications
-
-import { storages } from './utils/storage.js'
-export let $storage = storages
-
 function initVue(Vue) {
   Vue.prototype.$api = api
   Vue.prototype.$channel = channel
@@ -66,9 +51,6 @@ function initVue(Vue) {
   Vue.prototype.$moment = moment
 }
 
-import server from './server/index.js'
-import componentMgr from '@xq/component'
-import { btnMgr } from '@xq/component'
 function initConfig() {
   server.init()
   componentMgr.init()
@@ -87,5 +69,16 @@ function initConfig() {
   btnMgr.bingdingPhoneNumber(auth => {
     return user.authPhone(auth)
   })
+}
+
+export const $api = api
+export const configMgr = config
+export const fileMgr = file
+export const userMgr = user
+export let $storage = storages
+export let $notification = notifications
+export const $moment = moment
+export default {
+  init
 }
 

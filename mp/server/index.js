@@ -6,6 +6,9 @@ import $api from '@xq/api'
 
 function init() {
   server.config.onFail((code, msg) => {
+    if (code > 1 && msg) {
+      $api.showToast(msg)
+    }
     if (msg) {
       console.log(msg)
     }

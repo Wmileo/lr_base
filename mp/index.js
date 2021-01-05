@@ -55,9 +55,10 @@ function initConfig() {
   server.init()
   componentMgr.init()
   
-  api.checkSession().catch(err => {
-    user.autoLogin()
-  })
+  user.autoLogin() // 每次重新登录确保最新
+  // api.checkSession().catch(err => { 
+  //   user.autoLogin()
+  // })
   
   api.handleRecheckSession((success, fail) => {
     user.autoLogin().then(() => {

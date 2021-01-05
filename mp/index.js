@@ -55,6 +55,10 @@ function initConfig() {
   server.init()
   componentMgr.init()
   
+  api.checkSession().catch(err => {
+    user.autoLogin()
+  })
+  
   api.handleRecheckSession((success, fail) => {
     user.autoLogin().then(() => {
       success()

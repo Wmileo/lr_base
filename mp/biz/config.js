@@ -1,4 +1,4 @@
-import { fetchs } from '../server/fetch.js'
+import { fetchs } from '@xq/server'
 
 let Fetchs = fetchs.config
 

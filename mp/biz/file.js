@@ -1,4 +1,4 @@
-import { fetchs } from '../server/fetch.js'
+import { fetchs } from '@xq/server'
 import $api from '@xq/api'
 
 let Fetchs = fetchs.file

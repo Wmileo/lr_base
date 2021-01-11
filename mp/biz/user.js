@@ -2,8 +2,6 @@ import { fetchs } from '@xq/server'
 import $api from '@xq/api'
 import server from '@xq/server'
 
-let Fetchs = fetchs.user
-
 let isLogin = false
 let logging = false
 
@@ -40,7 +38,7 @@ function autoLogin() {
 
 function login(authorizationCode) {
   let type = loginType
-  return Fetchs.login().fetch({ authorizationCode, type }).then(res => {
+  return fetchs.user.login().fetch({ authorizationCode, type }).then(res => {
     server.auth.setInfo({
       Authorization : res.data.token
     })
@@ -50,7 +48,7 @@ function login(authorizationCode) {
 }
 
 function update(data) {
-  return Fetchs.update().fetch(data).then(res => {
+  return fetchs.user.update().fetch(data).then(res => {
     console.log(res)
   })
 }
@@ -60,7 +58,7 @@ function auth(data) {
     return Promise.resolve(authInfo.auth)
   } else {
     data.type = loginType
-    return Fetchs.auth().fetch(data).then(res => {
+    return fetchs.user.auth().fetch(data).then(res => {
       authInfo.auth = res.data
       return res.data
     })
@@ -69,13 +67,13 @@ function auth(data) {
 
 function authPhone(data) {
   data.type = loginType
-  return Fetchs.phone().fetch(data).then(res => {
+  return fetchs.user.phone().fetch(data).then(res => {
     return res.data
   })
 }
 
 function log() {
-  Fetchs.log().fetch({type:loginType})
+  fetchs.user.log().fetch({type:loginType})
 }
 
 function setLoginType(type) {

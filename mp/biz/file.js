@@ -1,11 +1,9 @@
 import { fetchs } from '@xq/server'
 import $api from '@xq/api'
 
-let Fetchs = fetchs.file
-
 function upload(file, path, suffix) {
   $api.showLoading('上传中')
-  return Fetchs.upload().fetch({
+  return fetchs.file.upload().fetch({
     file,
     path,
     suffix

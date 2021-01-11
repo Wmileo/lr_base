@@ -1,5 +1,5 @@
 import server from '@xq/server'
-import { fetchs } from './fetch.js'
+import { fetchs } from '@xq/server'
 
 import userMgr from '../biz/user.js'
 import $api from '@xq/api'

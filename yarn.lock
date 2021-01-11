@@ -7,10 +7,10 @@
   resolved "https://npm.xqkxf.com/@dcloudio%2funi-ui/-/uni-ui-1.2.8.tgz#7f310d251df26c7e78bf3cff3023b66fb1f70204"
   integrity sha512-d3y+S3bZkctciIfw3jHqK2G1jB7cHvwLL6y3lYNeq+cC8hw2whJWVto84K67soA4NqciNyrPfycAD9fNMDDqZw==
 
-"@xq/api@^0.1.6":
-  version "0.1.6"
-  resolved "https://npm.xqkxf.com/@xq%2fapi/-/api-0.1.6.tgz#0514c89fc2122567e0ded9b4181967ab2aef76e9"
-  integrity sha512-g9R/yQ9Bv/pqdBjeU7W/KRYIhKhXmGxhvRpPfmWCHRbHXJv4XPmBcuJAblQnvHTFphKvh1NJWWvGTPuzqQQmaA==
+"@xq/api@^0.2.4":
+  version "0.2.4"
+  resolved "https://npm.xqkxf.com/@xq%2fapi/-/api-0.2.4.tgz#eb843d914be0ab122063de56de8d0f64e5bda52e"
+  integrity sha512-Rtnyqj1nopiKmenTT/+j5aIFSCf3cNufPvNqZSJR5CaNjRTCWtPObupwNwceyqhszadrD0vnV+pF2OJTjOKv2A==
 
 "@xq/component@^0.3.4":
   version "0.3.4"
@@ -24,11 +24,19 @@
   resolved "https://npm.xqkxf.com/@xq%2fimage/-/image-0.2.2.tgz#82df492851d6b28b1b487d9cdbaca0411d48a582"
   integrity sha512-nvvUgKK1gkzxPVsT9K0IJ/Awmj+fy8dIgW+Xiaj+W+6rBL6onhCUQLEJvqBW6Au/KEigX5e2lNlhPYd0ongrjA==
 
-"@xq/server@^1.0.7":
-  version "1.0.7"
-  resolved "https://npm.xqkxf.com/@xq%2fserver/-/server-1.0.7.tgz#ca0963b5dce5ba835f961feb6a2017aec9668108"
-  integrity sha512-y2N0vM1pTpEd+WCSencPXZ9S/gk2t5ws7+ZGj7pkHr1Kkyg0GHepxb+fl0rqIfToA22Kq5f5i69bVSYf2KfXLg==
+"@xq/server@1.1.1":
+  version "1.1.1"
+  resolved "https://npm.xqkxf.com/@xq%2fserver/-/server-1.1.1.tgz#d703621e38cd24b1714b2102cd5308867d2ef0c0"
+  integrity sha512-r4ppmk85MLEi+A3hGb88UR6piDcDMHO2V+586qj22PK23d4+n3woD61FuTG9ypoy2jarkxY5Pcle6aTnqdU0Ng==
   dependencies:
+    flyio "^0.6.14"
+
+"@xq/server@^1.1.6":
+  version "1.1.6"
+  resolved "https://npm.xqkxf.com/@xq%2fserver/-/server-1.1.6.tgz#36867b38cb449180de80867cb7323b375ae0175b"
+  integrity sha512-RIcAnoG1F2AYTH3L/wRU+fS2s2H1anV9fseqnRh4JQBI2bW5KZemqbZGPE8YPjt8hv2WPTbEpNKXny8mTybGLA==
+  dependencies:
+    "@xq/server" "1.1.1"
     flyio "^0.6.14"
 
 ajv@^6.12.3:

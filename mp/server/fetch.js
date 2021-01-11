@@ -22,21 +22,12 @@ let apis = {
   }
 }
 
-let list = {}
-let extras = {
-  url: '',
-  server: 'app'
-}
-for (let mk in apis) {
-  const m = apis[mk]
-  list[mk] = builders(m, extras)
-}
-
 function setBaseURL(url) {
-  extras.url = url
+  server.setFetchs(apis, {
+    url,
+    server: 'app'
+  })
 }
-
-export const fetchs = list
 
 export default {
   setBaseURL

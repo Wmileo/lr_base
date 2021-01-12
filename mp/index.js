@@ -27,6 +27,7 @@ function debug(config) {
   envMgr.setDebug(config.envs, (env) => {
     config.onEnv(env)
     fetch.setBaseURL(env)
+    user.autoLogin()
   })
 }
 

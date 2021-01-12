@@ -29,10 +29,7 @@ function shake() {
       time = 0
       $api.showActionSheet(envs).then(res => {
         let env = envs[res.tapIndex]
-        console.log(env, res, res.tapIndex)
         event(env)
-      }).catch(err => {
-        console.log(err)
       })
     }
   })

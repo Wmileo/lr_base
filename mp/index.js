@@ -22,13 +22,13 @@ import componentMgr from '@xq/component'
 import { btnMgr } from '@xq/component'
 
 import envMgr from './utils/env.js'
-import server from '@xq/server'
+import serverMgr from '@xq/server'
 
 function debug(config) {//切换环境
   envMgr.setDebug(config.envs, (env) => {
     config.onEnv(env)
     fetch.setBaseURL(env)
-    server.auth.clear()
+    serverMgr.auth.clear()
     user.autoLogin()
   })
 }

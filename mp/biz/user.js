@@ -1,8 +1,9 @@
-import { fetchs } from '@xq/server'
+import {
+  fetchs
+} from '@xq/server'
 import $api from '@xq/api'
 import server from '@xq/server'
 
-let isLogin = false
 let logging = false
 
 let loginType = ''
@@ -10,37 +11,35 @@ let loginType = ''
 let authInfo = {}
 
 function autoLogin() {
-  if (isLogin) {
-    return Promise.resolve()
-  } else {
-    return new Promise((resolve, reject) => {
-      if (logging) {
-        setTimeout(() => {
-          autoLogin().then(resolve, reject)
-        }, 40)
-      } else {
-        logging = true
-        let fail = (err) => {
-          reject(err)
-          logging = false
-        }
-        $api.login().then(res => {
-          login(res.code).then(() => {
-            resolve()
-            isLogin = true
-            logging = false
-          }, fail)
-        }, fail)
+  return new Promise((resolve, reject) => {
+    if (logging) {
+      setTimeout(() => {
+        autoLogin().then(resolve, reject)
+      }, 40)
+    } else {
+      logging = true
+      let fail = (err) => {
+        reject(err)
+        logging = false
       }
-    })
-  }
+      $api.login().then(res => {
+        login(res.code).then(() => {
+          resolve()
+          logging = false
+        }, fail)
+      }, fail)
+    }
+  })
 }
 
 function login(authorizationCode) {
   let type = loginType
-  return fetchs.user.login().fetch({ authorizationCode, type }).then(res => {
+  return fetchs.user.login().fetch({
+    authorizationCode,
+    type
+  }).then(res => {
     server.auth.setInfo({
-      Authorization : res.data.token
+      Authorization: res.data.token
     })
     authInfo.login = res.data
     return res
@@ -73,7 +72,9 @@ function authPhone(data) {
 }
 
 function log() {
-  fetchs.user.log().fetch({type:loginType})
+  fetchs.user.log().fetch({
+    type: loginType
+  })
 }
 
 function setLoginType(type) {
@@ -91,6 +92,6 @@ export default {
   authPhone,
   log,
   setLoginType,
-  
+
   info
 }

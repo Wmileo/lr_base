@@ -22,16 +22,18 @@ import componentMgr from '@xq/component'
 import { btnMgr } from '@xq/component'
 
 import envMgr from './utils/env.js'
+import server from '@xq/server'
 
-function debug(config) {
+function debug(config) {//切换环境
   envMgr.setDebug(config.envs, (env) => {
     config.onEnv(env)
     fetch.setBaseURL(env)
+    server.auth.clear()
     user.autoLogin()
   })
 }
 
-function init(config, Vue) {
+function init(config, Vue) {//初始化
   
   const updateManager = api.getUpdateManager()
   updateManager.onUpdateReady(function () {

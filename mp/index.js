@@ -21,6 +21,15 @@ import server from './server/index.js'
 import componentMgr from '@xq/component'
 import { btnMgr } from '@xq/component'
 
+import envMgr from './utils/env.js'
+
+function debug(config) {
+  envMgr.setDebug(config.envs, (env) => {
+    config.onEnv(env)
+    fetch.setBaseURL(env)
+  })
+}
+
 function init(config, Vue) {
   
   const updateManager = api.getUpdateManager()
@@ -84,6 +93,7 @@ export let $storage = storages
 export let $notification = notifications
 export const $moment = moment
 export default {
-  init
+  init,
+  debug
 }
 

@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 let list = []
 let onList = (list) => {}
 
@@ -10,7 +12,8 @@ let color = {
 
 function print(type, mark, msg, data) {
   console[type](`%cxq-${mark}：`, `color:${color[type]}`, msg, data)
-  list.push({type, msg, data, mark})
+  let time = moment().format('YYYY-MM-DD hh:mm:ss');
+  list.unshift({type, msg, data, mark, time})
   onList(list)
 }
 

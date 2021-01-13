@@ -22,7 +22,7 @@ import componentMgr from '@xq/component'
 import { btnMgr } from '@xq/component'
 
 import debugMgr from './utils/debug.js'
-import logMgr from './utils/log.js'
+import logMgr from '@xq/log'
 import serverMgr from '@xq/server'
 
 function debug(config) {//切换环境

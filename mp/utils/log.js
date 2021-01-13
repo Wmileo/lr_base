@@ -9,7 +9,7 @@ let color = {
 }
 
 function print(type, mark, msg, data) {
-  console[type](`%c${mark}：`, 'color:${color[type]}', msg, data)
+  console[type](`%cxq-${mark}：`, `color:${color[type]}`, msg, data)
   list.push({type, msg, data, mark})
   onList(list)
 }

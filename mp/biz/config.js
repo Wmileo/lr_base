@@ -9,7 +9,7 @@ function getDetail(appKey) {
   } else {
     return fetchs.config.info().fetch({ appKey }).then(res => {
       configs[appKey] = res.data.appValue
-      return res.data
+      return res.data.appValue
     })
   }
 }

@@ -1,11 +1,16 @@
 import $api from '@xq/api'
 
 let envs = []
-let event = (env) => {}
+let onEnv = (env) => {}
+let onLog = () => {}
+let list = []
 
-function setDebug(list, func) {
-  envs = list
-  event = func
+function setDebug(data) {
+  envs = data.envs
+  onEnv = data.onEnv
+  onLog = data.onLog
+  list = list.concat(envs)
+  list.push('log')
   shake()
 }
 
@@ -27,9 +32,13 @@ function shake() {
     lz = res.z
     if (time > 2) {
       time = 0
-      $api.showActionSheet(envs).then(res => {
-        let env = envs[res.tapIndex]
-        event(env)
+      $api.showActionSheet(list).then(res => {
+        let item = list[res.tapIndex]
+        if (item == 'log') {
+          onLog()
+        } else {
+          onEnv(item)
+        }
       })
     }
   })

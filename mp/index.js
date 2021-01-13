@@ -21,16 +21,24 @@ import server from './server/index.js'
 import componentMgr from '@xq/component'
 import { btnMgr } from '@xq/component'
 
-import envMgr from './utils/env.js'
+import debugMgr from './utils/debug.js'
+import logMgr from './utils/log.js'
 import serverMgr from '@xq/server'
 
 function debug(config) {//切换环境
-  envMgr.setDebug(config.envs, (env) => {
-    config.onEnv(env)
-    fetch.setBaseURL(env)
-    serverMgr.auth.clear()
-    user.autoLogin()
-  })
+  debugMgr.setDebug(
+    {
+      envs: config.envs,
+      onEnv(env) {
+        config.onEnv(env)
+        fetch.setBaseURL(env)
+        serverMgr.auth.clear()
+        user.autoLogin()
+      },
+      onLog() {
+        config.onLog()
+      }
+    })
 }
 
 function init(config, Vue) {//初始化
@@ -61,6 +69,7 @@ function initVue(Vue) {
   Vue.prototype.$notification = notifications
   Vue.prototype.$storage = storages
   Vue.prototype.$moment = moment
+  Vue.prototype.$log = logMgr
 }
 
 function initConfig() {
@@ -95,6 +104,7 @@ export const userMgr = user
 export let $storage = storages
 export let $notification = notifications
 export const $moment = moment
+export const $log = logMgr
 export default {
   init,
   debug

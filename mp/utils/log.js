@@ -30,7 +30,7 @@ function error(mark, msg, data) {
   print('error', mark, msg, data)
 }
 
-function hanldList(func) {
+function handleList(func) {
   onList = func
 }
 
@@ -39,5 +39,5 @@ export default {
   warn,
   info,
   error,
-  hanldList
+  handleList
 }

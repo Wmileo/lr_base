@@ -13,52 +13,64 @@ import storage from './utils/storage.js'
 // moment
 import moment from 'moment'
 // channel
-import { channel } from './utils/channel.js'
-import { notifications } from './utils/notification.js'
-import { storages } from './utils/storage.js'
+import {
+  channel
+} from './utils/channel.js'
+import {
+  notifications
+} from './utils/notification.js'
+import {
+  storages
+} from './utils/storage.js'
 
 import server from './server/index.js'
 import componentMgr from '@xq/component'
-import { btnMgr } from '@xq/component'
+import {
+  btnMgr
+} from '@xq/component'
 
 import debugMgr from './utils/debug.js'
 import logMgr from '@xq/log'
 import serverMgr from '@xq/server'
 
-function debug(config) {//切换环境
-  debugMgr.setDebug(
-    {
-      envs: config.envs,
-      onEnv(env) {
-        config.onEnv(env)
-        fetch.setBaseURL(env)
-        serverMgr.auth.clear()
-        user.autoLogin()
-      },
-      onLog() {
-        config.onLog()
-      }
-    })
+let isLogin = false
+
+function debug(config) { //切换环境
+  debugMgr.setDebug({
+    envs: config.envs,
+    onEnv(env) {
+      isLogin = false
+      config.onEnv(env)
+      fetch.setBaseURL(env)
+      serverMgr.auth.clear()
+      user.autoLogin().then(res => {
+        isLogin = true
+      })
+    },
+    onLog() {
+      config.onLog()
+    }
+  })
 }
 
-function init(config, Vue) {//初始化
-  
+function init(config, Vue) { //初始化
+
   const updateManager = api.getUpdateManager()
-  updateManager.onUpdateReady(function () {
+  updateManager.onUpdateReady(function() {
     updateManager.applyUpdate()
   })
-  
+
   initVue(Vue)
-  
-  fetch.setBaseURL(config.baseURL)  // baseURL
+
+  fetch.setBaseURL(config.baseURL) // baseURL
   user.setLoginType(config.loginType) // loginType
-  
+
   initConfig()
 
   image.setBaseUrl(config.imageUrl) // imageUrl
   image.setImageUrlKey(config.imageUrlKey) // imageUrlKey
   image.setImages(config.images) // images
-  
+
   notification.setNotifications(config.notifications) // notifications
   storage.setStorages(config.storages) // storages
 }
@@ -75,20 +87,19 @@ function initVue(Vue) {
 function initConfig() {
   server.init()
   componentMgr.init()
-  
-  user.autoLogin() // 每次重新登录确保最新
-  // api.checkSession().catch(err => { 
-  //   user.autoLogin()
-  // })
-  
-  api.handleRecheckSession((success, fail) => {
-    user.autoLogin().then(() => {
-      success()
-    }).catch(() => {
-      fail()
-    })
+
+  user.autoLogin().then(res => {
+    isLogin = true
   })
-  
+
+  api.handleSession(() => {
+    if (isLogin) {
+      return Promise.resolve()
+    } else {
+      return user.autoLogin()
+    }
+  })
+
   btnMgr.bindingUserInfo(auth => {
     return user.auth(auth)
   })
@@ -109,4 +120,3 @@ export default {
   init,
   debug
 }
-

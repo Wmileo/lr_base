@@ -35,6 +35,7 @@ function error(mark, msg, data) {
 
 function handleList(func) {
   onList = func
+  onList(list)
 }
 
 export default {

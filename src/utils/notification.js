@@ -1,3 +1,4 @@
+
 function notification(name) {
   return {
     emit(data) {
@@ -15,15 +16,13 @@ function notification(name) {
   }
 }
 
-let obj = {}
+$notification = {}
 function setNotifications(notifications) {
   notifications.forEach(ntf => {
-    obj[ntf] = notification(ntf)
+    $notification[ntf] = notification(ntf)
   })
 }
 
 export default {
   setNotifications
 }
-
-export let notifications = obj

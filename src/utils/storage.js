@@ -13,10 +13,10 @@ function storage(name) {
   }
 }
 
-let obj = {}
+$storages = {}
 function setStorages(storages) {
   storages.forEach(srg => {
-    obj[srg] = storage(srg)
+    $storages[srg] = storage(srg)
   })
 }
 
@@ -24,4 +24,3 @@ export default {
   setStorages
 }
 
-export let storages = obj

@@ -23,6 +23,10 @@ function setNotifications(notifications) {
   })
 }
 
+setNotifications([
+  'env'
+])
+
 export default {
   setNotifications
 }

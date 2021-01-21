@@ -33,17 +33,26 @@ function autoLogin() {
 }
 
 function login(authorizationCode) {
-  let type = loginType
-  return fetchs.user.login().fetch({
-    authorizationCode,
-    type
-  }).then(res => {
+  /* 如果从其他小程序来的会有token */
+  let token=getApp().globalData.extraData.token;
+  if (token) {
     server.auth.setInfo({
-      Authorization: res.data.token
+      Authorization: token
     })
-    authInfo.login = res.data
-    return res
-  })
+    return Promise.resolve()
+  }else{
+    let type = loginType
+    return fetchs.user.login().fetch({
+      authorizationCode,
+      type
+    }).then(res => {
+      server.auth.setInfo({
+        Authorization: res.data.token
+      })
+      authInfo.login = res.data
+      return res
+    })
+  }
 }
 
 function update(data) {

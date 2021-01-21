@@ -34,7 +34,7 @@ function autoLogin() {
 
 function login(authorizationCode) {
   /* 如果从其他小程序来的会有token */
-  let token=getApp().globalData.extraData.token;
+  let token=getApp().globalData.extraData?getApp().globalData.extraData.token:"";
   if (token) {
     server.auth.setInfo({
       Authorization: token

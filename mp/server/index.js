@@ -22,6 +22,9 @@ function init() {
     return userMgr.autoLogin()
   })
   server.auth.passList.push(fetchs.user.login().path)
+  if (server.auth.needAuth()) {
+    userMgr.autoLogin()
+  }
   userMgr.log()
 }
 

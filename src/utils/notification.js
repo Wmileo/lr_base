@@ -15,10 +15,10 @@ function notification(name) {
   }
 }
 
-$notifications = {}
+$notification = {}
 function setNotifications(notifications) {
   notifications.forEach(ntf => {
-    notifications[ntf] = notification(ntf)
+    $notification[ntf] = notification(ntf)
   })
 }
 

@@ -13,10 +13,10 @@ function storage(name) {
   }
 }
 
-$storages = {}
+$storage = {}
 function setStorages(storages) {
   storages.forEach(srg => {
-    $storages[srg] = storage(srg)
+    $storage[srg] = storage(srg)
   })
 }
 

@@ -15,17 +15,15 @@ function notification(name) {
   }
 }
 
-$notifications = {}
+let obj = {}
 function setNotifications(notifications) {
   notifications.forEach(ntf => {
-    notifications[ntf] = notification(ntf)
+    obj[ntf] = notification(ntf)
   })
 }
-
-setNotifications([
-  env
-])
 
 export default {
   setNotifications
 }
+
+export let notifications = obj

@@ -1,4 +1,4 @@
-import channel from './utils/channel.js'
+import {channel} from './utils/channel.js'
 
 function init(Vue) {
   Vue.prototype.$channel = channel

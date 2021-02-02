@@ -1,10 +1,11 @@
 import '@xq/stats/mp'
 import '../base/index.js'
 import '@xq/component'
-import './biz/index.js'
 
 import uniBase from '../uni/index.js'
 import config from './config/index.js'
+
+import './biz/index.js'
 
 import btnMgr from '@xq/component/com/btn/index.js'
 

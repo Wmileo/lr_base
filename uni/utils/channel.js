@@ -22,14 +22,14 @@ function params(options) {
   return result
 }
 
-function channel(_this = this) {
+export function channel(_this = this) {
   let cn = _this.getOpenerEventChannel()
   return {
     get(key, data) {
       if (cn.listener[key]) {
         return cn.listener[key][0].fn(data)
       }
-      console.error('channel : 无效key')
+      $log.error('base-uni-utils', 'channel : 无效key')
       return null
     },
     emit(key, data) {
@@ -39,5 +39,3 @@ function channel(_this = this) {
     params // 解析参数
   }
 }
-
-$channel = channel

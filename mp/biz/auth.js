@@ -1,12 +1,8 @@
-import {
-  fetchs
-} from '@xq/server'
-import $api from '@xq/api'
 import server from '@xq/server'
 
 let logging = false
 
-let loginType = ''
+let userType = ''
 
 let authInfo = {}
 
@@ -33,8 +29,8 @@ function autoLogin() {
 }
 
 function login(authorizationCode) {
-  let type = loginType
-  return fetchs.user.login().fetch({
+  let type = userType
+  return $fetch.auth.login().fetch({
     authorizationCode,
     type
   }).then(res => {
@@ -46,52 +42,38 @@ function login(authorizationCode) {
   })
 }
 
-function update(data) {
-  return fetchs.user.update().fetch(data).then(res => {
-    console.log(res)
-  })
-}
-
-function auth(data) {
+function info(data) {
   if (authInfo.auth) {
     return Promise.resolve(authInfo.auth)
   } else {
-    data.type = loginType
-    return fetchs.user.auth().fetch(data).then(res => {
+    data.type = userType
+    return $fetch.auth.info().fetch(data).then(res => {
       authInfo.auth = res.data
       return res.data
     })
   }
 }
 
-function authPhone(data) {
-  data.type = loginType
-  return fetchs.user.phone().fetch(data).then(res => {
+function phone(data) {
+  data.type = userType
+  return $fetch.auth.phone().fetch(data).then(res => {
     return res.data
   })
 }
 
 function log() {
-  fetchs.user.log().fetch({
-    type: loginType
+  $fetch.auth.log().fetch({
+    type: userType
   })
 }
 
-function setLoginType(type) {
-  loginType = type
-}
-
-function info() {
-  return authInfo
-}
+$notification.userType.on(type => {
+  userType = type
+})
 
 export default {
   autoLogin,
-  update,
-  auth,
-  authPhone,
-  log,
-  setLoginType,
-
-  info
+  info,
+  phone,
+  log
 }

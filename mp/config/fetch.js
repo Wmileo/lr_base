@@ -3,17 +3,16 @@ import server from '@xq/server'
 let {
   get,
   post,
-  upload,
-  builders
+  upload
 } = server.apiBuilder
 
 let apis = {
   config: {
     info: get('/v1/config/getByAppkey')
   },
-  user: {
+  auth: {
     login: post('/v1/user/wxLogin'),
-    auth: post('/v1/user/getWxUserInfo'),
+    info: post('/v1/user/getWxUserInfo'),
     phone: post('/v1/user/getWxUserPhone'),
     log: get('/v1/user/createLogLogin'),
   },
@@ -29,7 +28,7 @@ function setBaseURL(url) {
   })
 }
 
-export default {
-  setBaseURL
-}
+$notification.env.on(url => {
+  setBaseURL(url)
+})
 

@@ -1,10 +1,8 @@
-import '@xq/log'
-import '@xq/api'
-import '@xq/server'
-import '../uni/index.js'
+import '../base/index.js'
+import uniBase from '../uni/index.js'
 
-function init(config) {
-  
+function init(Vue) {
+  uniBase.init(Vue)
 }
 
 export default {

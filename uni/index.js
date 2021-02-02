@@ -1,3 +1,9 @@
-import '../src/utils/notification.js'
-import '../src/utils/storage.js'
-import './utils/channel.js'
+import channel from './utils/channel.js'
+
+function init(Vue) {
+  Vue.prototype.$channel = channel
+}
+
+export default {
+  init
+}

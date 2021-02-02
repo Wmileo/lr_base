@@ -1,4 +1,3 @@
-import { fetchs } from '@xq/server'
 
 let configs = {}
 
@@ -7,7 +6,7 @@ function getDetail(appKey) {
   if (value) {
     return Promise.resolve(value)
   } else {
-    return fetchs.config.info().fetch({ appKey }).then(res => {
+    return $fetch.config.info().fetch({ appKey }).then(res => {
       configs[appKey] = res.data.appValue
       return res.data.appValue
     })

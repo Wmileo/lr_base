@@ -1,5 +1,3 @@
-import $api from '@xq/api'
-
 let envs = []
 let onEnv = (env) => {}
 let onLog = () => {}

@@ -1,15 +1,3 @@
-/**
- * 设置url参数
- */
-function url(url, obj) {
-  if (Object.keys(obj).length > 0) {
-    url += url.includes("?") ? "&" : "?"
-  }
-  for (let key in obj) {
-    url += key + "=" + encodeURIComponent(obj[key]) + "&"
-  }
-  return url
-}
 
 /**
  * 解析url参数
@@ -24,6 +12,7 @@ function params(options) {
 
 export function channel(_this = this) {
   let cn = _this.getOpenerEventChannel()
+  let opt = _this.$scope.options
   return {
     get(key, data) {
       if (cn.listener[key]) {
@@ -35,7 +24,6 @@ export function channel(_this = this) {
     emit(key, data) {
       cn.emit(key, data)
     },
-    url, // 构建url
-    params // 解析参数
+    option: params(opt)
   }
 }

@@ -12,7 +12,7 @@ function params(options) {
 
 export function channel(_this = this) {
   let cn = _this.getOpenerEventChannel()
-  let opt = _this.$scope.options
+  let opt = _this.$mp.query
   return {
     get(key, data) {
       if (cn.listener[key]) {

@@ -1,3 +1,6 @@
+import './biz/index.js'
+import './config/index.js'
+
 import {channel} from './utils/channel.js'
 
 function init(Vue) {

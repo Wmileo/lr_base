@@ -1,5 +1,5 @@
-import '@xq/stats/mp'
 import '../base/index.js'
+import '@xq/stats/mp'
 import '@xq/component'
 
 import uniBase from '../uni/index.js'

@@ -11,19 +11,22 @@ function build(url, obj) {
 }
 
 function option(url) {
-  let str = url.split('?')[1]
-  if (str) {
-    str = str.split('#')[0]
-    let strs = str.split('&')
-    let info = {}
-    for (let p in strs) {
-      let arr = strs[p].split('=')
-      info[arr[0]] = decodeURIComponent(arr[1])
-    }
-    return info
-  } else {
-    return {}
+  let str = url
+  if (url.indexOf('?') >= 0) {
+    str = url.split('?')[1]
   }
+  str = str.split('#')[0]
+  let strs = str.split('&')
+  let info = {}
+  for (let p in strs) {
+    let arr = strs[p].split('=')
+    info[arr[0]] = decodeURIComponent(arr[1])
+  }
+  return info
+}
+
+if (!$utils) {
+  $utils = {}
 }
 
 $utils.url = {

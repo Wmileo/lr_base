@@ -1,9 +1,7 @@
-import log from './log.js'
-import share from './share.js'
+import page from './page.js'
 
 if (!$xq) {
   $xq = {}
 }
 
-$xq.log = log
-$xq.share = share
+$xq.page = page

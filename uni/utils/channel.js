@@ -10,9 +10,17 @@ function params(options) {
   return result
 }
 
-export function channel(_this = this) {
+export function channel() {
+  let _this = $this()
   let cn = _this.getOpenerEventChannel()
   let opt = _this.$mp.query
+  if (process.env.VUE_APP_PLATFORM == 'h5') {
+    opt = $utils.url.option(window.location.href)
+  } else if (opt.q) {
+    opt = $utils.url.option(opt.q)
+  } else if (opt.scene) {
+    opt = $utils.url.option(opt.scene)
+  }
   return {
     get(key, data) {
       if (cn.listener[key]) {

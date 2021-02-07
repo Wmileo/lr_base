@@ -42,8 +42,9 @@ function init(urls) {
 
 function handlePage(hide = false) {
   let p = currentPage()
-  let arr = p.splice('/')
-  let c = pages[arr[1]].c
+  let arr = p.split('/')
+  let pg = pages[arr[1]]
+  let c = pg ? pg.c : 0
   if (c > 0 && arr[2] == 'detail') { // pages/xxx/detail
     if (hide) {
       leave()

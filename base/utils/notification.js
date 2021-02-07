@@ -23,7 +23,8 @@ function setNotifications(notifications) {
 }
 
 setNotifications([
-  'env'
+  'env',
+  'userId'
 ])
 
 export default {

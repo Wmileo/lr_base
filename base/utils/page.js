@@ -46,6 +46,13 @@ if (process.env.VUE_APP_PLATFORM == 'h5') {
           oh.call(this, methods)
         }
       }
+      let ou = methods.onUnload
+      methods.onUnload = function(u) {
+        handleOnHide()
+        if (ou) {
+          ou.call(this, methods)
+        }
+      }
     }
     oc(c)
   }

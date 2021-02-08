@@ -7,14 +7,14 @@ let onShowFuncs = []
 let onHideFuncs = []
 
 function handleOnShow() {
-  $log.info('stats', 'onShow', currentPage())
+  $log.info('base-page', `onShow ${currentPage()}`)
   onShowFuncs.forEach(func => {
     func()
   })
 }
 
 function handleOnHide() {
-  $log.info('stats', 'onHide', currentPage())
+  $log.info('base-page', `onHide ${currentPage()}`)
   onHideFuncs.forEach(func => {
     func()
   })
@@ -39,10 +39,11 @@ if (process.env.VUE_APP_PLATFORM == 'h5') {
           os.call(this, methods)
         }
       }
-      methods.onHide = function(s) {
+      let oh = methods.onHide
+      methods.onHide = function(h) {
         handleOnHide()
-        if (os) {
-          os.call(this, methods)
+        if (oh) {
+          oh.call(this, methods)
         }
       }
     }

@@ -1,6 +1,6 @@
 let shareData = {}
 
-function init(urls) {
+function init() {
   $notification.shareRid.on(id => {
     shareData.r = id
   })
@@ -24,4 +24,8 @@ function article(item) {
 
 export default {
   init,
+  estate,
+  layout,
+  consultant,
+  article
 }

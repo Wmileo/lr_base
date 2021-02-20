@@ -24,7 +24,8 @@ function setNotifications(notifications) {
 
 setNotifications([
   'env',
-  'userId'
+  'userId',
+  'port'
 ])
 
 export default {

@@ -3,6 +3,7 @@ let pages = {
   'layout': '/pages/layout/detail',
   'consultant': '/pages/consultant/detail',
   'article': '/pages/article/detail',
+  'invite': ''
 }
 
 function init(urls) {
@@ -12,16 +13,34 @@ function init(urls) {
 }
 
 function estate(item) {
-  return $utils.url.build(pages.estate, {id: item.id})
+  return $utils.url.build(pages.estate, {
+    id: item.id
+  })
 }
+
 function layout(item) {
-  return $utils.url.build(pages.layout, {id: item.id})
+  return $utils.url.build(pages.layout, {
+    id: item.id
+  })
 }
+
 function consultant(item) {
-  return $utils.url.build(pages.consultant, {id: item.id})
+  return $utils.url.build(pages.consultant, {
+    id: item.id
+  })
 }
+
 function article(item) {
-  return $utils.url.build(pages.article, {id: item.id, artCode: item.code})
+  return $utils.url.build(pages.article, {
+    id: item.id,
+    artCode: item.code
+  })
+}
+
+function invite(item) {
+  return $utils.url.build(pages.invite, {
+    id: item.id
+  })
 }
 
 export default {
@@ -29,5 +48,6 @@ export default {
   estate,
   layout,
   consultant,
-  article
+  article,
+  invite
 }

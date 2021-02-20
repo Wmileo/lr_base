@@ -1,8 +1,8 @@
 import '../base/index.js'
-import uniBase from '../uni/index.js'
+import '../uni/index.js'
+import './biz/index.js'
 
-function init(Vue) {
-  uniBase.init(Vue)
+function init() {
 }
 
 export default {

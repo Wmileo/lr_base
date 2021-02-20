@@ -4,6 +4,6 @@ function currentPage() {
 }
 
 $this = ()=>{
-  return currentPage().$vm
+  let p = currentPage()
+  return p ? p.$vm : null
 }
-

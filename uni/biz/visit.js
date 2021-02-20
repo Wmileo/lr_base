@@ -5,8 +5,6 @@ function currentPage() {
   return getCurrentPages()[l - 1].route
 }
 
-let u = ''
-
 function logData(ext) {
   let t = 1
   let opt = $this().$channel().option
@@ -17,14 +15,14 @@ function logData(ext) {
   let cid = opt.id
   let r = opt.r
   let con = opt.con
+  let c = opt.c
   return {
-    p,t,cid,r,con,
+    p, t, cid, r, con, c,
     ...ext
   }
 }
 
 function log(data) {
-  data.u = u
   $fetch.log.visit().fetch(data).finally(() => { // 触发心跳
     heartbeat()
   })
@@ -56,10 +54,6 @@ function init() {
   $utils.page.onHide.inject(() => {
     handlePage(true)
   })
-
-  $notification.userId.on(id => {
-    u = id
-  })
 }
 
 function handlePage(hide = false) {
@@ -78,16 +72,16 @@ function handlePage(hide = false) {
 }
 
 function estate(item) {
-  visit({e: item.id, c: 1})
+  visit({e: item.id})
 }
 function layout(item) {
-  visit({e: item.estateId, c: 2})
+  visit({e: item.estateId})
 }
 function consultant(item) {
-  visit({e: item.estateId, c: 3})
+  visit({e: item.estateId})
 }
 function article(item) {
-  visit({e: item.estateId, con: item.consultantId, c: 4})
+  visit({e: item.estateId, con: item.consultantId})
 }
 
 export default {

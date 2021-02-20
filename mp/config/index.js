@@ -24,7 +24,6 @@ server.config.onAuth(() => {
 
 function init() {
   server.auth.passList.push($fetch.auth.login().path)
-  $xq.auth.log()
 }
 
 export default {

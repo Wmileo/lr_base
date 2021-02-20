@@ -2,17 +2,15 @@ import '../base/index.js'
 import '@xq/stats/mp'
 import '@xq/component'
 
-import uniBase from '../uni/index.js'
+import '../uni/index.js'
 import config from './config/index.js'
 
 import './biz/index.js'
 
 import btnMgr from '@xq/component/com/btn/index.js'
 
-function init(Vue) {
-  uniBase.init(Vue)
+function init() {
   config.init()
-  
   initConfig()
 }
 

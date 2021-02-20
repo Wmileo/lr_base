@@ -9,6 +9,15 @@ let {
 let apis = {
   log: {
     visit: get('/v1/log/visit/append')
+  },
+  config: {
+    info: get('/v1/config/getByAppkey')
+  },
+  auth: {
+    login: post('/v1/user/wxLogin'),
+  },
+  file: {
+    upload: upload('/upload')
   }
 }
 

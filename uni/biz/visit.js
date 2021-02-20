@@ -7,7 +7,7 @@ function currentPage() {
 
 function logData(ext) {
   let t = 1
-  let opt = $channel().option
+  let opt = $this().$channel().option
   if (process.env.VUE_APP_PLATFORM == 'h5' && opt.from != 'mp') {
     t = 0
   }
@@ -16,10 +16,10 @@ function logData(ext) {
   let r = opt.r
   let con = opt.con
   let c = opt.c
-  return {
+  return $utils.object.clean({
     p, t, cid, r, con, c,
     ...ext
-  }
+  })
 }
 
 function log(data) {

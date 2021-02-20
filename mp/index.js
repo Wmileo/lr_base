@@ -3,14 +3,13 @@ import '@xq/stats/mp'
 import '@xq/component'
 
 import '../uni/index.js'
-import config from './config/index.js'
+import './config/index.js'
 
 import './biz/index.js'
 
 import btnMgr from '@xq/component/com/btn/index.js'
 
 function init() {
-  config.init()
   initConfig()
 }
 

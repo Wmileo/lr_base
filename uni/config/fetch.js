@@ -26,6 +26,7 @@ function setBaseURL(url) {
     url,
     server: 'app'
   })
+  server.auth.passList.push($fetch.auth.login().path)
 }
 
 $notification.env.on(url => {

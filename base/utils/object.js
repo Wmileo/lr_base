@@ -11,7 +11,6 @@ function clean(obj, keys) {
   return o
 }
 
-
 if (!$utils) {
   $utils = {}
 }

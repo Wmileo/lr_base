@@ -4,7 +4,7 @@ function opt() {
   let s = port == 'q' || port == 'b' ? 'b' : 'c'
   let r = s == 'c' ? $storage.userId.get() : null
   let con = s == 'b' ? $storage.userId.get() : null
-  let o = $this().$channel().option
+  let o = $channel().option
   if (o.con != null) {
     con = o.con
   }

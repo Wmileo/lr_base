@@ -7,7 +7,7 @@ function currentPage() {
 
 function logData(ext) {
   let t = 1
-  let opt = $this().$channel().option
+  let opt = $channel().option
   if (process.env.VUE_APP_PLATFORM == 'h5' && opt.from != 'mp') {
     t = 0
   }

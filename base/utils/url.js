@@ -3,8 +3,7 @@ function build(url, obj) {
   if (obj) {
     url += url.includes("?") ? "&" : "?"
     for (let key in obj) {
-      let v = encodeURIComponent(obj[key])
-      if (v != null) {
+      if (obj[key] != null) {
         url += key + "=" + encodeURIComponent(obj[key]) + "&"
       }
     }

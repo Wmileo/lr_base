@@ -10,6 +10,7 @@ function build(url, obj) {
     }
     url = url.substr(0, url.length - 1)
   }
+  $log.info('base-utils-url', url)
   return url
 }
 

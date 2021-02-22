@@ -13,26 +13,22 @@ function opt() {
 
 function estate(item) {
   return $utils.url.build($xq.page.estate(item), {
-    ...opt(),
-    c: 1,
+    ...opt()
   })
 }
 function layout(item) {
   return $utils.url.build($xq.page.layout(item), {
-    ...opt(),
-    c: 2,
+    ...opt()
   })
 }
 function consultant(item) {
   return $utils.url.build($xq.page.consultant(item), {
-    ...opt(),
-    c: 3,
+    ...opt()
   })
 }
 function article(item) {
   return $utils.url.build($xq.page.article(item), {
-    ...opt(),
-    c: 4,
+    ...opt()
   })
 }
 function invite(item) {

@@ -1,6 +1,6 @@
 {
   "name": "@xq/base",
-  "version": "0.9.0",
+  "version": "0.9.1",
   "description": "base",
   "main": "src/index.js",
   "publishConfig": {
@@ -15,7 +15,9 @@
   ],
   "author": "leo",
   "license": "ISC",
-  "devDependencies": {},
+  "devDependencies": {
+    "vconsole": "^3.4.0"
+  },
   "dependencies": {
     "@xq/api": "^0.2.4",
     "@xq/component": "^0.3.4",

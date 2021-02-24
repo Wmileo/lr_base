@@ -6,12 +6,14 @@ let jsApiList = [
   'updateTimelineShareData',
 ]
 
+let debug = process.env.NODE_ENV == 'development'
+
 function config() {
   $fetch.wx.sign().fetch({
     url: encodeURIComponent(window.location.href.split('#')[0])
   }).then(res => {
     $wx.config({
-      debug: process.env.NODE_ENV == 'development',
+      debug,
       appId: data.appid,
       timestamp: data.timestamp,
       nonceStr: data.noncestr,

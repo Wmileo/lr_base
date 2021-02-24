@@ -1,5 +1,5 @@
 import env from 'config/env.js'
-$wx = require('jweixin-module')
+let $wx = require('jweixin-module')
 
 let jsApiList = [
   'updateAppMessageShareData',

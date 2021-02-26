@@ -25,7 +25,7 @@ $channel = () => {
   if (opt.q) {
     opt = $utils.url.option(opt.q)
   } else if (opt.scene) {
-    opt = $utils.url.option(opt.scene)
+    opt = $utils.url.option(decodeURIComponent(opt.scene))
   }
   return {
     get(key, data) {

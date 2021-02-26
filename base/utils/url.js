@@ -19,7 +19,11 @@ function option(url) {
     str = url.split('?')[1]
   }
   str = str.split('#')[0]
-  let strs = str.split('&')
+  let sub = '&'
+  if (str.indexOf(sub) < 0) {
+    sub = ','
+  }
+  let strs = str.split(sub)
   let info = {}
   for (let p in strs) {
     let arr = strs[p].split('=')

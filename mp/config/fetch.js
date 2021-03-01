@@ -10,6 +10,9 @@ let apis = {
   auth: {
     info: post('/v1/user/getWxUserInfo'),
     phone: post('/v1/user/getWxUserPhone'),
+  },
+  feedback:{
+    save: post('/v1/feedback/save'),
   }
 }
 

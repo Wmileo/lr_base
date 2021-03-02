@@ -13,10 +13,10 @@ function handleOnShow() {
   })
 }
 
-function handleOnHide() {
-  $log.info('base-page', `onHide ${currentPage()}`)
+function handleOnHide(forever = false) {
+  $log.info('base-page', `onHide ${currentPage()}`, )
   onHideFuncs.forEach(func => {
-    func()
+    func(forever)
   })
 }
 
@@ -25,7 +25,7 @@ if (process.env.VUE_APP_PLATFORM == 'h5') {
     handleOnShow()
   }
   window.onpagehide = (event) => {
-    handleOnHide()
+    handleOnHide(true)
   }
 } else {
   let oc = Component
@@ -48,7 +48,7 @@ if (process.env.VUE_APP_PLATFORM == 'h5') {
       }
       let ou = methods.onUnload
       methods.onUnload = function(u) {
-        handleOnHide()
+        handleOnHide(true)
         if (ou) {
           ou.call(this, methods)
         }

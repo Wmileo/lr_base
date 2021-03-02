@@ -43,31 +43,43 @@ function heartbeat() {
 }
 
 function leave() {
-  visits.pop()
   log({ c: -1 })
 }
 
 function init() {
   $utils.page.onShow.inject(() => {
-    handlePage()
+    handlePageShow()
   })
-  $utils.page.onHide.inject(() => {
-    handlePage(true)
+  $utils.page.onHide.inject((forever) => {
+    handlePageHide(true)
   })
 }
 
-function handlePage(hide = false) {
+function handlePage() {
   let num = visits.length
   if (num > 0) {
     let last = visits[num - 1]
     let p = currentPage()
     if (last.p == p) {
-      if (hide) {
-        leave()
-      } else {
-        log(last)
-      }
+      return last
     }
+  }
+  return null
+}
+
+function handlePageShow() {
+  let page = handlePage()
+  if (page != null) {
+    log(last)
+  }
+}
+
+function handlePageHide(forever) {
+  if (forever) {
+    visits.pop()
+  }
+  if (handlePage() != null) {
+    leave()
   }
 }
 

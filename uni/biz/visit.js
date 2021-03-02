@@ -51,7 +51,7 @@ function init() {
     handlePageShow()
   })
   $utils.page.onHide.inject((forever) => {
-    handlePageHide(true)
+    handlePageHide(forever)
   })
 }
 
@@ -70,15 +70,15 @@ function handlePage() {
 function handlePageShow() {
   let page = handlePage()
   if (page != null) {
-    log(last)
+    log(page)
   }
 }
 
 function handlePageHide(forever) {
-  if (forever) {
-    visits.pop()
-  }
   if (handlePage() != null) {
+    if (forever) {
+      visits.pop()
+    }
     leave()
   }
 }

@@ -39,7 +39,7 @@ function heartbeat() {
     if (visits.length > 0) {
       log({ c: 0 })
     }
-  }, 180000)
+  }, 15000)
 }
 
 function leave() {

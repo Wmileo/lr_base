@@ -27,6 +27,11 @@ if (process.env.VUE_APP_PLATFORM == 'h5') {
   window.onpagehide = (event) => {
     handleOnHide(true)
   }
+  document.onvisibilitychange = () => {
+    if (document.visibilityState != "visible") {
+      handleOnHide()
+    }
+  }
 } else {
   let oc = Component
   Component = function(c) {

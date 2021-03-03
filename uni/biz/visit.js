@@ -1,5 +1,11 @@
 let visits = []
 
+setInterval(() => {
+  if (visits.length > 0) {
+    log({ c: 0 })
+  }
+}, 15000)
+
 function currentPage() {
   let l = getCurrentPages().length
   return getCurrentPages()[l - 1].route
@@ -23,23 +29,13 @@ function logData(ext) {
 }
 
 function log(data) {
-  $fetch.log.visit().fetch(data).finally(() => { // 触发心跳
-    heartbeat()
-  })
+  $fetch.log.visit().fetch(data)
 }
 
 function visit(data) {
   let ld = logData(data)
   visits.push(ld)
   log(ld)
-}
-
-function heartbeat() {
-  setTimeout(() => {
-    if (visits.length > 0) {
-      log({ c: 0 })
-    }
-  }, 15000)
 }
 
 function leave() {

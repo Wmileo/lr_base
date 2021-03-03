@@ -14,24 +14,16 @@ function handleOnShow() {
 }
 
 function handleOnHide(forever = false) {
-  $log.info('base-page', `onHide ${currentPage()}`, )
+  $log.info('base-page', `onHide ${currentPage()}`)
   onHideFuncs.forEach(func => {
     func(forever)
   })
 }
 
 if (process.env.VUE_APP_PLATFORM == 'h5') {
-  window.onpageshow = (event) => {
-    handleOnShow()
-  }
-  window.onpagehide = (event) => {
-    handleOnHide(true)
-  }
   document.onvisibilitychange = () => {
     if (document.visibilityState == "visible") {
       handleOnShow()
-    } else {
-      handleOnHide()
     }
   }
 } else {

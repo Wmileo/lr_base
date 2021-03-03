@@ -28,7 +28,9 @@ if (process.env.VUE_APP_PLATFORM == 'h5') {
     handleOnHide(true)
   }
   document.onvisibilitychange = () => {
-    if (document.visibilityState != "visible") {
+    if (document.visibilityState == "visible") {
+      handleOnShow()
+    } else {
       handleOnHide()
     }
   }

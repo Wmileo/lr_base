@@ -32,6 +32,14 @@ function info(data) {
     return Promise.resolve(authInfo.auth)
   } else {
     data.type = $storage.port.get()
+    if (data.avatarUrl) {
+      data.avatar = data.avatarUrl
+      delete data.avatarUrl
+    }
+    if (data.nickName) {
+      data.nick = data.nickName
+      delete data.nickName
+    }
     return $fetch.auth.info().fetch(data).then(res => {
       authInfo.auth = res.data
       return res.data

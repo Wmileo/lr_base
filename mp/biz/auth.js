@@ -28,9 +28,9 @@ function autoLogin() {
 }
 
 function info(data) {
-  if (authInfo.auth) {
-    return Promise.resolve(authInfo.auth)
-  } else {
+  // if (authInfo.auth) {
+  //   return Promise.resolve(authInfo.auth)
+  // } else {
     data.type = $storage.port.get()
     if (data.avatarUrl) {
       data.avatar = data.avatarUrl
@@ -44,7 +44,7 @@ function info(data) {
       authInfo.auth = res.data
       return res.data
     })
-  }
+  // }
 }
 
 function phone(data) {

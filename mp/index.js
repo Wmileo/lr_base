@@ -7,8 +7,6 @@ import './config/index.js'
 
 import './biz/index.js'
 
-import btnMgr from '@xq/component/com/btn/index.js'
-
 function init() {
   initConfig()
 }
@@ -32,14 +30,6 @@ function initConfig() {
     } else {
       return $xq.auth.autoLogin()
     }
-  })
-
-  btnMgr.bindingUserInfo(auth => {
-    return $xq.auth.info(auth)
-  })
-  
-  btnMgr.bingdingPhoneNumber(auth => {
-    return $xq.auth.phone(auth)
   })
 }
 

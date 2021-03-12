@@ -28,23 +28,19 @@ function autoLogin() {
 }
 
 function info(data) {
-  // if (authInfo.auth) {
-  //   return Promise.resolve(authInfo.auth)
-  // } else {
-    data.type = $storage.port.get()
-    if (data.avatarUrl) {
-      data.avatar = data.avatarUrl
-      delete data.avatarUrl
-    }
-    if (data.nickName) {
-      data.nick = data.nickName
-      delete data.nickName
-    }
-    return $fetch.auth.info().fetch(data).then(res => {
-      authInfo.auth = res.data
-      return res.data
-    })
-  // }
+  data.type = $storage.port.get()
+  if (data.avatarUrl) {
+    data.avatar = data.avatarUrl
+    delete data.avatarUrl
+  }
+  if (data.nickName) {
+    data.nick = data.nickName
+    delete data.nickName
+  }
+  return $fetch.auth.info().fetch(data).then(res => {
+    authInfo.auth = res.data
+    return res.data
+  })
 }
 
 function phone(data) {
@@ -55,8 +51,13 @@ function phone(data) {
   })
 }
 
+function get() {
+  return authInfo
+}
+
 Object.assign($xq.auth, {
   autoLogin,
   info,
-  phone
+  phone,
+  get
 })

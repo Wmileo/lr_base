@@ -2,10 +2,15 @@
 /**
  * 解析url参数
  */
-function params(options) {
+function params(opt) {
+  if (opt.q) {
+    return $utils.url.option(opt.q)
+  } else if (opt.scene) {
+    return $utils.url.option(decodeURIComponent(opt.scene))
+  }
   let result = {}
-  for (let key in options) {
-    result[key] = decodeURIComponent(options[key])
+  for (let key in opt) {
+    result[key] = decodeURIComponent(opt[key])
   }
   return result
 }
@@ -14,19 +19,20 @@ $channel = () => {
   let _this = $this()
   let cn = _this ? _this.getOpenerEventChannel() : null
 
-  let opt = {}
+  let option = {}
+  let launch = {}
+  if (typeof(wx) != 'undefined') {
+    option = params(wx.getLaunchOptionsSync().query)
+    launch.path = wx.getLaunchOptionsSync().path
+    launch.option = option
+  }
   if (process.env.VUE_APP_PLATFORM == 'h5') {
-    opt = $utils.url.option(window.location.href)
+    option = $utils.url.option(window.location.href)
+    launch.path = window.location.pathname
   } else if (_this != null) {
-    opt = _this.$mp.query
-  } else if (typeof(wx) != 'undefined') {
-    opt = wx.getLaunchOptionsSync().query
-  }
-  if (opt.q) {
-    opt = $utils.url.option(opt.q)
-  } else if (opt.scene) {
-    opt = $utils.url.option(decodeURIComponent(opt.scene))
-  }
+    option = params(_this.$mp.query)
+  } 
+
   return {
     get(key, data) {
       if (cn && cn.listener[key]) {
@@ -40,6 +46,7 @@ $channel = () => {
         cn.emit(key, data)
       }
     },
-    option: params(opt)
+    option,
+    launch
   }
 }

@@ -32,22 +32,36 @@ function log(data) {
   $fetch.log.visit().fetch(data)
 }
 
-function visit(data) {
-  let ld = logData(data)
-  visits.push(ld)
-  log(ld)
+function visit(e) {
+  let data = { e }
+  data.c = $xq.share.getChannel(currentPage())
+  if (data.c > 0) {
+    let ld = logData(data)
+    visits.push(ld)
+    log(ld)
+  }
 }
 
 function leave() {
   log({ c: -1 })
 }
 
-function init() {
-  $utils.page.onShow.inject(() => {
-    handlePageShow()
-  })
-  $utils.page.onHide.inject((forever) => {
-    handlePageHide(forever)
+function init(Vue) {
+  Vue.mixin({
+    onShow() {
+      handlePageShow()
+    },
+    onHide() {
+      handlePageHide()
+    },
+    onUnload() {
+      handlePageHide(forever)
+    },
+    methods: {
+      _visit(e) {
+        visit(e)
+      }
+    }
   })
 }
 
@@ -79,23 +93,6 @@ function handlePageHide(forever) {
   }
 }
 
-function estate(item) {
-  visit({e: item.id})
-}
-function layout(item) {
-  visit({e: item.estateId})
-}
-function consultant(item) {
-  visit({e: item.estateId})
-}
-function article(item) {
-  visit({e: item.estateId, con: item.consultantId})
-}
-
 export default {
-  init,
-  estate,
-  layout,
-  consultant,
-  article
+  init
 }

@@ -1,7 +1,11 @@
 import server from '@xq/server'
 
 function login(authorizationCode) {
-  let opt = $utils.object.clean($channel().option, ['r', 'c', 'con'])
+  let opt = $utils.object.clean($channel().launch.option, ['r', 'con'])
+  let c = $xq.share.getChannel($channel().launch.path)
+  if (c > 0) {
+    opt.c = c
+  }
   let type = $storage.port.get()
   return $fetch.auth.login().fetch({
     authorizationCode,

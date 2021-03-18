@@ -8,7 +8,7 @@ function currentPage() {
 
 $this = ()=>{
   let p = currentPage()
-  if (p) {
+  if (p && p.$vm) {
     let _this = p.$vm
     _this.page = _this.__route__
     return _this

@@ -6,7 +6,6 @@ function article(item) {
   })
 }
 
-
 function estate(item) {
   return $utils.url.build($xq.page.estate(item), opt())
 }

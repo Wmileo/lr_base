@@ -6,18 +6,13 @@ setInterval(() => {
   }
 }, 15000)
 
-function currentPage() {
-  let l = getCurrentPages().length
-  return getCurrentPages()[l - 1].route
-}
-
 function logData(ext) {
   let t = 1
   let opt = $channel().option
   if (process.env.VUE_APP_PLATFORM == 'h5' && opt.from != 'mp') {
     t = 0
   }
-  let p = currentPage()
+  let p = $this().page
   let cid = opt.id
   let r = opt.r
   let con = opt.con
@@ -34,7 +29,7 @@ function log(data) {
 
 function visit(e) {
   let data = { e }
-  data.c = $xq.share.getChannel(currentPage())
+  data.c = $xq.share.getChannel($this().page)
   if (data.c > 0) {
     let ld = logData(data)
     visits.push(ld)
@@ -69,7 +64,7 @@ function handlePage() {
   let num = visits.length
   if (num > 0) {
     let last = visits[num - 1]
-    let p = currentPage()
+    let p = $this().page
     if (last.p == p) {
       return last
     }

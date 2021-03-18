@@ -1,7 +1,3 @@
-function currentPage() {
-  let l = getCurrentPages().length
-  return getCurrentPages()[l - 1].route
-}
 
 function opt() {
   let port = $storage.port.get()
@@ -21,7 +17,7 @@ function opt() {
 function init(Vue) {
   Vue.mixin({
     onLoad() {
-      let p = currentPage()
+      let p = $this().page
       if (!$utils.env.isH5()) {
         uni.hideShareMenu()
       }
@@ -42,7 +38,7 @@ function init(Vue) {
       return {
         _shareTitle: null,
         _shareImage: null,
-        _sharePath: '/' + currentPage(),
+        _sharePath: '/' + $this().page,
         _shareParam: {}
       }
     },

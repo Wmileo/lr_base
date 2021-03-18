@@ -1,9 +1,17 @@
 function currentPage() {
   let l = getCurrentPages().length
-  return getCurrentPages()[l - 1]
+  if (l > 0) {
+    return getCurrentPages()[l - 1]
+  }
+  return null
 }
 
 $this = ()=>{
   let p = currentPage()
-  return p ? p.$vm : null
+  if (p) {
+    let _this = p.$vm
+    _this.page = _this.__route__
+    return _this
+  }
+  return {}
 }

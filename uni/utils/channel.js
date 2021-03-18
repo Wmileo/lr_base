@@ -21,15 +21,18 @@ $channel = () => {
 
   let option = {}
   let launch = {}
-  if (!$utils.env.isH5()) {
+  
+  if ($utils.env.isH5()) {
+    option = $utils.url.option(window.location.href)
+    launch.path = window.location.pathname
+    launch.option = option
+  } else if (!$utils.env.isH5()) {
     option = params(wx.getLaunchOptionsSync().query)
     launch.path = wx.getLaunchOptionsSync().path
     launch.option = option
   }
-  if ($utils.env.isH5()) {
-    option = $utils.url.option(window.location.href)
-    launch.path = window.location.pathname
-  } else if (_this != null) {
+  
+  if (_this && _this.$mp) {
     option = params(_this.$mp.query)
   } 
 

@@ -41,10 +41,10 @@ function init(Vue) {
           }
         }
         let h5 = $utils.env.isH5() ? {
-          code: null
-          state: null
-          from: null
-          token: null
+          code: null,
+          state: null,
+          from: null,
+          token: null,
           u: null
         } : {}
         let path = $utils.url.build(data.path, {

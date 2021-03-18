@@ -26,15 +26,14 @@ $channel = () => {
     option = $utils.url.option(window.location.href)
     launch.path = window.location.pathname
     launch.option = option
-  } else if (!$utils.env.isH5()) {
+  } else {
     option = params(wx.getLaunchOptionsSync().query)
     launch.path = wx.getLaunchOptionsSync().path
     launch.option = option
+    if (_this && _this.$mp) {
+      option = params(_this.$mp.query)
+    }
   }
-  
-  if (_this && _this.$mp) {
-    option = params(_this.$mp.query)
-  } 
 
   return {
     get(key, data) {

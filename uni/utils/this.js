@@ -10,7 +10,7 @@ $this = ()=>{
   let p = currentPage()
   if (p && p.$vm) {
     let _this = p.$vm
-    _this.page = _this.__route__
+    _this.page = _this.__route__ || _this.route
     return _this
   }
   return {}

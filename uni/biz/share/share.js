@@ -1,4 +1,3 @@
-
 function opt() {
   let port = $storage.port.get()
   let s = port == 'q' || port == 'b' ? 'b' : 'c'
@@ -23,32 +22,47 @@ function init(Vue) {
       }
     },
     onShareAppMessage(obj) {
-      let o = {
-        title: this._shareTitle,
-        path: $utils.url.build(this._sharePath, {
-          ...$channel().option,
-          ...opt(),
-          ...this._shareParam
-        }),
-        imageUrl: this._shareImage
-      }
-      return $utils.object.clean(o)
+      return this._shareData
     },
     data() {
       return {
-        _shareTitle: null,
-        _shareImage: null,
-        _sharePath: '/' + $this().page,
-        _shareParam: {}
+        _shareData: {}
       }
     },
     methods: {
       _canShare(data) {
-        this._shareTitle = data.title
-        this._shareImage = data.image
-        this._sharePath = data.path
-        this._shareParam = data.param
-        if (!$utils.env.isH5()) {
+        let obj = {}
+        obj.title = data.title
+        if (data.path == null) {
+          if ($utils.env.isH5()) {
+            data.path = window.location.origin + window.location.pathname
+          } else {
+            data.path = '/' + $this().page
+          }
+        }
+        let h5 = $utils.env.isH5() ? {
+          code: null
+          state: null
+          from: null
+          token: null
+          u: null
+        } : {}
+        let path = $utils.url.build(data.path, {
+          ...$channel().option,
+          ...opt(),
+          ...data.param,
+          ...h5
+        })
+        
+        if ($utils.env.isH5()) {
+          obj.imgUrl = data.image
+          obj.link = path
+          obj.desc = data.desc
+          $xq.wx.updateShareData($utils.object.clean(obj))
+        } else {
+          obj.imageUrl = data.image
+          obj.path = path
+          this._shareData = $utils.object.clean(obj)
           uni.showShareMenu()
         }
       },
@@ -61,9 +75,8 @@ function init(Vue) {
   })
 }
 
-function url(url, param) {
+function h5(url, param) {
   return $utils.url.build(url, {
-    ...$channel().option,
     ...opt(),
     ...param
   })
@@ -71,5 +84,5 @@ function url(url, param) {
 
 export default {
   init,
-  url
+  h5
 }

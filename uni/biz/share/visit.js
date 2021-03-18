@@ -50,7 +50,7 @@ function init(Vue) {
       handlePageHide()
     },
     onUnload() {
-      handlePageHide(forever)
+      handlePageHide(true)
     },
     methods: {
       _visit(e) {

@@ -6,13 +6,6 @@ function article(item) {
   })
 }
 
-function estate(item) {
-  return $utils.url.build($xq.page.estate(item), opt())
-}
-function layout(item) {
-  return $utils.url.build($xq.page.layout(item), opt())
-}
-
 function article(item) {
   let o = opt()
   if (item.consultantId) {
@@ -20,6 +13,7 @@ function article(item) {
   }
   return $utils.url.build($xq.page.article(item), o)
 }
+
 function invite(item) {
   let o = opt()
   if ($storage.port.get() == 'c') {

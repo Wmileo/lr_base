@@ -17,7 +17,7 @@ function params(opt) {
 
 $channel = () => {
   let _this = $this()
-  let cn = _this ? _this.getOpenerEventChannel() : null
+  let cn = (_this && _this.getOpenerEventChannel) ? _this.getOpenerEventChannel() : null
 
   let option = {}
   let launch = {}

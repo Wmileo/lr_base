@@ -8,22 +8,10 @@ function article(item) {
 
 
 function estate(item) {
-  visit({e: item.id})
-}
-
-function consultant(item) {
-  visit({e: item.estateId})
-}
-function article(item) {
-  visit({e: item.estateId})
-}
-
-function estate(item) {
   return $utils.url.build($xq.page.estate(item), opt())
 }
-
-function consultant(item) {
-  return $utils.url.build($xq.page.consultant(item), opt())
+function layout(item) {
+  return $utils.url.build($xq.page.layout(item), opt())
 }
 
 function article(item) {
@@ -33,11 +21,10 @@ function article(item) {
   }
   return $utils.url.build($xq.page.article(item), o)
 }
-
 function invite(item) {
   let o = opt()
   if ($storage.port.get() == 'c') {
-    o.con = null
+    o.con = -1
   }
   return $utils.url.build($xq.page.invite(item), o)
 }

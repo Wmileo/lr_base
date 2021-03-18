@@ -24,5 +24,6 @@ function init(Vue) {
 
 export default {
   getChannel,
-  init
+  init,
+  url: shareMgr.url
 }

@@ -1,4 +1,3 @@
-
 function currentPage() {
   let l = getCurrentPages().length
   return getCurrentPages()[l - 1].route
@@ -13,7 +12,10 @@ function opt() {
   if (o.con != null) {
     con = o.con
   }
-  return { r, con }
+  return {
+    r,
+    con
+  }
 }
 
 function init(Vue) {
@@ -63,6 +65,15 @@ function init(Vue) {
   })
 }
 
+function url(url, param) {
+  return $utils.url.build(url, {
+    ...$channel().option,
+    ...opt(),
+    ...param
+  })
+}
+
 export default {
-  init
+  init,
+  url
 }

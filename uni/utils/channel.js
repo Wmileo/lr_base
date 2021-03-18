@@ -21,12 +21,12 @@ $channel = () => {
 
   let option = {}
   let launch = {}
-  if (typeof(wx) != 'undefined') {
+  if (!$utils.env.isH5()) {
     option = params(wx.getLaunchOptionsSync().query)
     launch.path = wx.getLaunchOptionsSync().path
     launch.option = option
   }
-  if (process.env.VUE_APP_PLATFORM == 'h5') {
+  if ($utils.env.isH5()) {
     option = $utils.url.option(window.location.href)
     launch.path = window.location.pathname
   } else if (_this != null) {

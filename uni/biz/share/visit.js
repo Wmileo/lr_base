@@ -9,7 +9,7 @@ setInterval(() => {
 function logData(ext) {
   let t = 1
   let opt = $channel().option
-  if (process.env.VUE_APP_PLATFORM == 'h5' && opt.from != 'mp') {
+  if ($utils.env.isH5() && opt.from != 'mp') {
     t = 0
   }
   let p = $this().page

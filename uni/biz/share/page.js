@@ -21,3 +21,11 @@ function invite(item) {
   }
   return $utils.url.build($xq.page.invite(item), o)
 }
+
+uni.navigateToMiniProgram({
+  appId: env.appId,
+  path: '/pages/mine/prep/detail?id='+this.info.id+"&consultantId="+this.info.consultantId,
+  extraData: {},
+  envVersion:"develop",
+  success(res) {},
+});

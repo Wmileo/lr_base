@@ -75,7 +75,7 @@ function init(Vue) {
   })
 }
 
-function h5(url, param) {
+function url(url, param) {
   return $utils.url.build(url, {
     ...opt(),
     ...param
@@ -84,5 +84,5 @@ function h5(url, param) {
 
 export default {
   init,
-  h5
+  url
 }

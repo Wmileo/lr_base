@@ -30,7 +30,7 @@ function init(Vue) {
       }
     },
     methods: {
-      _canShare(data) {
+      _canShare(data = {}) {
         let obj = {}
         obj.title = data.title
         if (data.path == null) {

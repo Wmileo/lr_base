@@ -1,3 +1,4 @@
+
 function currentPage() {
   let l = getCurrentPages().length
   if (l > 0) {

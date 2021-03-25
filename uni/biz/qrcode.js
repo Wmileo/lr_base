@@ -8,7 +8,7 @@ function mp(key, path) {
     page,
     width: 430,
     autoColor: false,
-    lineColor: {"r":255,"g":165,"b":0},
+    lineColor: "{\"r\":255,\"g\":165,\"b\":0}",
     isHyaline: false
   }).then(res => {
     return res.data

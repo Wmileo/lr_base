@@ -41,7 +41,7 @@ function info(data) {
     let info = authInfo.info
     let newInfo = res.data
     authInfo.info = newInfo
-    if (!info || (info.nick != newInfo.nick || info.avatar != newInfo.avatar) {
+    if (!info || (info.nick != newInfo.nick || info.avatar != newInfo.avatar)) {
       $notification.auth.emit(authInfo)
     }
     return newInfo

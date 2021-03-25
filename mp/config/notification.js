@@ -2,4 +2,5 @@ import notification from '../../base/utils/notification.js'
 
 notification.setNotifications([
   "imageUrl", // 图片url
+  "auth", // 授权信息发生变化 包括头像昵称手机号
 ])

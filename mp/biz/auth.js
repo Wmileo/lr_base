@@ -38,16 +38,26 @@ function info(data) {
     delete data.nickName
   }
   return $fetch.auth.info().fetch(data).then(res => {
-    authInfo.auth = res.data
-    return res.data
+    let info = authInfo.info
+    let newInfo = res.data
+    authInfo.info = newInfo
+    if (!info || (info.nick != newInfo.nick || info.avatar != newInfo.avatar) {
+      $notification.auth.emit(authInfo)
+    }
+    return newInfo
   })
 }
 
 function phone(data) {
   data.type = $storage.port.get()
   return $fetch.auth.phone().fetch(data).then(res => {
-    authInfo.phone = res.data
-    return res.data
+    let phone = authInfo.phone
+    let newPhone = res.data
+    authInfo.phone = newPhone
+    if (!phone || phone != newPhone) {
+      $notification.auth.emit(authInfo)
+    }
+    return newPhone
   })
 }
 

@@ -1,11 +1,18 @@
 function mp(key, path) {
   let tmp = path.split('?')
-  let scene = tmp[1] ? tmp[1].replace(new RegExp(`\\&`, 'g'), ',') : " "
-  let page = tmp[0].substr(1)
+  let scene = "channel=qrcode"
+  if (tmp[1] && tmp[1].length > 0) {
+    scene += ',' + tmp[1].replace(new RegExp(`\\&`, 'g'), ',')
+  }
+  let page = tmp[0]
+  if (page.indexOf('/') == 0) {
+    page = page.substr(1)
+  }
+  console.log(scene)
   return $fetch.qrcode.mpqrcode().fetch({
     key,
     scene,
-    page: null,
+    page,
     // width: 430,
     // autoColor: false,
     // lineColor: "{\"r\":255,\"g\":165,\"b\":0}",

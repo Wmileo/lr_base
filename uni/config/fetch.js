@@ -20,7 +20,7 @@ let apis = {
     upload: upload('/upload')
   },
   qrcode: {
-    mpqrcode: get('/v1/mpqrcode/get')
+    mpqrcode: post('/v1/mpqrcode/get')
   }
 }
 

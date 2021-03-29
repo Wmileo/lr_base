@@ -5,7 +5,21 @@ function draw(id, infos) {
       drawImage(ctx, item)
     }
   })
+}
 
+function save(id) {
+  return new Promise((resolve, reject) => {
+    uni.canvasToTempFilePath({
+      canvasId: id,
+      fileType: 'jpg',
+      success(res) {
+        resolve(res.tempFilePath)
+      },
+      fail(err) {
+        reject(err)
+      }
+    })
+  })
 }
 
 function drawImage(ctx, data) {
@@ -34,6 +48,7 @@ if (!$utils) {
 }
 
 $utils.canvas = {
-  draw
+  draw,
+  save
 }
 

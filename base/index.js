@@ -1,7 +1,8 @@
 import moment from 'moment'
+import 'moment/locale/zh-cn'
+moment.locale('zh-cn')
 
 import '@xq/log'
-import '@xq/api'
 import '@xq/server'
 
 import './utils/notification.js'

@@ -48,9 +48,18 @@ function imagePath(path) {
   return images[path]
 }
 
+function init(Vue) {
+  Vue.mixin({
+    methods: {
+      _image : maker
+    }
+  })
+}
+
 $image = maker
 
 export default {
   setBaseUrl,
-  setImages
+  setImages,
+  init
 }

@@ -1,15 +1,15 @@
 
 function maker(url) {
   if (!url || url.length == 0) {
-    console.warn('xq-image: url不能为空')
-    return null
+    $log.warn('xq-image', 'url不能为空')
+    url = '/'
   }
   if (url.indexOf('/') < 0) {
     let key = url
     url = imagePath(key)
     if (!url) {
-      console.warn('xq-image: 无效key - '+ key)
-      return null
+      $log.warn('xq-image', '无效key - '+ key)
+      url = ''
     }
   }
   if (url.indexOf('https://') < 0 && url.indexOf('http://') < 0) {

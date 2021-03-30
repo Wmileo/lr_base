@@ -49,11 +49,7 @@ function imagePath(path) {
 }
 
 function init(Vue) {
-  Vue.mixin({
-    methods: {
-      _image : maker
-    }
-  })
+  Vue.prototype._image = maker
 }
 
 $image = maker

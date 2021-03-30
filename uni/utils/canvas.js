@@ -13,7 +13,12 @@ function save(id) {
       canvasId: id,
       fileType: 'jpg',
       success(res) {
-        resolve(res.tempFilePath)
+        uni.saveImageToPhotosAlbum({
+          filePath: res.tempFilePath,
+          success(res) {
+            resolve(res)
+          }
+        })
       },
       fail(err) {
         reject(err)
@@ -51,4 +56,3 @@ $utils.canvas = {
   draw,
   save
 }
-

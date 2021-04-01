@@ -5,7 +5,8 @@ let channels = {
   'estate/detail': 1,
   'layout/detail': 2,
   'consultant/detail': 3,
-  'article': 4
+  'article': 4,
+  'activity/detail': 6
 }
 
 function getChannel(page) {

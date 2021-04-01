@@ -1,4 +1,4 @@
-import server from '@xq/server'
+ import server from '@xq/server'
 
 function login(authorizationCode) {
   let opt = $utils.object.clean($channel().launch.option, ['r', 'con'])

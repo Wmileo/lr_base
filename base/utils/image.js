@@ -17,12 +17,21 @@ function maker(url) {
   }
   return {
     style(name) {
+      if (url.indexOf('?x-oss-process') >= 0) {
+        return url
+      }
       return url + '?x-oss-process=style/' + name
     },
     width(width) {
+      if (url.indexOf('?x-oss-process') >= 0) {
+        return url
+      }
       return url + `?x-oss-process=image/resize,w_${width},m_lfit`
     },
     size(width, height) {
+      if (url.indexOf('?x-oss-process') >= 0) {
+        return url
+      }
       return url + `?x-oss-process=image/resize,h_${height},w_${width},m_fill,limit_0`
     },
     url() {

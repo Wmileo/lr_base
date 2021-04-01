@@ -1,58 +1,86 @@
-function draw(id, infos) {
-  let ctx = uni.createCanvasContext(id)
-  infos.forEach(item => {
-    if (item.type == 'image') {
-      drawImage(ctx, item)
-    }
-  })
-}
 
-function save(id) {
-  return new Promise((resolve, reject) => {
-    uni.canvasToTempFilePath({
-      canvasId: id,
-      fileType: 'jpg',
-      success(res) {
-        uni.saveImageToPhotosAlbum({
-          filePath: res.tempFilePath,
-          success(res) {
-            resolve(res)
-          }
-        })
-      },
-      fail(err) {
-        reject(err)
+class Canvas {
+  
+  constructor(id) {
+    this.id=id;
+    this.ctx = uni.createCanvasContext(id)
+  }
+  
+  async draw(infos,callback) {
+    for(let item of infos){
+      if (item.type == 'image') {
+        await this.drawImage(item);
       }
+    }
+    
+    return new Promise((resolve,reject)=>{
+      this.ctx.draw(true, () => {
+        return this.image().then((path)=>{
+          resolve(path);
+        });
+      });
+    });
+  }
+  
+  drawImage(data) {
+    let ctx = this.ctx
+    return new Promise((resolve,reject)=>{
+      uni.downloadFile({
+        url: data.url,
+        success(res) {
+          if (res.statusCode == 200) {
+            uni.getImageInfo({
+              src: res.tempFilePath,
+              success: function(image) {
+                let x = data.x || 0
+                let y = data.y || 0
+                let width = data.width || image.width
+                let height = data.height || image.height
+                ctx.drawImage(res.tempFilePath, x, y, width, height) 
+                resolve();
+              }
+            })
+          }
+        }
+      });
+    });
+  }
+  
+  image(){
+    return new Promise((resolve, reject) => {
+      uni.canvasToTempFilePath({
+        canvasId: this.id,
+        fileType: 'jpg',
+        success(res) {
+          resolve(res.tempFilePath)
+        },
+        fail(err) {
+          reject(err)
+        }
+      })
     })
-  })
-}
-
-function drawImage(ctx, data) {
-  uni.downloadFile({
-    url: data.url,
-    success(res) {
-      if (res.statusCode == 200) {
-        uni.getImageInfo({
-          src: res.tempFilePath,
-          success: function(image) {
-            let x = data.x || 0
-            let y = data.y || 0
-            let width = data.width || image.width
-            let height = data.height || image.height
-            ctx.drawImage(res.tempFilePath, x, y, width, height)
-            ctx.draw()
+  }
+  
+  save() {
+    return new Promise((resolve, reject) => {
+      this.image().then((path)=>{ 
+        console.log("hh",path)
+        uni.saveImageToPhotosAlbum({
+          filePath: path,
+          success(res) {
+            console.log("aaa",res)
+            resolve(res);
           }
         })
-      }
-    }
-  })
+      })
+    })
+  }
 }
 
 if (!$utils) {
   $utils = {}
 }
 
-$utils.canvas = {
-  draw,
-  save
+$utils.canvas =function (id) {
+  return new Canvas(id)
 }

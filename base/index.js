@@ -11,12 +11,13 @@ import image from './utils/image.js'
 import './utils/url.js'
 import './utils/object.js'
 import './utils/env.js'
-import './utils/unit.js'
+import unit from './utils/unit.js'
 
 $moment = moment
 
 function init(Vue) {
   image.init(Vue)
+  unit.init(Vue)
 }
 
 export default {

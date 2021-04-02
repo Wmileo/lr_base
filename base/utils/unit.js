@@ -26,3 +26,11 @@ if (!$utils) {
 }
 
 $utils.unit = get
+
+function init(Vue) {
+  Vue.prototype._unit = get
+}
+
+export default {
+  init
+}

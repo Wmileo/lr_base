@@ -58,7 +58,7 @@ function auth(userinfo = false) {
 
 Object.assign($xq.auth, {
   autoLogin,
-  auth: () => {
+  info: () => {
     auth(true)
   },
   isAuth: () => {

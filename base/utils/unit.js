@@ -15,6 +15,7 @@ let units = {
   propertyFee: '元/㎡/月',
   floorHeight: 'm',
   totalRooms: '套',
+  totalCount: '套'
 }
 
 function get(key) {

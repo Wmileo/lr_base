@@ -2,6 +2,7 @@ import server from '@xq/server'
 
 let logging = false
 let isLogin = false
+let isAuth = false
 
 function autoLogin() {
   if (isLogin) {
@@ -32,9 +33,8 @@ function autoLogin() {
           resolve()
           isLogin = true
           logging = false
-          if (res.data.state == 0) {
-            auth(true)
-          }
+          isAuth = res.data.state != 0
+          $notification.authState.emit(res.data.state)
         }, fail)
       }
     })
@@ -57,5 +57,11 @@ function auth(userinfo = false) {
 }
 
 Object.assign($xq.auth, {
-  autoLogin
+  autoLogin,
+  auth: () => {
+    auth(true)
+  },
+  isAuth: () => {
+    return isAuth
+  }
 })

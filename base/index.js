@@ -11,6 +11,7 @@ import image from './utils/image.js'
 import './utils/url.js'
 import './utils/object.js'
 import './utils/env.js'
+import './utils/unit.js'
 
 $moment = moment
 

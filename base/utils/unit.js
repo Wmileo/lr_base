@@ -1,5 +1,5 @@
 let units = {
-  price: '元',
+  price: '元/㎡',
   upperPrice: '元/㎡',
   lowerPrice: '元/㎡',
   avgPrice: '元/㎡',

@@ -2,6 +2,7 @@ import base from '../base/index.js'
 import '../uni/index.js'
 import './biz/index.js'
 import './config/index.js'
+import './config/notification.js'
 
 function init(Vue) {
   base.init(Vue)

@@ -36,12 +36,10 @@ $channel = () => {
   }
 
   return {
-    get(key, data) {
-      if (cn && cn.listener[key]) {
-        return cn.listener[key][0].fn(data)
+    on(key, func) {
+      if (cn) {
+        cn.on(key, func)
       }
-      $log.error('base-uni-utils', 'channel : 无效key 或 当前环境不支持')
-      return null
     },
     emit(key, data) {
       if (cn) {

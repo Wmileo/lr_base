@@ -21,10 +21,9 @@ function maker(url, width) {
   }
   let style = '!full'
   if (width > 0) {
-    widths.forEach(item => {
-      if (width <= item) {
-        style = `!${item}`
-      }
+    widths.some(item => {
+      style = `!${item}`
+      return width <= item
     })
   }
   return url + style

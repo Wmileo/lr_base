@@ -1,7 +1,7 @@
-import base from '../base/index.js'
+import utils from '../utils/index.js'
 
 function init(Vue) {
-  base.init(Vue)
+  utils.init(Vue)
 }
 
 export default {

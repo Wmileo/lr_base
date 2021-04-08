@@ -1,4 +1,4 @@
-import notification from '../../base/utils/notification.js'
+import notification from '../../utils/notification.js'
 
 notification.setNotifications([
   'authState'

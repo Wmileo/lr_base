@@ -1,4 +1,4 @@
-import base from '../base/index.js'
+import utils from '../utils/index.js'
 import '@xq/stats/mp'
 import '@xq/component'
 
@@ -8,7 +8,7 @@ import './config/index.js'
 import './biz/index.js'
 
 function init(Vue) {
-  base.init(Vue)
+  utils.init(Vue)
   initConfig()
 }
 

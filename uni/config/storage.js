@@ -1,4 +1,4 @@
-import storage from '../../base/utils/storage.js'
+import storage from '../../utils/storage.js'
 
 storage.setStorages([
   "userId", // 用户id

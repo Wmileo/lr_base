@@ -28,30 +28,24 @@ function autoLogin() {
 }
 
 function info(data) {
-  if (data) {
-    data.type = $storage.port.get()
-    if (data.avatarUrl) {
-      data.avatar = data.avatarUrl
-      delete data.avatarUrl
-    }
-    if (data.nickName) {
-      data.nick = data.nickName
-      delete data.nickName
-    }
-    return $fetch.auth.info().fetch(data).then(res => {
-      let info = authInfo.info
-      let newInfo = res.data
-      authInfo.info = newInfo
-      if (!info || (info.nick != newInfo.nick || info.avatar != newInfo.avatar)) {
-        $notification.auth.emit(authInfo)
-      }
-      return newInfo
-    })
-  } else {
-    return $api.getUserProfile().then(res => {
-      return info(res.userInfo)
-    })
+  data.type = $storage.port.get()
+  if (data.avatarUrl) {
+    data.avatar = data.avatarUrl
+    delete data.avatarUrl
   }
+  if (data.nickName) {
+    data.nick = data.nickName
+    delete data.nickName
+  }
+  return $fetch.auth.info().fetch(data).then(res => {
+    let info = authInfo.info
+    let newInfo = res.data
+    authInfo.info = newInfo
+    if (!info || (info.nick != newInfo.nick || info.avatar != newInfo.avatar)) {
+      $notification.auth.emit(authInfo)
+    }
+    return newInfo
+  })
 }
 
 function phone(data) {

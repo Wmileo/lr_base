@@ -4,7 +4,7 @@
  */
 function params(opt) {
   if (opt.q) {
-    return $utils.url.option(opt.q)
+    return $utils.url.option(decodeURIComponent(opt.q))
   } else if (opt.scene) {
     return $utils.url.option(decodeURIComponent(opt.scene))
   }

@@ -1,2 +1,2 @@
-import './config/index.js'
 import './utils/index.js'
+import './config/index.js'

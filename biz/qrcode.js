@@ -1,6 +1,6 @@
 let url = 'https://h5.xiquehaofang.com/qr/'
 
-function image(page, info) {
+function mp(page, info) {
   return $fetch.qrcode.image().fetch({
     code: $utils.url.build(url + page, {
       ...info,
@@ -10,5 +10,5 @@ function image(page, info) {
 }
 
 export default {
-  image,
+  mp,
 }

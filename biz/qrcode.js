@@ -6,6 +6,8 @@ function mp(page, info) {
       ...info,
       from: 'qrcode'
     })
+  }).then(res => {
+    return res.data
   })
 }
 

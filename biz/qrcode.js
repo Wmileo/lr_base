@@ -4,20 +4,11 @@ function image(page, info) {
   return $fetch.qrcode.image().fetch({
     code: $utils.url.build(url + page, {
       ...info,
-      from: qrcode
+      from: 'qrcode'
     })
   })
 }
 
-function estate(info) {
-  return image('estate', info)
+export default {
+  image,
 }
-
-function activity(info) {
-  return image('activity', info)
-}
-
-Object.assign($xq.auth, {
-  estate,
-  activity
-})

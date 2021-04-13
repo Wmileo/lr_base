@@ -10,7 +10,6 @@ import './storage.js'
 import './url.js'
 import './object.js'
 import './env.js'
-import './qrcode.js'
 
 import image from './image.js'
 import unit from './unit.js'

@@ -8,7 +8,7 @@ let {
 
 let apis = {
   qrcode: {
-    image: get('/app/images/generateCodeImage'),
+    image: post('/app/images/generateCodeImage'),
   }
 }
 

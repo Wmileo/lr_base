@@ -9,7 +9,7 @@ let openTagList = [
   'wx-open-launch-weapp'
 ]
 
-let debug = process.env.NODE_ENV == 'development'
+let debug = false//process.env.NODE_ENV == 'development'
 
 function config() {
   $fetch.wx.sign().fetch({
@@ -22,6 +22,7 @@ function config() {
       nonceStr: res.data.noncestr,
       signature: res.data.signature,
       jsApiList,
+      openTagList
     })
   })
 }

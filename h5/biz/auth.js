@@ -9,7 +9,7 @@ function autoLogin() {
     return Promise.resolve()
   }
   let opt = $channel().option
-  if (opt.from == 'mp' && opt.token && opt.u) {
+  if (opt.token && opt.u) {
     server.auth.setInfo({
       Authorization: opt.token
     })

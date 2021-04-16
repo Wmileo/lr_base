@@ -1,4 +1,14 @@
- import server from '@xq/server'
+import server from '@xq/server'
+ 
+let promises = []
+
+function pushInitPromise(promise) {
+  if (promise.constructor == Promise) {
+    promises.push(promise)
+  } else {
+    $log.warn('auth', 'pushInitPromise 传人参数不是promise')
+  }
+}
 
 function login(authorizationCode) {
   let opt = {}
@@ -19,10 +29,13 @@ function login(authorizationCode) {
     $storage.token.set(res.data.token)
     $storage.userId.set(res.data.id)
     $notification.userId.emit(res.data.id)
-    return res
+    return Promise.all(promises).finally(() => {
+      return res
+    })
   })
 }
 
 export default {
   login,
+  pushInitPromise
 }

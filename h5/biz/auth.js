@@ -59,14 +59,14 @@ function tryAuth() {
   })
 }
 
-function isAuth() {
+function isAuthed() {
   if (isAuth) {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {
     if (logging && isLogin) {
       setTimeout(() => {
-        isAuth().then(resolve, reject)
+        isAuthed().then(resolve, reject)
       }, 40)
     } else {
       reject()
@@ -90,5 +90,5 @@ function auth(userinfo = false) {
 Object.assign($xq.auth, {
   autoLogin,
   tryAuth,
-  isAuth
+  isAuthed
 })

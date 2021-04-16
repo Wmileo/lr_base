@@ -38,7 +38,9 @@ function visit(e) {
 }
 
 function leave() {
-  log({ c: -1 })
+  if (!$utils.env.isH5()) {
+    log({ c: -1 })
+  }
 }
 
 function init(Vue) {

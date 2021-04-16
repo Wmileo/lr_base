@@ -1,6 +1,6 @@
 import server from '@xq/server'
 
-server.config.onFail((code, msg) => {
+server.http.onFail((code, msg) => {
   if (code > 1 && msg) {
     $api.showToast(msg)
   }
@@ -8,11 +8,11 @@ server.config.onFail((code, msg) => {
     $log.warn('base-mp-config', 'serverOnFail', msg)
   }
 })
-server.config.onError(err => {
+server.http.onError(err => {
   if (err.message) {
     $log.warn('base-mp-config', 'serverOnError', err.message)
   }
 })
-server.config.onAuth(() => {
+server.http.onAuth(() => {
   return $xq.auth.autoLogin()
 })

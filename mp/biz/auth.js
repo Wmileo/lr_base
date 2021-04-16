@@ -4,16 +4,6 @@ let logging = false
 
 let authInfo = {}
 
-let promises = []
-
-function pushInitPromise(promise) {
-  if (promise && promise.constructor == Promise) {
-    promises.push(promise)
-  } else {
-    $log.warn('auth', 'pushInitPromise 传人参数不是promise')
-  }
-}
-
 function autoLogin() {
   return new Promise((resolve, reject) => {
     if (logging) {
@@ -29,10 +19,8 @@ function autoLogin() {
       $api.login().then(res => {
         $xq.auth.login(res.code).then((res) => {
           authInfo.login = res.data
-          Promise.all(promises).finally(() => {
-            resolve()
-            logging = false
-          })
+          resolve()
+          logging = false
         }, fail)
       }, fail)
     }
@@ -81,6 +69,5 @@ Object.assign($xq.auth, {
   autoLogin,
   info,
   phone,
-  get,
-  pushInitPromise
+  get
 })

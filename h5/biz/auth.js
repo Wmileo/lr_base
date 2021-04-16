@@ -31,9 +31,9 @@ function autoLogin() {
         }
         $xq.auth.login(opt.code).then(res => {
           resolve()
+          isAuth = res.data.state != 0
           isLogin = true
           logging = false
-          isAuth = res.data.state != 0
           $notification.authState.emit(res.data.state)
         }, fail)
       }
@@ -42,6 +42,36 @@ function autoLogin() {
     auth()
     return Promise.reject()
   }
+}
+
+function tryAuth() {
+  if (isAuth) {
+    return Promise.resolve()
+  }
+  return new Promise((resolve, reject) => {
+    if (logging && isLogin) {
+      setTimeout(() => {
+        tryAuth().then(resolve, reject)
+      }, 40)
+    } else {
+      auth(true)
+    }
+  })
+}
+
+function isAuth() {
+  if (isAuth) {
+    return Promise.resolve()
+  }
+  return new Promise((resolve, reject) => {
+    if (logging && isLogin) {
+      setTimeout(() => {
+        isAuth().then(resolve, reject)
+      }, 40)
+    } else {
+      reject()
+    }
+  })
 }
 
 let str1 = '64ffa23'
@@ -59,10 +89,6 @@ function auth(userinfo = false) {
 
 Object.assign($xq.auth, {
   autoLogin,
-  info: () => {
-    auth(true)
-  },
-  isAuth: () => {
-    return isAuth
-  }
+  tryAuth,
+  isAuth
 })

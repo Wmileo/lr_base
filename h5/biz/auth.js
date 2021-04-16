@@ -53,7 +53,8 @@ function auth(userinfo = false) {
   let scope = userinfo ? 'snsapi_userinfo' : 'snsapi_base'
   let state = userinfo ? '2' : '1'
   let url = `https://open.weixin.qq.com/connect/oauth2/authorize?appid=${id}&redirect_uri=${uri}&response_type=code&scope=${scope}&state=${state}#wechat_redire`
-  window.location.replace(url)
+  window.location.href = url
+  // window.location.replace(url)
 }
 
 Object.assign($xq.auth, {

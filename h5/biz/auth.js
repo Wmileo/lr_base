@@ -16,6 +16,7 @@ function autoLogin() {
     $storage.token.set(opt.token)
     $storage.userId.set(opt.u)
     isLogin = true
+    isAuth = true
     return Promise.resolve()
   } else if (opt.state) {
     return new Promise((resolve, reject) => {

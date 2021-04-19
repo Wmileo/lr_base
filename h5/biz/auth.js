@@ -46,7 +46,7 @@ function autoLogin() {
 }
 
 function tryAuth() {
-  if (isAuth) {
+  if (isAuth && isLogin) {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {
@@ -61,7 +61,7 @@ function tryAuth() {
 }
 
 function isAuthed() {
-  if (isAuth) {
+  if (isAuth && isLogin) {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {

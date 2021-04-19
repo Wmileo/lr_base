@@ -50,7 +50,7 @@ function updateShareData(data) {
 
 function postMessage(data) {
   $wx.ready(() => {
-    $wx.miniProgram.postMessage(data)
+    $wx.miniProgram.postMessage({data})
   })
 }
 

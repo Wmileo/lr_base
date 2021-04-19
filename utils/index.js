@@ -9,14 +9,15 @@ import './log.js'
 import './storage.js'
 import './url.js'
 import './object.js'
-import './env.js'
 
+import env from './env.js'
 import image from './image.js'
 import unit from './unit.js'
 
 $moment = moment
 
 function init(Vue) {
+  env.init(Vue)
   image.init(Vue)
   unit.init(Vue)
 }

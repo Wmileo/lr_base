@@ -19,10 +19,19 @@ if (!$utils) {
   $utils = {}
 }
 
-$utils.env = {
+let env = {
   isH5,
   isUni,
   isH5InWx,
   isQy
 }
 
+function init(Vue) {
+  Vue.prototype._env = env
+}
+
+$utils.env = env
+
+export default {
+  init
+}

@@ -50,7 +50,7 @@ function tryAuth() {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {
-    if (logging && isLogin) {
+    if (logging && !isLogin) {
       setTimeout(() => {
         tryAuth().then(resolve, reject)
       }, 40)
@@ -65,7 +65,7 @@ function isAuthed() {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {
-    if (logging && isLogin) {
+    if (logging && !isLogin) {
       setTimeout(() => {
         isAuthed().then(resolve, reject)
       }, 40)

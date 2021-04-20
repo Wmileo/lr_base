@@ -50,7 +50,7 @@ class Canvas {
     return new Promise((resolve, reject) => {
       uni.canvasToTempFilePath({
         canvasId: this.id,
-        fileType: 'jpg',
+        fileType: 'png',
         success(res) {
           resolve(res.tempFilePath)
         },
@@ -60,21 +60,7 @@ class Canvas {
       })
     })
   }
-  
-  save() {
-    return new Promise((resolve, reject) => {
-      this.image().then((path)=>{ 
-        console.log("hh",path)
-        uni.saveImageToPhotosAlbum({
-          filePath: path,
-          success(res) {
-            console.log("aaa",res)
-            resolve(res);
-          }
-        })
-      })
-    })
-  }
+
 }
 
 if (!$utils) {

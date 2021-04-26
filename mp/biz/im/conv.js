@@ -1,5 +1,5 @@
 import TIM from 'tim-wx-sdk'
-import imMgr from './im.js';
+import imMgr from './index.js';
 
 function handleMsgList(list) {
   return list.map(item => {

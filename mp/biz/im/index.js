@@ -135,7 +135,7 @@ function ready() {
 function handleMsg(msg) {
   msg.virtualDom = decodeElement(msg)
   let date = new Date(msg.time * 1000)
-  msg.newtime = $moment(date).format("YYYY年MM月DD日")
+  msg.newtime = formatDate(date, true)
   return msg
 }
 
@@ -143,10 +143,48 @@ function handleConvList(list) {
   return list.map(item => {
     if (item.lastMessage && (typeof item.lastMessage.lastTime === 'number')) {
       let date = new Date(item.lastMessage.lastTime * 1000)
-      item.lastMessage._lastTime = $moment(date).format("YYYY年MM月DD日")
+      item.lastMessage._lastTime = formatDate(date)
       return item
     }
   })
+}
+
+/**
+ * 格式化消息时间
+ */
+function formatDate (date, isTime = false, withSecond = false) {
+  if (date.toDateString() === new Date().toDateString()) {
+		return getTime(date, withSecond)
+	} else {
+		return isTime ? `${getDate(date)} ${getTime(date, withSecond)}` : getDate(date)
+	}
+}
+
+/**
+ * 返回年/月/日
+ */
+function getDate (date) {
+  const year = date.getFullYear()
+  const month = date.getMonth() + 1
+  const day = date.getDate()
+  return `${year}/${addZeroPrefix(month)}/${addZeroPrefix(day)}`
+}
+
+/**
+ * 返回时分秒/时分
+ */
+export function getTime (date, withSecond = false) {
+  const hour = date.getHours()
+  const minute = date.getMinutes()
+  const second = date.getSeconds()
+  return withSecond ? `${addZeroPrefix(hour)}:${addZeroPrefix(minute)}:${addZeroPrefix(second)}` : `${hour}:${addZeroPrefix(minute)}`
+}
+
+/**
+ * 个位数，加0前缀
+ */
+function addZeroPrefix (number) {
+  return number < 10 ? `0${number}` : number
 }
 
 export default {

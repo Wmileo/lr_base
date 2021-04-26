@@ -15,14 +15,16 @@ tim.registerPlugin({
 let isReady = false
 
 function onReady(event) {
-  let userInfo = $storage.userInfo.get()
-  if (userInfo) {
-    tim.updateMyProfile({
-      nick: userInfo.nick,
-      avatar: userInfo.avatar
-    })
-  }
   isReady = (event.name === TIM.EVENT.SDK_READY)
+  if (isReady) {
+    let userInfo = $storage.userInfo.get()
+    if (userInfo) {
+      tim.updateMyProfile({
+        nick: userInfo.nick,
+        avatar: userInfo.avatar
+      })
+    }
+  }
 }
 
 function onNet(event) {
@@ -116,7 +118,6 @@ function autoLogin() {
       })
     }
   })
-  //#warn 更新头像
 }
 
 function ready() {

@@ -7,6 +7,9 @@ let {
 } = server.apiBuilder
 
 let apis = {
+  im:{
+    usersig: get('v1/instant/message/getUserSig')
+  },
   auth: {
     info: post('/v1/user/getWxUserInfo'),
     phone: post('/v1/user/getWxUserPhone'),

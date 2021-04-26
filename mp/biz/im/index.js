@@ -20,7 +20,7 @@ function onReady(event) {
     let userInfo = $storage.userInfo.get()
     if (userInfo) {
       tim.updateMyProfile({
-        nick: userInfo.nick,
+        nick: userInfo.name,
         avatar: userInfo.avatar
       })
     }

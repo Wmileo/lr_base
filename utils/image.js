@@ -13,7 +13,7 @@ function maker(url, width) {
       return null
     }
   }
-  if (url.indexOf('https://') < 0 && url.indexOf('http://') < 0) {
+  if (url.indexOf('://') < 0) {
     url = baseUrl + url
   }
   if (url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0)) {

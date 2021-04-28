@@ -70,6 +70,7 @@ class ImConv {
       this.list = [...this.list, ...handleMsgList(list)]
       this.emit()
     }
+    this.read()
   }
   
   sendMsg(type, info) {
@@ -88,7 +89,7 @@ class ImConv {
   }
   
   read() {
-    imMgr.setMessageRead({conversationID: this.id})
+    imMgr.read(this.id)
   }
   
 }

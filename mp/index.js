@@ -21,15 +21,14 @@ function initConfig() {
     updateManager.applyUpdate()
   })
 
-  $xq.auth.autoLogin().then(res => {
-    isLogin = true
-  })
-
   $api.handleSession(() => {
     if (isLogin) {
       return Promise.resolve()
     } else {
-      return $xq.auth.autoLogin()
+      return $xq.auth.autoLogin().then(res => {
+        isLogin = true
+        return res
+      })
     }
   })
 }

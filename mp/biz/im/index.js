@@ -51,10 +51,23 @@ function onMessage(event) {
   $notification.imMsg.emit(data)
 }
 
+let convList = []
 function onConversationList(event) {
   $log.log('im', 'list', event)
-  let data = event.data
-  $notification.imConvList.emit(data)
+  convList = event.data
+  $notification.imConvList.emit(convList)
+  handleUnread()
+}
+
+function handleUnread() {
+  convList
+  $notification.imUnreadNum.emit(num)
+}
+
+function read(conversationID){
+  imMgr.setMessageRead({conversationID})
+  
+  handleUnread()
 }
 
 function onKickedOut(event) {

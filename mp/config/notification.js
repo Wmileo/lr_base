@@ -9,5 +9,6 @@ notification.setNotifications([
   "im",
   "imMsgRevoked",
   "imMsgRead",
-  "imProfileUpdate"
+  "imProfileUpdate",
+  "imUnreadNum"
 ])

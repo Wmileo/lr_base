@@ -46,7 +46,7 @@ function init(Vue) {
           from: null,
           token: null,
           u: null
-        } : {},
+        } : {}
         let option = reset ? {} : $channel().option
         let path = $utils.url.build(data.path, {
           ...option,

@@ -155,8 +155,12 @@ function ready() {
 
 function handleMsg(msg) {
   msg.virtualDom = decodeElement(msg)
-  let date = new Date(msg.time * 1000)
-  msg.newtime = formatDate(date, true)
+  let date = formatDate(new Date(msg.time * 1000), true)
+	if (date.indexOf('/') >= 0) {
+		msg.newtime = date.slice(5)
+	} else {
+		msg.newtime = date
+	}
   return msg
 }
 

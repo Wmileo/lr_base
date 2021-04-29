@@ -4,10 +4,11 @@ let logging = false
 let isLogin = false
 let isAuth = false
 
-function autoLogin() {
-  if (isLogin) {
+function autoLogin(force = false) {
+  if (isLogin && !force) {
     return Promise.resolve()
   }
+  let token = force ? null : $storage.token.get()
   let opt = $channel().option
   if (opt.token && opt.u) {
     server.auth.setInfo({
@@ -39,6 +40,10 @@ function autoLogin() {
         }, fail)
       }
     })
+  } else if (token) {
+    isLogin = true
+    isAuth = true
+    return Promise.resolve()
   } else {
     auth()
     return Promise.reject()
@@ -46,11 +51,11 @@ function autoLogin() {
 }
 
 function tryAuth() {
-  if (isAuth && isLogin) {
+  if (isAuth) {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {
-    if (logging && !isLogin) {
+    if (logging) {
       setTimeout(() => {
         tryAuth().then(resolve, reject)
       }, 40)
@@ -61,11 +66,11 @@ function tryAuth() {
 }
 
 function isAuthed() {
-  if (isAuth && isLogin) {
+  if (isAuth) {
     return Promise.resolve()
   }
   return new Promise((resolve, reject) => {
-    if (logging && !isLogin) {
+    if (logging) {
       setTimeout(() => {
         isAuthed().then(resolve, reject)
       }, 40)

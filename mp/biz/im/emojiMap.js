@@ -20,7 +20,7 @@ export const emojiMap = {
   '[可怜]': 'emoji_17@2x.png',
   '[可爱]': 'emoji_18@2x.png',
   '[右哼哼]': 'emoji_19@2x.png',
-  '[右太极]': 'emoji_20@2x.png',
+  '[右太极]': 'emoji_20@2x.png', 
   '[右车头]': 'emoji_21@2x.png',
   '[吐]': 'emoji_22@2x.png',
   '[吓]': 'emoji_23@2x.png',

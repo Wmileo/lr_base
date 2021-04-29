@@ -52,9 +52,11 @@ function onMessage(event) {
 }
 
 let convList = []
+let unreadCount = 0
 function onConversationList(event) {
   $log.log('im', 'list', event)
   convList = event.data
+	unreadCount = 0
   $notification.imConvList.emit(convList)
   handleUnread()
 }
@@ -64,18 +66,15 @@ function handleUnread() {
   for (let item of convList) {
 		num += item.unreadCount
 	}
+	num -= unreadCount
   $notification.imUnreadNum.emit(num)
 }
 
 function read(conversationID){
   tim.setMessageRead({conversationID})
-	for (let item of convList) {
-		if (item.conversationID === conversationID) {
-			item.unreadCount = 0
-		}
-	}
-  
-  handleUnread()
+	unreadCount = convList.find(i => i.conversationID === conversationID).unreadCount
+	
+	handleUnread()
 }
 
 function onKickedOut(event) {
@@ -213,5 +212,7 @@ export default {
   ...tim,
   ready,
   handleMsg,
-  handleConvList
+  handleConvList,
+	read,
+	handleUnread
 }

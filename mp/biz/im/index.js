@@ -60,12 +60,20 @@ function onConversationList(event) {
 }
 
 function handleUnread() {
-  convList
+	let num = 0
+  for (let item of convList) {
+		num += item.unreadCount
+	}
   $notification.imUnreadNum.emit(num)
 }
 
 function read(conversationID){
-  imMgr.setMessageRead({conversationID})
+  tim.setMessageRead({conversationID})
+	for (let item of convList) {
+		if (item.conversationID === conversationID) {
+			item.unreadCount = 0
+		}
+	}
   
   handleUnread()
 }

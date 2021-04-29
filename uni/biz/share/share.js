@@ -30,7 +30,7 @@ function init(Vue) {
       }
     },
     methods: {
-      _canShare(data = {}, reset = false) {
+      _canShare(data = {}) {
         let obj = {}
         obj.title = data.title
         if (data.path == null) {
@@ -47,7 +47,8 @@ function init(Vue) {
           token: null,
           u: null
         } : {}
-        let option = reset ? {} : $channel().option
+        let option = $channel().option
+        option.from = $xq.env.mp
         let path = $utils.url.build(data.path, {
           ...option,
           ...opt(),

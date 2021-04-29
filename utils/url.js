@@ -1,7 +1,10 @@
 
 function build(url, obj) {
+  let o = option(url)
+  url = path(url)
   if (obj) {
-    url += url.includes("?") ? "&" : "?"
+    obj = { ...o, ...obj}
+    url += "?"
     for (let key in obj) {
       if (obj[key] != null) {
         url += key + "=" + encodeURIComponent(obj[key]) + "&"
@@ -32,6 +35,14 @@ function option(url) {
   return info
 }
 
+function path(url) {
+  let str = url
+  if (url.indexOf('?') >= 0) {
+    str = url.split('?')[0]
+  }
+  return str
+}
+
 if (!$utils) {
   $utils = {}
 }
@@ -39,4 +50,5 @@ if (!$utils) {
 $utils.url = {
   build,
   option,
+  path
 }

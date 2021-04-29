@@ -30,7 +30,9 @@ function option(url) {
   let info = {}
   for (let p in strs) {
     let arr = strs[p].split('=')
-    info[arr[0]] = decodeURIComponent(arr[1])
+    if (arr[1]) {
+      info[arr[0]] = decodeURIComponent(arr[1])
+    }
   }
   return info
 }

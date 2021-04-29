@@ -1,10 +1,12 @@
 import server from '@xq/server'
 
 let logging = false
-let isLogin = $storage.isLogin.get()
-let isAuth = $storage.isAuth.get()
+let isLogin = false
+let isAuth = false
 
 function autoLogin(force = false) {
+  isLogin = $storage.isLogin.get()
+  isAuth = $storage.isAuth.get()
   if (isLogin && !force) {
     return Promise.resolve()
   }
@@ -36,6 +38,7 @@ function autoLogin(force = false) {
           isLogin = true
           logging = false
           $storage.isAuth.set(isAuth)
+          $storage.isLogin.set(isLogin)
           $notification.authState.emit(res.data.state)
         }, fail)
       }

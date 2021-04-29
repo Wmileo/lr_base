@@ -1,14 +1,13 @@
 import server from '@xq/server'
 
 let logging = false
-let isLogin = false
-let isAuth = false
+let isLogin = $storage.isLogin.get()
+let isAuth = $storage.isAuth.get()
 
 function autoLogin(force = false) {
   if (isLogin && !force) {
     return Promise.resolve()
   }
-  let token = force ? null : $storage.token.get()
   let opt = $channel().option
   if (opt.token && opt.u) {
     server.auth.setInfo({
@@ -36,14 +35,11 @@ function autoLogin(force = false) {
           isAuth = res.data.state != 0
           isLogin = true
           logging = false
+          $storage.isAuth.set(isAuth)
           $notification.authState.emit(res.data.state)
         }, fail)
       }
     })
-  } else if (token) {
-    isLogin = true
-    isAuth = true
-    return Promise.resolve()
   } else {
     auth()
     return Promise.reject()

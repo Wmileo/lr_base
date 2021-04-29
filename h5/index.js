@@ -3,6 +3,7 @@ import '../uni/index.js'
 import './biz/index.js'
 import './config/index.js'
 import './config/notification.js'
+import './config/storage.js'
 
 function init(Vue) {
   base.init(Vue)

@@ -52,11 +52,11 @@ function onMessage(event) {
 }
 
 let convList = []
-let unreadCount = 0
+let readCount = 0
 function onConversationList(event) {
   $log.log('im', 'list', event)
   convList = event.data
-	unreadCount = 0
+	readCount = 0
   $notification.imConvList.emit(convList)
   handleUnread()
 }
@@ -66,14 +66,16 @@ function handleUnread() {
   for (let item of convList) {
 		num += item.unreadCount
 	}
-	num -= unreadCount
+	num -= readCount
   $notification.imUnreadNum.emit(num)
 }
 
 function read(conversationID){
   tim.setMessageRead({conversationID})
-	unreadCount = convList.find(i => i.conversationID === conversationID).unreadCount
-	
+  let conv = convList.find(i => i.conversationID === conversationID)
+  if (conv) {
+    readCount = conv.unreadCount
+  }
 	handleUnread()
 }
 
@@ -119,7 +121,7 @@ function autoLogin() {
   return new Promise((resolve, reject) => {
     if (isLoging) {
       setTimeout(() => {
-        autoLogin(resolve, reject)
+        autoLogin().then(resolve, reject)
       }, 40)
     } else {
       isLoging = true

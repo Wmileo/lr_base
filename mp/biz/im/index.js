@@ -26,7 +26,7 @@ function updateProfile() {
   let userInfo = $storage.userInfo.get()
   if (userInfo) {
     tim.updateMyProfile({
-      nick: userInfo.name || ($xq.env.mp == 'b' ? '顾问' : '访客'）,
+      nick: userInfo.name || ($xq.env.mp == 'b' ? '顾问' : '访客'),
       avatar: userInfo.avatar
     })
   }

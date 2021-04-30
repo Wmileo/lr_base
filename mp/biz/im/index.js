@@ -17,13 +17,18 @@ let isReady = false
 function onReady(event) {
   isReady = (event.name === TIM.EVENT.SDK_READY)
   if (isReady) {
-    let userInfo = $storage.userInfo.get()
-    if (userInfo) {
-      tim.updateMyProfile({
-        nick: userInfo.name,
-        avatar: userInfo.avatar
-      })
-    }
+    updateProfile()
+    $notification.auth.on(updateProfile)
+  }
+}
+
+function updateProfile() {
+  let userInfo = $storage.userInfo.get()
+  if (userInfo) {
+    tim.updateMyProfile({
+      nick: userInfo.name || ($xq.env.mp == 'b' ? '顾问' : '访客'）,
+      avatar: userInfo.avatar
+    })
   }
 }
 

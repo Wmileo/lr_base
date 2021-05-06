@@ -1,3 +1,5 @@
+import shareMgr from './channel.js';
+
 let visits = []
 
 setInterval(() => {
@@ -29,7 +31,7 @@ function log(data) {
 
 function visit(e) {
   let data = { e }
-  data.c = $xq.share.getChannel($this().page)
+  data.c = shareMgr.getChannel($this().page)
   if (data.c > 0) {
     let ld = logData(data)
     visits.push(ld)

@@ -1,4 +1,5 @@
 import server from '@xq/server'
+import authMgr from '../../uni/biz/auth.js'
 
 let logging = false
 
@@ -17,7 +18,7 @@ function autoLogin() {
         logging = false
       }
       $api.login().then(res => {
-        $xq.auth.login(res.code).then((res) => {
+        authMgr.login(res.code).then((res) => {
           authInfo.login = res.data
           resolve()
           logging = false
@@ -65,9 +66,13 @@ function get() {
   return authInfo
 }
 
-Object.assign($xq.auth, {
+if (!$xq) {
+  $xq = {}
+}
+
+$xq.auth = {
   autoLogin,
   info,
   phone,
   get
-})
+}

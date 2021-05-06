@@ -1,8 +1,9 @@
 import server from '@xq/server'
+import shareMgr from './share/channel.js'
 
 function login(authorizationCode) {
   let opt = {}
-  let c = $xq.share.getChannel($channel().launch.path)
+  let c = shareMgr.getChannel($channel().launch.path)
   if (c > 0) {
     opt.c = c
   }

@@ -1,4 +1,5 @@
 import server from '@xq/server'
+import authMgr from '../../uni/biz/auth.js'
 
 let logging = false
 let isLogin = false
@@ -32,7 +33,7 @@ function autoLogin(force = false) {
           reject(err)
           logging = false 
         }
-        $xq.auth.login(opt.code).then(res => {
+        authMgr.login(opt.code).then(res => {
           resolve()
           isAuth = res.data.state != 0
           isLogin = true
@@ -92,8 +93,12 @@ function auth(userinfo = false) {
   // window.location.replace(url)
 }
 
-Object.assign($xq.auth, {
+if (!$xq) {
+  $xq = {}
+}
+
+$xq.auth = {
   autoLogin,
   tryAuth,
   isAuthed
-})
+}

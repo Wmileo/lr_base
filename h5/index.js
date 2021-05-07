@@ -8,8 +8,8 @@ import './config/storage.js'
 function init(Vue) {
   base.init(Vue)
   $api.showLoading("登录中...")
-  $xq.auth.autoLogin().then(res => {
-    $xq.wx.config()
+  $auth.autoLogin().then(res => {
+    $wx.config()
   }).finally(() => {
     $api.hideLoading()
   })

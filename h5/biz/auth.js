@@ -93,11 +93,7 @@ function auth(userinfo = false) {
   // window.location.replace(url)
 }
 
-if (!$xq) {
-  $xq = {}
-}
-
-$xq.auth = {
+$auth = {
   autoLogin,
   tryAuth,
   isAuthed

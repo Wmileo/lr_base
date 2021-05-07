@@ -66,11 +66,7 @@ function get() {
   return authInfo
 }
 
-if (!$xq) {
-  $xq = {}
-}
-
-$xq.auth = {
+$auth = {
   autoLogin,
   info,
   phone,

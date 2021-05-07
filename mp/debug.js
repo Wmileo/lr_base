@@ -8,7 +8,7 @@ function init(config) { //切换环境
     onEnv(env) {
       config.onEnv(env)
       serverMgr.auth.clear()
-      $xq.auth.autoLogin()
+      $auth.autoLogin()
     },
     onLog() {
       config.onLog()

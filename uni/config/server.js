@@ -14,5 +14,5 @@ server.http.onError(err => {
   }
 })
 server.http.onAuth(() => {
-  return $xq.auth.autoLogin(true)
+  return $auth.autoLogin(true)
 })

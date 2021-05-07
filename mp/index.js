@@ -25,7 +25,7 @@ function initConfig() {
     if (isLogin) {
       return Promise.resolve()
     } else {
-      return $xq.auth.autoLogin().then(res => {
+      return $auth.autoLogin().then(res => {
         isLogin = true
         return res
       })

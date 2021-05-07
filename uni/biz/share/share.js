@@ -60,7 +60,7 @@ function init(Vue) {
           obj.imgUrl = data.image
           obj.link = path
           obj.desc = data.desc
-          $xq.wx.updateShareData($utils.object.clean(obj))
+          $wx.updateShareData($utils.object.clean(obj))
         } else {
           obj.imageUrl = data.image
           obj.path = path

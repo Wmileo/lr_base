@@ -14,7 +14,11 @@ function maker(url, width) {
     }
   }
   if (url.indexOf('://') < 0) {
-    url = baseUrl + url
+    if (url.indexOf('/common/') == 0) {
+      url = $env.imageCommonURL + url
+    } else {
+      url = $env.imageURL + url
+    }
   }
   if (url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0)) {
     return url
@@ -27,14 +31,6 @@ function maker(url, width) {
     })
   }
   return url + style
-}
-
-let baseUrl = ''
-
-function setBaseUrl(url) {
-  if (url) {
-    baseUrl = url
-  }
 }
 
 let images = {}
@@ -53,7 +49,6 @@ function init(Vue) {
 $image = maker
 
 export default {
-  setBaseUrl,
   setImages,
   init
 }

@@ -48,7 +48,7 @@ function init(Vue) {
           u: null
         } : {}
         let option = $channel().option
-        option.from = $xq.env.mp
+        option.from = $env.mp
         let path = $utils.url.build(data.path, {
           ...option,
           ...opt(),

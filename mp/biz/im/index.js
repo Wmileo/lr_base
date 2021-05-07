@@ -2,7 +2,7 @@ import TIM from 'tim-wx-sdk'
 import TIMUploadPlugin from 'tim-upload-plugin'
 import { decodeElement } from './decodeElement'
 
-let SDKAppID = $xq.env.imAppId
+let SDKAppID = $env.imAppId
 
 let tim = TIM.create({
   SDKAppID
@@ -26,7 +26,7 @@ function updateProfile() {
   let userInfo = $storage.userInfo.get()
   if (userInfo) {
     tim.updateMyProfile({
-      nick: userInfo.name || ($xq.env.mp == 'b' ? '顾问' : '访客'),
+      nick: userInfo.name || ($env.mp == 'b' ? '顾问' : '访客'),
       avatar: userInfo.avatar
     })
   }
@@ -131,7 +131,7 @@ function autoLogin() {
     } else {
       isLoging = true
       $fetch.im.usersig().fetch({
-        flag: $xq.env.mp
+        flag: $env.mp
       }).then(res => {
         tim.login({
           userID: res.data.imUserId,

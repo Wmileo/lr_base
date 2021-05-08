@@ -171,14 +171,27 @@ function handleMsg(msg) {
   return msg
 }
 
-function handleConvList(list) {
-  return list.map(item => {
+function handleConvList(list, func) {
+  let imids = []
+  let newList = list.map(item => {
     if (item.lastMessage && (typeof item.lastMessage.lastTime === 'number')) {
+      if (item.conversationID.indexOf('C2C') == 0) {
+        imids.push(item.conversationID.substring(3))
+      }
       let date = new Date(item.lastMessage.lastTime * 1000)
       item.lastMessage._lastTime = formatDate(date)
       return item
     }
   })
+  func(newList)
+  // newList = newList.map(item => {
+  //   if (item.conversationID.indexOf('C2C') == 0) {
+  //     let imid = item.conversationID.substring(3)
+  //     item.ids = ___[imid]
+  //   }
+  //   return item
+  // })
+  // func(newList)
 }
 
 /**

@@ -1,11 +1,6 @@
 import TIM from 'tim-wx-sdk'
 import imMgr from './index.js';
 
-function handleMsgList(list) {
-  return list.map(item => {
-    return imMgr.handleMsg(item)
-  })
-}
 
 class ImConv {
   constructor(id, onList) {
@@ -22,6 +17,9 @@ class ImConv {
     this.isLoading = false
     this.isCompleted = false
     this.nextReqMsgId = ''
+    
+    this.lastMinute = 0
+    this.lastShowMinute = 0
     
     this.onList = onList
   }
@@ -48,7 +46,7 @@ class ImConv {
           count: 15
         }).then(res => {
           this.nextReqMsgId = res.data.nextReqMessageID
-          this.list = [...handleMsgList(res.data.messageList), ...this.list]
+          this.list = [...this.handleMsgList(res.data.messageList), ...this.list]
           this.isCompleted = res.data.isCompleted
         }).catch(err => {
           $api.showToast('拉取失败，请重试')
@@ -67,7 +65,7 @@ class ImConv {
   onMsg(list) {
     list = list.filter(item => item.conversationID == this.id)
     if (list.length > 0) {
-      this.list = [...this.list, ...handleMsgList(list)]
+      this.list = [...this.list, ...this.handleMsgList(list)]
       this.emit()
     }
     this.read()
@@ -79,7 +77,8 @@ class ImConv {
       conversationType: TIM.TYPES.CONV_C2C,
       payload: info
     })
-    this.list.push(imMgr.handleMsg(msg))
+    this.list = [...this.list, ...this.handleMsgList([msg])]
+    
     this.emit()
     imMgr.sendMessage(msg)
   }
@@ -92,6 +91,23 @@ class ImConv {
     imMgr.read(this.id)
   }
   
+  handleMsgList(list) {
+    let newList = []
+    list.forEach(item => {
+      let msg = imMgr.handleMsg(item)
+      let lastMinute = msg.time / 60
+      if (lastMinute - this.lastMinute > 1 || lastMinute - this.lastShowMinute > 5) {
+        newList.push({
+          text: msg.newtime,
+          type: 'TIMTimeElem',
+        })
+        this.lastShowMinute = lastMinute
+      }
+      this.lastMinute = lastMinute
+      newList.push(msg)
+    })
+    return newList
+  }
 }
 
 export default ImConv

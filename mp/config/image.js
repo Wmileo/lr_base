@@ -1,6 +1,7 @@
 import imageMgr from '../../utils/image.js'
 
-let images = {  
+let images = {
+  
   //common
   tip: "/common/tip.png",
   fail: "/common/fail.png",

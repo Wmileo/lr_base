@@ -27,11 +27,13 @@ let images = {
   im_smile: '/common/im/smile.png',
   im_more: '/common/im/more.png',
   im_camera: '/common/im/take-pic.png',
-  im_picture: '/common/im/picture.png',
   im_video: '/common/im/video-file.png',
   im_estate: '/common/im/estate.png',
   im_del_text: '/common/im/del_text.png',
   im_del_text_1: '/common/im/del_text_1.png',
+  im_picture: '/common/im/more_picture.png',
+  im_invite: '/common/im/more_invite.png',
+  im_invite_cover: '/common/im/invite_cover.png',
 }
 
 imageMgr.setImages(images)

@@ -34,6 +34,7 @@ let images = {
   im_del_text_1: '/common/im/del_text_1.png',
   im_picture: '/common/im/more_picture.png',
   im_invite: '/common/im/more_invite.png',
+  im_add: '/common/im/more_add.png',
   im_invite_cover: '/common/im/invite_cover.png',
 }
 

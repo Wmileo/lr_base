@@ -36,6 +36,7 @@ let images = {
   im_invite: '/common/im/more_invite.png',
   im_add: '/common/im/more_add.png',
   im_invite_cover: '/common/im/invite_cover.png',
+  im_require_cover: '/common/im/require_cover.png',
 }
 
 imageMgr.setImages(images)

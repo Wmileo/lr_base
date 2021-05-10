@@ -8,7 +8,8 @@ let {
 
 let apis = {
   im:{
-    usersig: get('v1/instant/message/getUserSig')
+    usersig: get('v1/instant/message/getUserSig'),
+    relation: post('v1/instant/message/getRelationByImId')
   },
   auth: {
     info: post('/v1/user/getWxUserInfo'),

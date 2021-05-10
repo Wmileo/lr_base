@@ -172,11 +172,11 @@ function handleMsg(msg) {
 }
 
 function handleConvList(list, func) {
-  let imids = []
+  let imIds = []
   let newList = list.map(item => {
     if (item.lastMessage && (typeof item.lastMessage.lastTime === 'number')) {
       if (item.conversationID.indexOf('C2C') == 0) {
-        imids.push(item.conversationID.substring(3))
+        imIds.push(item.conversationID.substring(3))
       }
       let date = new Date(item.lastMessage.lastTime * 1000)
       item.lastMessage._lastTime = formatDate(date)
@@ -184,14 +184,20 @@ function handleConvList(list, func) {
     }
   })
   func(newList)
-  // newList = newList.map(item => {
-  //   if (item.conversationID.indexOf('C2C') == 0) {
-  //     let imid = item.conversationID.substring(3)
-  //     item.ids = ___[imid]
-  //   }
-  //   return item
-  // })
-  // func(newList)
+  $fetch.im.relation().fetch({
+    flag: $env.mp,
+    imIds
+  }).then(res => {
+    newList = newList.map(item => {
+      if (item.conversationID.indexOf('C2C') == 0) {
+        let imid = item.conversationID.substring(3)
+        item.ids = res.data[imid]
+      }
+      return item
+    })
+    console.log(newList,'jjjj')
+    func(newList)
+  })
 }
 
 /**

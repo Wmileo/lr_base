@@ -3,7 +3,7 @@ import imMgr from './index.js';
 
 
 class ImConv {
-  constructor(id, onList) {
+  constructor(id, onList, onRelation) {
     if (id.indexOf('C2C') == 0) {
       this.to = id.substring(3)
       this.id = id
@@ -11,7 +11,7 @@ class ImConv {
       this.to = id
       this.id = `C2C${id}`
     }
-    console.log(this.to, this.id)
+    this.relation = {}
     this.info = {}
     this.list = []
     this.isLoading = false
@@ -22,6 +22,7 @@ class ImConv {
     this.lastShowMinute = 0
     
     this.onList = onList
+    this.onRelation = onRelation
   }
   
   start() {
@@ -29,6 +30,10 @@ class ImConv {
     this.read()
     $notification.imMsg.on((list) => {
       this.onMsg(list)
+    })
+    imMgr.relation([this.to]).then(data => {
+      this.relation = data[this.to]
+      this.onRelation(this.relation)
     })
   }
   

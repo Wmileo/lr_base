@@ -184,19 +184,24 @@ function handleConvList(list, func) {
     }
   })
   func(newList)
-  $fetch.im.relation().fetch({
-    flag: $env.mp,
-    imIds
-  }).then(res => {
+  relation(imIds).then(data => {
     newList = newList.map(item => {
       if (item.conversationID.indexOf('C2C') == 0) {
         let imid = item.conversationID.substring(3)
-        item.ids = res.data[imid]
+        item.relation = data[imid]
       }
       return item
     })
-    console.log(newList,'jjjj')
     func(newList)
+  })
+}
+
+function relation(imIds) {
+  return $fetch.im.relation().fetch({
+    flag: $env.mp,
+    imIds
+  }).then(res => {
+    return res.data
   })
 }
 
@@ -244,5 +249,6 @@ export default {
   handleMsg,
   handleConvList,
 	read,
-	handleUnread
+	handleUnread,
+  relation
 }

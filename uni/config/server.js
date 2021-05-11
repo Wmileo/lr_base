@@ -1,5 +1,6 @@
 import server from '@xq/server'
 let time = 0
+let wait = false
 server.http.onFail((code, msg) => {
   if (code > 1 && msg) {
     $api.showToast(msg)
@@ -15,7 +16,14 @@ server.http.onError(err => {
 })
 server.http.onAuth(() => {
   time++
-  if (this >= 80) {
+  if (time >= 20) {
+    if (!wait) {
+      wait = true
+      setTimeout(() => {
+        wait = false
+        time = 0
+      }, 300000)
+    }
     return Promise.reject(new Error('服务出错，请稍后使用'))
   }
   return $auth.autoLogin(true)

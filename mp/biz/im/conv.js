@@ -63,7 +63,7 @@ class ImConv {
         $api.showToast('拉取中，请稍等')
       }
     } else {
-      $api.showToast('没有更多消息啦')
+      // $api.showToast('没有更多消息啦')
     }
   }
   

@@ -40,10 +40,3 @@ let images = {
 }
 
 imageMgr.setImages(images)
-
-console.time('预加载图片完成')
-let img = new Image()
-img.onload = () => {
-  console.timeEnd('预加载图片完成')
-}
-img.src = $image('position')

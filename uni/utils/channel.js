@@ -30,9 +30,9 @@ $channel = () => {
     option = params(wx.getLaunchOptionsSync().query)
     launch.path = wx.getLaunchOptionsSync().path
     launch.option = option
-    if (_this && _this.$mp) {
-      option = params(_this.$mp.query)
-    }
+  }
+  if (_this && _this.$mp) {
+    option = params(_this.$mp.query)
   }
 
   return {

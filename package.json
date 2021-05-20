@@ -1,6 +1,6 @@
 {
   "name": "@xq/base",
-  "version": "1.4.18",
+  "version": "2.0.0",
   "description": "base",
   "main": "src/index.js",
   "publishConfig": {

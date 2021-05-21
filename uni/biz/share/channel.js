@@ -2,7 +2,7 @@ let channels = {
   'estate/detail': 1,
   'layout/detail': 2,
   'consultant/detail': 3,
-  'article': 4,
+  'article/detail': 4,
   'activity/detail': 6
 }
 

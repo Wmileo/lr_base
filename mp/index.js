@@ -16,7 +16,7 @@ let isLogin = false
 
 function initConfig() {
   
-  const updateManager = $api.getUpdateManager()
+  const updateManager = uni.getUpdateManager()
   updateManager.onUpdateReady(function() {
     updateManager.applyUpdate()
   })

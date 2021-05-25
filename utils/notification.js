@@ -77,7 +77,14 @@ function notification(name) {
   }
 }
 
-$notification = {}
+$notification = {
+  _on: on,
+  _off: off,
+  _once: once,
+  _emit: emit,
+  _pushItems: setNotifications
+}
+
 function setNotifications(notifications) {
   notifications.forEach(ntf => {
     $notification[ntf] = notification(ntf)

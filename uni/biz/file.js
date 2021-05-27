@@ -1,9 +1,9 @@
 
-function upload(file, path, suffix) {
+function upload(file, type, suffix) {
   $api.showLoading('上传中')
   return $fetch.file.upload().fetch({
     file,
-    path,
+    type,
     suffix
   }).then(res => {
     $api.hideLoading()
@@ -13,16 +13,16 @@ function upload(file, path, suffix) {
   })
 }
 
-function uploadImage(file, path = 'app') {
-  return upload(file, path, 'jpg')
+function uploadImage(file, type = 1) {
+  return upload(file, type, 'jpg')
 }
 
-function uploadVoice(file, path = 'app'){
-	return upload(file, path, 'mp4')
+function uploadVoice(file, type = 1){
+	return upload(file, type, 'mp4')
 }
 
-function uploadAudio(file, path = 'app'){
-	return upload(file, path, 'mp3')
+function uploadAudio(file, type = 1){
+	return upload(file, type, 'mp3')
 }
 
 export default {

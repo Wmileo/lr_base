@@ -13,6 +13,9 @@ function maker(url, width) {
       return null
     }
   }
+  if (url.indexOf('/static/') == 0) { // 本地static图片
+    return url
+  }
   if (url.indexOf('://') < 0) {
     if (url.indexOf('/common/') == 0) {
       url = $env.imageCommonURL + url

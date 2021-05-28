@@ -3,13 +3,14 @@ let urls = {
   'cherry': 'https://qrc.xiquehaofang.com/'
 }
 
-let key = 'k_qrcode_mps'
-let mps = $storage._get(key) || {}
-if (typeof(mps) != 'object') {
-  mps = {}
-}
-
 function mp(url, page, info, force) {//force强制生成新二维码
+
+  let key = 'k_qrcode_mps'
+  let mps = $storage._get(key) || {}
+  if (typeof(mps) != 'object') {
+    mps = {}
+  }
+
   let code = $utils.url.build(urls[url] + page, {
     ...info,
     from: 'qrcode'

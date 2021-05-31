@@ -20,8 +20,6 @@ function maker(url, width) {
   if (url.indexOf('://') < 0) {
     if (url.indexOf('/common/') == 0) {
       url = imageCommonURL + url
-    } else if (url.indexOf('/ad/') == 0) {
-      url = imageCommonURL + url
     } else {
       url = $env.imageURL + url
     }

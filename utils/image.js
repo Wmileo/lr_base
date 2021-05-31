@@ -1,4 +1,5 @@
 let widths = [150, 250, 400, 550, 750]
+let imageCommonURL = 'https://conimages.xiquehaofang.com/app'
 
 function maker(url, width) {
   if (!url || url.length == 0) {
@@ -18,7 +19,7 @@ function maker(url, width) {
   }
   if (url.indexOf('://') < 0) {
     if (url.indexOf('/common/') == 0) {
-      url = $env.imageCommonURL + url
+      url = imageCommonURL + url
     } else {
       url = $env.imageURL + url
     }

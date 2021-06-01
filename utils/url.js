@@ -1,7 +1,7 @@
 
 function build(url, obj) {
   let o = option(url)
-  if (url.indexOf('#') < 0) {
+  if (url.indexOf('#') >= 0) {
     url = path(url)
   }
   if (obj) {

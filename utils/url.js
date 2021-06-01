@@ -1,9 +1,7 @@
 
 function build(url, obj) {
   let o = option(url)
-  if (url.indexOf('#') >= 0) {
-    url = path(url)
-  }
+  url = path(url)
   if (obj) {
     obj = { ...o, ...obj}
     url += "?"

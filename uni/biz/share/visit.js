@@ -29,8 +29,8 @@ function log(data) {
   $fetch.log.visit().fetch(data)
 }
 
-function visit(e) {
-  let data = { e }
+function visit(e, cid) {
+  let data = { e, cid }
   data.c = shareMgr.getChannel($this().page)
   if (data.c > 0) {
     let ld = logData(data)

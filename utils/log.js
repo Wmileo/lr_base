@@ -62,6 +62,11 @@ function handleList(func) {
   onList(list)
 }
 
+function clearList() {
+  list = []
+  onList(list)
+}
+
 $log = {
   log,
   warn,
@@ -70,5 +75,6 @@ $log = {
 }
 
 export default {
-  handleList
+  handleList,
+  clearList
 }

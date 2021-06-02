@@ -30,14 +30,19 @@ function shake() {
     lz = res.z
     if (time > 2) {
       time = 0
-      $api.showActionSheet(list).then(res => {
-        let item = list[res.tapIndex]
-        if (item == 'log') {
-          onLog()
-        } else {
-          onEnv(item)
-        }
-      })
+      
+      if ($this().page != 'pages_common/log/index') {
+        $api.navigateTo('/pages_common/log/index')
+      }
+      
+      // $api.showActionSheet(list).then(res => {
+      //   let item = list[res.tapIndex]
+      //   if (item == 'log') {
+      //     onLog()
+      //   } else {
+      //     onEnv(item)
+      //   }
+      // })
     }
   })
   uni.startAccelerometer()

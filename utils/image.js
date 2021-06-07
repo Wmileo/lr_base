@@ -1,5 +1,6 @@
 let widths = [150, 250, 400, 550, 750]
-let imageCommonURL = 'https://conimages.xiquehaofang.com/app'
+let imageCommonURL = 'https://xq-test-config.oss-cn-shanghai.aliyuncs.com/app'
+// let imageCommonURL = 'https://conimages.xiquehaofang.com/app'
 
 function maker(url, width) {
   if (!url || url.length == 0) {
@@ -24,7 +25,7 @@ function maker(url, width) {
       url = $env.imageURL + url
     }
   }
-  if (url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0)) {
+  if (url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0 && url.indexOf('xq-test-config.oss-cn-shanghai.aliyuncs.com') < 0)) {
     return url
   }
   let style = '!full'
@@ -34,7 +35,7 @@ function maker(url, width) {
       return width <= item
     })
   }
-  return url + style
+  return url + style + '?' + $moment().format("MMDDhhmm")
 }
 
 let images = {}

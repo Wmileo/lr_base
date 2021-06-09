@@ -8,7 +8,8 @@ let {
 
 let apis = {
   log: {
-    visit: get('/v1/log/visit/append')
+    visit: get('/v1/log/visit/append'),
+    event: post('/v1/log/user/visit/append')
   },
   config: {
     info: get('/v1/config/getByAppkey')

@@ -29,6 +29,14 @@ function log(data) {
   $fetch.log.visit().fetch(data)
 }
 
+function event(c, cid, json = {}) {
+  $fetch.event.visit().fetch(logData({
+    c,
+    cid,
+    n: JSON.stringify(json)
+  }))
+}
+
 function visit(data = {}) {
   data.c = shareMgr.getChannel($this().page)
   if (data.c > 0) {
@@ -56,9 +64,8 @@ function init(Vue) {
       handlePageHide(true)
     },
     methods: {
-      _visit(e) {
-        visit(e)
-      }
+      _visit: visit,
+      _event: event
     }
   })
 }

@@ -30,10 +30,10 @@ function log(data) {
 }
 
 function event(c, cid, json = {}) {
-  $fetch.event.visit().fetch(logData({
+  $fetch.log.event().fetch(logData({
     c,
     cid,
-    n: JSON.stringify(json)
+    n: json
   }))
 }
 

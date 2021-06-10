@@ -35,12 +35,7 @@ function init(Vue) {
         obj.title = data.title
         if (data.path == null) {
           if ($utils.env.isH5()) {
-            if (window.location.href.indexOf('#') >= 0) {
-              let arr = window.location.href.split('?')
-              data.path = arr[0] + '?' + arr[1]
-            } else {
-              data.path = window.location.origin + window.location.pathname
-            }
+            data.path = window.location.origin + window.location.pathname + window.location.hash
           } else {
             data.path = '/' + $this().page
           }

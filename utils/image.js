@@ -1,8 +1,9 @@
+import moment from 'moment'
 let widths = [150, 250, 400, 550, 750]
 let imageCommonURL = 'https://xq-test-config.oss-cn-shanghai.aliyuncs.com/app'
 // let imageCommonURL = 'https://conimages.xiquehaofang.com/app'
 
-let time = $moment().format("MMDDhhmm")
+let time = moment().format("MMDDhhmm")
 
 function maker(url, width) {
   if (!url || url.length == 0) {

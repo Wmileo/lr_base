@@ -2,6 +2,8 @@ let widths = [150, 250, 400, 550, 750]
 let imageCommonURL = 'https://xq-test-config.oss-cn-shanghai.aliyuncs.com/app'
 // let imageCommonURL = 'https://conimages.xiquehaofang.com/app'
 
+let time = $moment().format("MMDDhhmm")
+
 function maker(url, width) {
   if (!url || url.length == 0) {
     $log.warn('xq-image', 'url不能为空')
@@ -35,7 +37,7 @@ function maker(url, width) {
       return width <= item
     })
   }
-  return url + style + '?' + $moment().format("MMDDhhmm")
+  return url + style + '?' + time
 }
 
 let images = {}

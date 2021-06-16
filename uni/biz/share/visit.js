@@ -29,12 +29,8 @@ function log(data) {
   $fetch.log.visit().fetch(data)
 }
 
-function event(c, cid, json = {}) {
-  $fetch.log.event().fetch(logData({
-    c,
-    cid,
-    n: json
-  }))
+function event(data) {
+  $fetch.log.event().fetch(logData(data))
 }
 
 function visit(data = {}) {

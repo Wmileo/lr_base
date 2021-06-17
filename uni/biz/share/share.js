@@ -7,10 +7,10 @@ function opt() {
   if (o.con != null) {
     con = o.con
   }
-  return {
+  return $utils.object.clean({
     r,
     con
-  }
+  })
 }
 
 function init(Vue) {

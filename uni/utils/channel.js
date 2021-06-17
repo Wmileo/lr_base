@@ -21,9 +21,11 @@ $channel = () => {
 
   let option = {}
   let launch = {}
+  let auth = {}
   
   if ($utils.env.isH5()) {
-    option = $utils.url.option(window.location.href)
+    auth = $utils.url.option(window.location.href)
+    option = $utils.url.option(window.location.hash)
     launch.path = window.location.pathname
     launch.option = option
   } else {
@@ -47,6 +49,7 @@ $channel = () => {
       }
     },
     option,
-    launch
+    launch,
+    auth
   }
 }

@@ -67,12 +67,12 @@ class Canvas {
 		let ctx = this.ctx
 		return new Promise((resolve,reject)=>{
 			let text = data.text || ''
-			let x = data.x || 0
+      ctx.setFillStyle(data.fillStyle)
+      ctx.setFontSize(data.fontSize)
+      let width = ctx.measureText(text).width
+			let x = data.x || data.lw - width
 			let y = data.y || 0
-			let maxWidth = data.maxWidth || 0
-		  ctx.setFillStyle(data.fillStyle)
-		  ctx.setFontSize(data.fontSize)
-		  ctx.fillText(text, x, y, maxWidth)
+		  ctx.fillText(text, x, y, width)
 			resolve()
 		});
 	}

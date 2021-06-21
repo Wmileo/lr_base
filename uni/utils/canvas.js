@@ -72,6 +72,14 @@ class Canvas {
       let width = ctx.measureText(text).width
 			let x = data.x || data.lw - width
 			let y = data.y || 0
+      if (data.maxWidth && width > data.maxWidth) {
+        if (data.line == 1) {
+          while (width <= data.maxWidth) {
+            ctx.setFontSize(data.fontSize--)
+            width = ctx.measureText(text).width
+          }
+        }
+      }
 		  ctx.fillText(text, x, y, width)
 			resolve()
 		});

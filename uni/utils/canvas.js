@@ -69,17 +69,20 @@ class Canvas {
 			let text = data.text || ''
       ctx.setFillStyle(data.fillStyle)
       ctx.setFontSize(data.fontSize)
-      let width = ctx.measureText(text).width
-			let x = data.x || data.lw - width
-			let y = data.y || 0
+      let size = ctx.measureText(text)
+      let width = size.width
       if (data.maxWidth && width > data.maxWidth) {
         if (data.line == 1) {
           while (width <= data.maxWidth) {
             ctx.setFontSize(data.fontSize--)
-            width = ctx.measureText(text).width
+            size = ctx.measureText(text)
+            width = size.width
           }
         }
       }
+      let height = size.height
+      let x = data.x ? data.x : data.xr ? (data.xr - width) : data.xc ? (data.xc - width / 2) : 0
+      let y = data.y ? data.y : data.yb ? (data.yb - height) : data.yc ? (height > 0 ? (data.yc - height / 2) : data.yc) : 0
 		  ctx.fillText(text, x, y, width)
 			resolve()
 		});

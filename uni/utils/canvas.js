@@ -80,7 +80,7 @@ class Canvas {
           }
         }
       }
-      let height = size.height || data.fontSize
+      let height = size.height || data.fontSize * 1.37
       let x = data.x ? data.x : data.xr ? (data.xr - width) : data.xc ? (data.xc - width / 2) : 0
       let y = data.y ? data.y : data.yb ? (data.yb - height) : data.yc ? (data.yc - height / 2) : 0
 		  ctx.fillText(text, x, y, width)

@@ -72,17 +72,17 @@ class Canvas {
       let size = ctx.measureText(text)
       let width = size.width
       if (data.maxWidth && width > data.maxWidth) {
-        if (data.line == 1) {
-          while (width <= data.maxWidth) {
+        if (data.line == 1 && !data.hidden) {
+          while (width > data.maxWidth) {
             ctx.setFontSize(data.fontSize--)
             size = ctx.measureText(text)
             width = size.width
           }
         }
       }
-      let height = size.height
+      let height = size.height || data.fontSize
       let x = data.x ? data.x : data.xr ? (data.xr - width) : data.xc ? (data.xc - width / 2) : 0
-      let y = data.y ? data.y : data.yb ? (data.yb - height) : data.yc ? (height > 0 ? (data.yc - height / 2) : data.yc) : 0
+      let y = data.y ? data.y : data.yb ? (data.yb - height) : data.yc ? (data.yc - height / 2) : 0
 		  ctx.fillText(text, x, y, width)
 			resolve()
 		});

@@ -1,6 +1,5 @@
 import base from '../index.js'
 import '@xq/stats/mp'
-import '@xq/component'
 
 import '../uni/index.js'
 import './config/index.js'

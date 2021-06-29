@@ -39,26 +39,26 @@ let images = {
   im_require_cover: '/common/im/require_cover.png',
   
   
-  'person': '/component/person.png',
-  'tag_choice': '/component/tag_choice.png',
-  'delete':'/component/delete.png',
-  'reset':'/component/reset.png',
-  'video':'/component/video.png',
+  'person': '/common/component/person.png',
+  'tag_choice': '/common/component/tag_choice.png',
+  'delete':'/common/component/delete.png',
+  'reset':'/common/component/reset.png',
+  'video':'/common/component/video.png',
   
   //biz
-  code:"/component/biz/code.png",
-  edit: "/component/biz/edit.png",
-  eye: "/component/biz/eye.png",
-  flag:"/component/biz/flag.png",
+  code:"/common/component/biz/code.png",
+  edit: "/common/component/biz/edit.png",
+  eye: "/common/component/biz/eye.png",
+  flag:"/common/component/biz/flag.png",
 	
 	// com
 	'guide_first':"/common/guide/guide_one.png",
 	'guide_second':"/common/guide/guide_two.png",
 	'guide_three':"/common/guide/guide_third.png",
 	'guide_four':"/common/guide/guide_fourt.png",
-	'radio':"/component/radio.png",
-	'radio_check':"/component/radio_check.png",
-	'new':"/component/new.png",
+	'radio':"/common/component/radio.png",
+	'radio_check':"/common/component/radio_check.png",
+	'new':"/common/component/new.png",
 	
 	 //share
 	share_wechat:"/share/wechat.png",

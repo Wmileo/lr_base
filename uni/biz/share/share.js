@@ -23,6 +23,7 @@ function init(Vue) {
     onShareAppMessage(obj) {
       return this._shareData
     },
+    
     data() {
       return {
         _shareData: {}

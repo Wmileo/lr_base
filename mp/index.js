@@ -1,5 +1,7 @@
 import base from '../index.js'
-import '@xq/stats/mp'
+import stats from '@xq/stats/mp'
+
+$stats = stats
 
 import '../uni/index.js'
 import './config/index.js'

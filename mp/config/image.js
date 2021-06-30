@@ -65,6 +65,7 @@ let images = {
 	share_create:"/common/share/create.png",
   share_timeline:"/common/share/timeline.png",
 	share_more:"/common/share/more.png",
+  share_guide:"/common/share/guide.png",
 }
 
 imageMgr.setImages(images)

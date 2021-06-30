@@ -61,9 +61,10 @@ let images = {
 	'new':"/common/component/new.png",
 	
 	 //share
-	share_wechat:"/share/wechat.png",
-	share_create:"/share/create.png",
-	share_more:"/share/more.png",
+	share_wechat:"/common/share/wechat.png",
+	share_create:"/common/share/create.png",
+  share_timeline:"/common/share/timeline.png",
+	share_more:"/common/share/more.png",
 }
 
 imageMgr.setImages(images)

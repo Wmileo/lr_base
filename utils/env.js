@@ -26,7 +26,7 @@ function safeBottom() {
 }
 
 function isAndroid() {
-  return system.environment.indexOf('Android') == 0
+  return system.system.indexOf('Android') == 0
 }
 
 if (!$utils) {

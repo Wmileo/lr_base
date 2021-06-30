@@ -1,3 +1,5 @@
+let system = uni.getSystemInfoSync() || {}
+
 function isH5() {
   return process.env.VUE_APP_PLATFORM == 'h5'
 }
@@ -7,7 +9,7 @@ function isUni() {
 }
 
 function isQy() {
-  return uni.getSystemInfoSync().environment == 'wxwork'
+  return system.environment == 'wxwork'
 }
 
 function isH5InWx() {
@@ -16,12 +18,15 @@ function isH5InWx() {
 
 function safeBottom() {
   if (isUni()) {
-    let systemInfo = uni.getSystemInfoSync()
-    if (systemInfo.model.indexOf('iPhone X') >= 0 || systemInfo.model.indexOf('iPhone 1') >= 0) {
+    if (system.model.indexOf('iPhone X') >= 0 || system.model.indexOf('iPhone 1') >= 0) {
       return 34
     }
   }
   return 0
+}
+
+function isAndroid() {
+  return system.environment == 'Android'
 }
 
 if (!$utils) {
@@ -33,7 +38,8 @@ let env = {
   isUni,
   isH5InWx,
   isQy,
-  safeBottom
+  safeBottom,
+  isAndroid
 }
 
 function init(Vue) {

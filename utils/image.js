@@ -28,7 +28,7 @@ function maker(url, width, qn) {
       url = $env.imageURL + url
     }
   }
-  if (url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0 && url.indexOf('xq-test-config.oss-cn-shanghai.aliyuncs.com') < 0)) {
+  if ((url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0 && url.indexOf('xq-test-config.oss-cn-shanghai.aliyuncs.com') < 0)) && !qn) {
     return url
   }
   let style = '!full'

@@ -5,7 +5,7 @@ let imageCommonURL = 'https://xq-test-config.oss-cn-shanghai.aliyuncs.com/app'
 
 let time = moment().format("MMDDhhmmss")
 
-function maker(url, width) {
+function maker(url, width, qn) {
   if (!url || url.length == 0) {
     $log.warn('xq-image', 'url不能为空')
     return null
@@ -38,7 +38,12 @@ function maker(url, width) {
       return width <= item
     })
   }
-  return url + style + '?' + time
+  let and = '?'
+  if (qn) {
+    style = `?imageView2/0/w/${width}`
+    and = '&'
+  }
+  return url + style + and + time
 }
 
 let images = {}

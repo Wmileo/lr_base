@@ -30,9 +30,9 @@ function setBaseURL(url) {
     url,
     server: 'app'
   })
-  server.auth.passList.push($fetch.auth.login().path)
-  server.config.passList.push($fetch.auth.login().path)
-  server.config.passList.push($fetch.config.info().path)
+  server.auth.passList().push($fetch.auth.login().path)
+  server.config.passList().push($fetch.auth.login().path)
+  server.config.passList().push($fetch.config.info().path)
 }
 
 $notification.env.on(url => {

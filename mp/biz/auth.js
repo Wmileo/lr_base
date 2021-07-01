@@ -1,4 +1,3 @@
-import server from '@xq/server'
 import authMgr from '../../uni/biz/auth.js'
 
 let logging = false

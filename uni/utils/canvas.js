@@ -7,7 +7,7 @@ class Canvas {
   }
   
   async draw(infos,callback) {
-    for(let item of infos){
+    for await(let item of infos){
       if (item.type == 'image') {
         await this.drawImage(item);
       } else if (item.type == 'rect') {
@@ -88,13 +88,8 @@ class Canvas {
       let height = size.height || data.fontSize * 1.37
       let x = data.x ? data.x : data.xr ? (data.xr - width) : data.xc ? (data.xc - width / 2) : 0
       let y = data.y ? data.y : data.yb ? (data.yb - height) : data.yc ? (data.yc - height / 2) : 0
-
-      if (data.bold) {
-        ctx.fillText(text, x, y - 0.5);
-        ctx.fillText(text, x - 0.5, y);
-      }else{
-        ctx.fillText(text, x, y, width)
-      }
+       
+      ctx.fillText(text, x, y, width)
 			resolve()
 		});
 	}

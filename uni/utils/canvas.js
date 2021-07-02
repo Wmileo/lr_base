@@ -72,7 +72,7 @@ class Canvas {
       let size = ctx.measureText(text)
       let width = size.width
       if (data.maxWidth && width > data.maxWidth) {
-        if (data.line == 1 && !data.hidden) {
+        if (data.line == 1 && !data.hidden) { // 显示1行并且不隐藏 会根据最大宽度缩放
           while (width > data.maxWidth) {
             ctx.setFontSize(data.fontSize--)
             size = ctx.measureText(text)
@@ -80,10 +80,21 @@ class Canvas {
           }
         }
       }
+      
+      
+      
+      // x 最左边 xc 中间 xr 最右边
+      // y 最上边 yc 中间 yb 最下边
       let height = size.height || data.fontSize * 1.37
       let x = data.x ? data.x : data.xr ? (data.xr - width) : data.xc ? (data.xc - width / 2) : 0
       let y = data.y ? data.y : data.yb ? (data.yb - height) : data.yc ? (data.yc - height / 2) : 0
-		  ctx.fillText(text, x, y, width)
+
+      if (data.bold) {
+        ctx.fillText(text, x, y - 0.5);
+        ctx.fillText(text, x - 0.5, y);
+      }else{
+        ctx.fillText(text, x, y, width)
+      }
 			resolve()
 		});
 	}

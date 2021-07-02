@@ -69,7 +69,10 @@ function init(Vue) {
             obj.query = arr[1]
           }
           this._shareData = $utils.object.clean(obj)
-          uni.showShareMenu()
+          uni.showShareMenu({
+            withShareTicket: true,
+            menus: ['shareAppMessage', 'shareTimeline']
+          })
         }
       },
       _unShare() {

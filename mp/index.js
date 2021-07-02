@@ -18,9 +18,11 @@ let isLogin = false
 function initConfig() {
   
   const updateManager = uni.getUpdateManager()
-  updateManager.onUpdateReady(function() {
-    updateManager.applyUpdate()
-  })
+  if (updateManager) {
+    updateManager.onUpdateReady(function() {
+      updateManager.applyUpdate()
+    })
+  }
   $auth.autoLogin().then(res => {
     isLogin = true
   })

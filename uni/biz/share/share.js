@@ -23,7 +23,9 @@ function init(Vue) {
     onShareAppMessage(obj) {
       return this._shareData
     },
-    
+    onShareTimeline() {
+      return this._shareData
+    },
     data() {
       return {
         _shareData: {}
@@ -62,6 +64,10 @@ function init(Vue) {
         } else {
           obj.imageUrl = data.image
           obj.path = path
+          let arr = path.split('?')
+          if (arr.length == 2) {
+            obj.query = arr[1]
+          }
           this._shareData = $utils.object.clean(obj)
           uni.showShareMenu()
         }

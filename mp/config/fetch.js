@@ -23,7 +23,7 @@ let apis = {
 function setBaseURL(url) {
   server.setFetchs(apis, {
     url,
-    server: 'app'
+    server: 'xq'
   })
 }
 

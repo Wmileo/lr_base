@@ -1,3 +1,4 @@
+import '@xq/server/xq'
 import server from '@xq/server'
 
 let {
@@ -14,7 +15,8 @@ let apis = {
 
 function setBaseURL(url) {
   server.setFetchs(apis, {
-    url
+    url,
+    server: 'xq'
   })
 }
 

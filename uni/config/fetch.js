@@ -28,7 +28,7 @@ let apis = {
 function setBaseURL(url) {
   server.setFetchs(apis, {
     url,
-    server: 'app'
+    server: 'xq'
   })
   server.auth.passList().push($fetch.auth.login().path)
   server.config.passList().push($fetch.auth.login().path)

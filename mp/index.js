@@ -1,5 +1,5 @@
 import base from '../index.js'
-import stats from '@xq/stats/mp'
+import stats from '@xq/stats'
 
 $stats = stats
 

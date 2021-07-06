@@ -7,13 +7,31 @@ class Canvas {
   }
   
   async draw(infos,callback) {
+    let ctx=this.ctx;
     for await(let item of infos){
       if (item.type == 'image') {
         await this.drawImage(item);
       } else if (item.type == 'rect') {
 				await this.drawRect(item);
 			} else if (item.type == 'text') {
-				await this.drawText(item);
+        //多行文本
+        if(item.line && item.line>1){
+          let font=ctx.setFontSize(item.fontSize)
+          let size = ctx.measureText('哈');
+          let num=item.width/size.width;
+          let more = num > item.line;
+          
+          for(let i=0;i < Math.min(item.text.length/num, item.line);i++){
+            let text = item.text.substring(num*i,num*(i+1));
+            if (more && i==item.line-1) {
+              text=text.substring(0,text.length-2)+"...";
+            }
+            await this.drawText({...item, text,y:item.y+item.fontHeight*i});
+          } 
+        }else{
+          //单行文本
+          await this.drawText(item);
+        }
 			}
     }
     

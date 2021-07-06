@@ -12,10 +12,10 @@ let apis = {
     event: post('/v1/log/user/visit/append')
   },
   config: {
-    info: get('/v1/config/getByAppkey')
+    info: get('/v1/config/getByAppkey', true, false)
   },
   auth: {
-    login: post('/v1/user/wxLogin')
+    login: post('/v1/user/wxLogin', false, false)
   },
   file: {
     upload: upload('/upload')
@@ -30,9 +30,6 @@ function setBaseURL(url) {
     url,
     server: 'xq'
   })
-  server.auth.passList().push($fetch.auth.login().path)
-  server.config.passList().push($fetch.auth.login().path)
-  server.config.passList().push($fetch.config.info().path)
 }
 
 $notification.env.on(url => {

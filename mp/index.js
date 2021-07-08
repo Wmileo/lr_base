@@ -23,9 +23,6 @@ function initConfig() {
       updateManager.applyUpdate()
     })
   }
-  $auth.autoLogin().then(res => {
-    isLogin = true
-  })
   $api.handleSession(() => {
     if (isLogin) {
       return Promise.resolve()

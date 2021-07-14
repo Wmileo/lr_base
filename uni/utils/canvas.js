@@ -21,7 +21,8 @@ class Canvas {
           let num=item.width/size.width;
           let more = num > item.line;
           let texts = item.text.split('\n')
-          texts.forEach(text => {
+          for (let j=0; j<texts.length; j++) {
+            let text = texts[j]
             for(let i=0;i < Math.min(text.length/num, item.line);i++){
               let text = text.substring(num*i,num*(i+1));
               if (more && i==item.line-1) {
@@ -29,7 +30,7 @@ class Canvas {
               }
               await this.drawText({...item, text,y:item.y+item.fontHeight*i});
             } 
-          })
+          }
         }else{
           //单行文本
           await this.drawText(item);

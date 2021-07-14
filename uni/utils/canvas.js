@@ -62,8 +62,11 @@ class Canvas {
                 resolve();
               }
             })
+          } else {
+            resolve();
           }
-        }
+        },
+        fail: resolve
       });
     });
   }

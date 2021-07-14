@@ -16,19 +16,21 @@ class Canvas {
 			} else if (item.type == 'text') {
         //多行文本
         if(item.line && item.line>1){
-          let font=ctx.setFontSize(item.fontSize)
+          let font = ctx.setFontSize(item.fontSize)
           let size = ctx.measureText('哈');
-          let num=item.width/size.width;
+          let num = item.width/size.width;
           let more = num > item.line;
           let texts = item.text.split('\n')
+          let y = item.y
           for (let j=0; j<texts.length; j++) {
-            let text = texts[j]
-            for(let i=0;i < Math.min(text.length/num, item.line);i++){
-              let text = text.substring(num*i,num*(i+1));
+            let ct = texts[j]
+            for(let i=0;i < Math.min(ct.length/num, item.line);i++){
+              let text = ct.substring(num*i,num*(i+1));
               if (more && i==item.line-1) {
                 text=text.substring(0,text.length-2)+"...";
               }
-              await this.drawText({...item, text,y:item.y+item.fontHeight*i});
+              await this.drawText({...item, text, y});
+              y+=item.fontHeight
             } 
           }
         }else{

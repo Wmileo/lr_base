@@ -20,14 +20,16 @@ class Canvas {
           let size = ctx.measureText('哈');
           let num=item.width/size.width;
           let more = num > item.line;
-          
-          for(let i=0;i < Math.min(item.text.length/num, item.line);i++){
-            let text = item.text.substring(num*i,num*(i+1));
-            if (more && i==item.line-1) {
-              text=text.substring(0,text.length-2)+"...";
-            }
-            await this.drawText({...item, text,y:item.y+item.fontHeight*i});
-          } 
+          let texts = item.text.split('\n')
+          texts.forEach(text => {
+            for(let i=0;i < Math.min(text.length/num, item.line);i++){
+              let text = text.substring(num*i,num*(i+1));
+              if (more && i==item.line-1) {
+                text=text.substring(0,text.length-2)+"...";
+              }
+              await this.drawText({...item, text,y:item.y+item.fontHeight*i});
+            } 
+          })
         }else{
           //单行文本
           await this.drawText(item);

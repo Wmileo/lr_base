@@ -1,4 +1,4 @@
-import server from '@xq/server'
+import server from '@dt/server'
 import shareMgr from './share/channel.js'
 
 function login(authorizationCode) {

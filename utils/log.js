@@ -2,25 +2,25 @@ let list = []
 let onList = (list) => {}
 
 function print(type, mark, msg, data) {
-  console[type](`xq-${mark}：${msg}`)
+  console[type](`dt-${mark}：${msg}`)
   let datas = null
   if (data) {
     datas = []
     if (data.constructor === Object) {
       for (let key in data) {
-        console[type](`xq-${mark}：${key}`, data[key])
+        console[type](`dt-${mark}：${key}`, data[key])
         datas.push(`${key} :${str(data[key])}`)
       }
     } else if (data.constructor === Array) {
       data.forEach(item => {
-        console[type](`xq-${mark}：`, item)
+        console[type](`dt-${mark}：`, item)
         datas.push(str(item))
       })
     } else {
-      console[type](`xq-${mark}：`, data)
+      console[type](`dt-${mark}：`, data)
       datas.push(data)
     }
-    console[type](`xq-${mark}：----------------`)
+    console[type](`dt-${mark}：----------------`)
   }
   let time = $moment().format('YYYY-MM-DD hh:mm:ss');
   list.unshift({

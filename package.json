@@ -1,14 +1,14 @@
 {
-  "name": "@xq/base",
-  "version": "3.3.3",
+  "name": "@dt/base",
+  "version": "1.0.0",
   "description": "base",
   "main": "src/index.js",
   "publishConfig": {
-    "registry": "https://npm.xqkxf.com/"
+    "registry": "http://172.16.1.129:4873/"
   },
   "repository": {
     "type": "git",
-    "url": "git@codeup.aliyun.com:5f59dbed769820a3e8184400/frontend/npm/xq_base.git"
+    "url": "ssh://git@172.16.1.129:20201/dt-web/npm/dt-base.git"
   },
   "keywords": [
     "base"

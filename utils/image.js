@@ -1,20 +1,20 @@
 import moment from 'moment'
 let widths = [150, 250, 400, 550, 750]
-let imageCommonURL = 'https://xq-test-config.oss-cn-shanghai.aliyuncs.com/app'
+let imageCommonURL = 'https://aliyuncs.com/app'
 // let imageCommonURL = 'https://conimages.xiquehaofang.com/app'
 
 let time = moment().format("MMDDhhmmss")
 
 function maker(url, width, qn) {
   if (!url || url.length == 0) {
-    $log.warn('xq-image', 'url不能为空')
+    $log.warn('dt-image', 'url不能为空')
     return null
   }
   if (url.indexOf('/') < 0) {
     let key = url
     url = imagePath(key)
     if (!url) {
-      $log.warn('xq-image', '无效key - '+ key)
+      $log.warn('dt-image', '无效key - '+ key)
       return null
     }
   }
@@ -28,7 +28,7 @@ function maker(url, width, qn) {
       url = $env.imageURL + url
     }
   }
-  if ((url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.xqkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0 && url.indexOf('xq-test-config.oss-cn-shanghai.aliyuncs.com') < 0)) && !qn) {
+  if ((url.indexOf('?x-oss-process') > 0 || url.indexOf('!') > 0 || (url.indexOf('.dtkxf.') < 0 && url.indexOf('.xique51.') < 0 && url.indexOf('.xiquehaofang.') < 0 && url.indexOf('dt-test-config.oss-cn-shanghai.aliyuncs.com') < 0)) && !qn) {
     return url
   }
   let style = '!full'

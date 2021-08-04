@@ -55,17 +55,12 @@ class Canvas {
       uni.downloadFile({
         url: data.url,
         success(res) {
-          uni.getImageInfo({
-            src: res.tempFilePath,
-            success: function(image) {
-              let x = data.x || 0
-              let y = data.y || 0
-              let width = data.width || image.width
-              let height = data.height || image.height
-              ctx.drawImage(res.tempFilePath, x, y, width, height) 
-              resolve();
-            }
-          })
+          if (res.tempFilePath) {
+            let x = data.x || 0
+            let y = data.y || 0
+            ctx.drawImage(res.tempFilePath, x, y, data.width, data.height)   
+          }
+          resolve();
         }
       });
     });

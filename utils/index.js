@@ -2,7 +2,7 @@ import moment from 'moment'
 import 'moment/locale/zh-cn'
 moment.locale('zh-cn')
 
-import '@xq/server'
+import '@dt/server'
 
 import './notification.js'
 import './log.js'

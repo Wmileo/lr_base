@@ -1,4 +1,4 @@
-import server from '@xq/server'
+import server from '@dt/server'
 let time = 0
 let wait = false
 
@@ -33,13 +33,13 @@ let auth = () => {
 }
 
 server.http.onFail({
-  xq: fail,
+  dt: fail,
   jz: fail
 })
 server.http.onError({
-  xq: err,
+  dt: err,
   jz: err
 })
 server.http.onAuth({
-  xq: auth
+  dt: auth
 })

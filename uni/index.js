@@ -1,4 +1,4 @@
-import '@xq/api'
+import '@dt/api'
 
 import './config/index.js'
 import './utils/this.js'

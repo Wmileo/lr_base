@@ -1,7 +1,7 @@
-import configMgr from '@xq/base/uni/biz/config'
+import configMgr from '@dt/base/uni/biz/config'
 
 function focus() {
-  configMgr.getDetail('xq_gzh').then(res => {
+  configMgr.getDetail('dt_gzh').then(res => {
     if ($utils.env.isH5()) {
       window.location.href=res.url
     } else {

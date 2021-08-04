@@ -1,5 +1,5 @@
-import '@xq/server/xq'
-import server from '@xq/server'
+import '@dt/server/dt'
+import server from '@dt/server'
 
 let {
   get,
@@ -16,7 +16,7 @@ let apis = {
 function setBaseURL(url) {
   server.setFetchs(apis, {
     url,
-    server: 'xq'
+    server: 'dt'
   })
 }
 

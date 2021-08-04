@@ -134,8 +134,13 @@ class Canvas {
   }
 }
 
-export default {
-  canvas :function (id) {
-    return new Canvas(id)
-  }
+if (!$utils) {
+  $utils = {}
 }
+
+$utils.canvas =function (id) {
+  return new Canvas(id)
+}
+
+
+

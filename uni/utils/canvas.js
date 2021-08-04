@@ -9,35 +9,34 @@ class Canvas {
   async draw(infos,callback) {
     let ctx=this.ctx;
     for await(let item of infos){
-      if (item.type == 'image') {
-        await this.drawImage(item);
-      } else if (item.type == 'rect') {
-				await this.drawRect(item);
-			} else if (item.type == 'text') {
-        //多行文本
-        if(item.line && item.line>1){
-          let font = ctx.setFontSize(item.fontSize)
-          let size = ctx.measureText('哈');
-          let num = item.width/size.width;
-          let more = num > item.line;
-          let texts = item.text.split('\n')
-          let y = item.y
-          for (let j=0; j<texts.length; j++) {
-            let ct = texts[j]
-            for(let i=0;i < Math.min(ct.length/num, item.line);i++){
-              let text = ct.substring(num*i,num*(i+1));
-              if (more && i==item.line-1) {
-                text=text.substring(0,text.length-2)+"...";
-              }
-              await this.drawText({...item, text, y});
-              y+=item.fontHeight
-            } 
-          }
-        }else{
-          //单行文本
-          await this.drawText(item);
-        }
-			}
+      switch(item.type){
+        case 'image':
+         await this.drawImage(item);
+         break;
+        case 'rect':
+         await this.drawRect(item);
+         break;
+        case 'text':
+         //多行文本
+         if(item.line && item.line>1){
+           let font=ctx.setFontSize(item.fontSize)
+           let size = ctx.measureText('哈');
+           let num=item.width/size.width;
+           let more = num > item.line;
+           
+           for(let i=0;i < Math.min(item.text.length/num, item.line);i++){
+             let text = item.text.substring(num*i,num*(i+1));
+             if (more && i==item.line-1) {
+               text=text.substring(0,text.length-2)+"...";
+             }
+             await this.drawText({...item, text,y:item.y+item.fontHeight*i});
+           } 
+         }else{
+           //单行文本
+           await this.drawText(item);
+         }
+         break;
+      }
     }
     
     return new Promise((resolve,reject)=>{
@@ -50,22 +49,27 @@ class Canvas {
   }
   
   drawImage(data) {
-    let ctx = this.ctx
+    let ctx = this.ctx;
     return new Promise((resolve,reject)=>{
       uni.downloadFile({
         url: data.url,
         success(res) {
-          uni.getImageInfo({
-            src: res.tempFilePath,
-            success: function(image) {
-              let x = data.x || 0
-              let y = data.y || 0
-              let width = data.width || image.width
-              let height = data.height || image.height
-              ctx.drawImage(res.tempFilePath, x, y, width, height) 
-              resolve();
-            }
-          })
+          if (res.statusCode == 200) {
+              uni.getImageInfo({
+                src: res.tempFilePath,
+                success: function(image) {
+                  let x = data.x || 0
+                  let y = data.y || 0
+                  let width = data.width || image.width
+                  let height = data.height || image.height
+                  ctx.drawImage(res.tempFilePath, x, y, width, height) 
+                  resolve();
+                }
+              })
+          }
+        },
+        fail(err){
+          console.log(err)
         }
       });
     });
@@ -103,7 +107,6 @@ class Canvas {
       }
       
       
-      
       // x 最左边 xc 中间 xr 最右边
       // y 最上边 yc 中间 yb 最下边
       let height = size.height || data.fontSize * 1.37
@@ -129,13 +132,10 @@ class Canvas {
       })
     })
   }
-
 }
 
-if (!$utils) {
-  $utils = {}
-}
-
-$utils.canvas =function (id) {
-  return new Canvas(id)
+export default {
+  canvas :function (id) {
+    return new Canvas(id)
+  }
 }

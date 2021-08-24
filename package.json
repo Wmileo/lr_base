@@ -1,17 +1,17 @@
 {
-  "name": "@dt/base",
-  "version": "1.0.2",
-  "description": "base",
-  "main": "src/index.js",
+  "name": "@dt",
+  "version": "1.0.0",
+  "description": "dt",
+  "main": "index.js",
   "publishConfig": {
     "registry": "http://172.16.1.129:4873/"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@172.16.1.129:20201/dt-web/npm/dt-base.git"
+    "url": "ssh://git@172.16.1.129:20201/dt-web/npm/dt.git"
   },
   "keywords": [
-    "base"
+    "dt"
   ],
   "author": "leo",
   "license": "ISC",

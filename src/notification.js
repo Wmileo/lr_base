@@ -1,4 +1,4 @@
-
+import env from './env.js';
 let ons = {}
 let onces = {}
 
@@ -12,7 +12,7 @@ function remove(obj, name, func) {
 }
 
 function on(name, func) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.$on(name, func)
   } else {
     if (!ons[name]) {
@@ -23,7 +23,7 @@ function on(name, func) {
 }
 
 function off(name, func) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.$off(name, func)
   } else {
     remove(ons, name, func)
@@ -32,7 +32,7 @@ function off(name, func) {
 }
 
 function once(name, func) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.$once(name, func)
   } else {
     if (!onces[name]) {
@@ -43,7 +43,7 @@ function once(name, func) {
 }
 
 function emit(name, data) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.$emit(name, data)
   } else {
     if (ons[name]) {

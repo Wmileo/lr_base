@@ -1,6 +1,7 @@
+import env from './env.js';
 
 function get(name) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     return uni.getStorageSync(name)
   } else {
     let str = window.localStorage.getItem(name)
@@ -10,7 +11,7 @@ function get(name) {
 }
 
 function set(name, data) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.setStorageSync(name, data)
   } else {
     let str = JSON.stringify({v:data})
@@ -19,7 +20,7 @@ function set(name, data) {
 }
 
 function remove(name) {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.removeStorageSync(name)
   } else {
     window.localStorage.removeItem(name)
@@ -27,7 +28,7 @@ function remove(name) {
 }
 
 function clear() {
-  if ($utils.env.isUni()) {
+  if (env.isUni) {
     uni.clearStorageSync()
   } else {
     window.localStorage.clear()

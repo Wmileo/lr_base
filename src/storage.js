@@ -1,37 +1,41 @@
 import env from './env.js';
 
-function get(name) {
+function storage(local = true) {
+  return local ? window.localStorage : window.sessionStorage
+}
+
+function get(name, local = true) {
   if (env.isUni) {
     return uni.getStorageSync(name)
   } else {
-    let str = window.localStorage.getItem(name)
+    let str = storage(local).getItem(name)
     let data = (str && str.indexOf('{') == 0) ? JSON.parse(str).v : null
     return data
   }
 }
 
-function set(name, data) {
+function set(name, data, local = true) {
   if (env.isUni) {
     uni.setStorageSync(name, data)
   } else {
     let str = JSON.stringify({v:data})
-    window.localStorage.setItem(name, str)
+    storage(local).setItem(name, str)
   }
 }
 
-function remove(name) {
+function remove(name, local = true) {
   if (env.isUni) {
     uni.removeStorageSync(name)
   } else {
-    window.localStorage.removeItem(name)
+    storage(local).removeItem(name)
   }
 }
 
-function clear() {
+function clear(local = true) {
   if (env.isUni) {
     uni.clearStorageSync()
   } else {
-    window.localStorage.clear()
+    storage(local).clear()
   }
 }
 

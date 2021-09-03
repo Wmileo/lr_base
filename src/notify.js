@@ -82,30 +82,26 @@ function funcName(name) {
 }
 
 function _mixin(Vue) {
+  Vue.prototype._notifyNames = []
   Vue.mixin({
-    data() {
-      return {
-        $notify: {
-          names:[],
-          on(name) {
-            this.$notify.names.push(name)
-            on(name, this[funcName(name)], this)
-          },
-          once(name) {
-            this.$notify.names.push(name)
-            once(name, this[funcName(name)], this)
-          },
-          off(name) {
-            off(name, this[funcName(name)])
-          },
-          emit: emit,
-        }
-      }
-    },
     destroyed() {
-      this.$notify.names.forEach(name => {
+      this._notifyNames.forEach(name => {
         off(name, this[funcName(name)])
       })
+    },
+    methods: {
+      $on(name) {
+        this._notifyNames.push(name)
+        on(name, this[funcName(name)], this)
+      },
+      $once(name) {
+        this._notifyNames.push(name)
+        once(name, this[funcName(name)], this)
+      },
+      $off(name) {
+        off(name, this[funcName(name)])
+      },
+      $emit: emit,
     }
   })
 }

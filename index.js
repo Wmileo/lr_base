@@ -13,8 +13,8 @@ if (!env.isUni) {
   dt.session = session
 }
 
-dt.__mixin = (Vue) => {
-  notify.__mixin(Vue)
+dt._mixin = (Vue) => {
+  notify._mixin(Vue)
 }
 
 export default dt

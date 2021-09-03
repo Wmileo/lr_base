@@ -114,5 +114,6 @@ export default {
   emit,
   on,
   off,
-  once
+  once,
+  _mixin
 }

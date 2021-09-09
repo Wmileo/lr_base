@@ -1,3 +1,4 @@
+import dt from '../index.js'
 
 function get(name) {
   let str = window.sessionStorage.getItem(name)
@@ -18,7 +19,7 @@ function clear() {
   window.sessionStorage.clear()
 }
 
-export default {
+dt.session = {
   get,
   set,
   remove,

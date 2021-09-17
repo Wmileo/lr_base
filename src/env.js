@@ -3,7 +3,6 @@ const isUni = typeof(uni) != 'undefined'
 let env = {
   isUni,
   isH5: true,
-  isH5InMp: window.__wxjs_environment === 'miniprogram'
 }
 
 if (isUni) {
@@ -13,6 +12,10 @@ if (isUni) {
   env.isQy = system.environment == 'wxwork'
   env.safeBottom = safeBottom
   env.isAndroid = system.system.indexOf('Android') == 0
+}
+
+if (env.isH5) {
+  env.isH5InMp = window.__wxjs_environment === 'miniprogram'
 }
 
 export default env

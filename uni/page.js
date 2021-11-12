@@ -1,13 +1,13 @@
-import dt from '../index.js'
+import lr from '../index.js'
 
 /**
  * 解析url参数
  */
 function params(opt) {
   if (opt.q) {
-    return dt.url.option(decodeURIComponent(opt.q))
+    return lr.url.option(decodeURIComponent(opt.q))
   } else if (opt.scene) {
-    return dt.url.option(decodeURIComponent(opt.scene))
+    return lr.url.option(decodeURIComponent(opt.scene))
   }
   let result = {}
   for (let key in opt) {
@@ -36,10 +36,10 @@ function getPage() {
 
 function getLaunchInfo() {
   let launch = {}
-  if (dt.env.isH5) {
+  if (lr.env.isH5) {
     launch.path = window.location.pathname
-    launch.option = dt.url.option(window.location.hash)
-    launch.auth = dt.url.option(window.location.href)
+    launch.option = lr.url.option(window.location.hash)
+    launch.auth = lr.url.option(window.location.href)
   } else {
     let opt = wx.getLaunchOptionsSync() || {}
     launch.path = opt.path
@@ -48,5 +48,5 @@ function getLaunchInfo() {
   return launch
 }
 
-dt.getPage = getPage
-dt.launch = getLaunchInfo()
+lr.getPage = getPage
+lr.launch = getLaunchInfo()

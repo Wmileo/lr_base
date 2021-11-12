@@ -1,19 +1,28 @@
 {
-  "name": "@dt/dt",
-  "version": "1.1.7",
-  "description": "dt",
+  "name": "@lr17",
+  "version": "1.0.0",
+  "description": "lr",
   "main": "index.js",
   "publishConfig": {
-    "registry": "http://172.16.1.129:4873/"
+    "registry": "https://registry.npmjs.org/"
   },
   "repository": {
     "type": "git",
-    "url": "ssh://git@172.16.1.129:20201/dt-web/npm/dt.git"
+    "url": "git+ssh://git@github.com/Wmileo/lr_base.git"
   },
   "keywords": [
-    "dt"
+    "lr"
   ],
-  "author": "leo",
+  "author": "Wmileo",
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/Wmileo/lr_base/issues"
+  },
+  "homepage": "https://github.com/Wmileo/lr_base#readme",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

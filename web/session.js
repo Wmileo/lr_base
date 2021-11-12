@@ -1,4 +1,4 @@
-import dt from '../index.js'
+import lr from '../index.js'
 
 function get(name) {
   let str = window.sessionStorage.getItem(name)
@@ -19,7 +19,7 @@ function clear() {
   window.sessionStorage.clear()
 }
 
-dt.session = {
+lr.session = {
   get,
   set,
   remove,

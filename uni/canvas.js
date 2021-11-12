@@ -1,4 +1,4 @@
-import dt from '../index.js'
+import lr from '../index.js'
 
 class Canvas {
   
@@ -186,7 +186,7 @@ class Canvas {
   }
 }
 
-dt.createCanvas = (id) => {
+lr.createCanvas = (id) => {
   return new Canvas(id)
 }
 

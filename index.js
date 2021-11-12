@@ -4,7 +4,7 @@ import memory from './src/memory.js'
 import env from './src/env.js'
 import url from './src/url.js'
 
-let dt = {
+let lr = {
   storage,
   notify,
   memory,
@@ -12,8 +12,8 @@ let dt = {
   url
 }
 
-dt._mixin = (Vue) => {
+lr._mixin = (Vue) => {
   notify._mixin(Vue)
 }
 
-export default dt
+export default lr

@@ -6,6 +6,9 @@
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
   },
+  "scripts": {
+    "upload": "sh ./upload.sh"
+  },
   "repository": {
     "type": "git",
     "url": "git+ssh://git@github.com/Wmileo/lr_base.git"
@@ -13,16 +16,13 @@
   "keywords": [
     "lr"
   ],
+  "files": [
+    "src/"
+  ],
   "author": "Wmileo",
   "license": "ISC",
   "dependencies": {
   },
   "devDependencies": {},
-  "bugs": {
-    "url": "https://github.com/Wmileo/lr_base/issues"
-  },
-  "homepage": "https://github.com/Wmileo/lr_base#readme",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  }
+  "homepage": "https://github.com/Wmileo/lr_base#readme"
 }

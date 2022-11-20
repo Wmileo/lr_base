@@ -77,39 +77,9 @@ function emit(name, data) {
   }
 }
 
-function funcName(name) {
-  return 'on' + name.charAt(0).toUpperCase() + name.slice(1)
-}
-
-function _mixin(Vue) {
-  Vue.prototype.__notifyNames = []
-  Vue.mixin({
-    destroyed() {
-      this.__notifyNames.forEach(name => {
-        off(name, this[funcName(name)])
-      })
-    },
-    methods: {
-      $$on(name) {
-        this.__notifyNames.push(name)
-        on(name, this[funcName(name)], this)
-      },
-      $$once(name) {
-        this.__notifyNames.push(name)
-        once(name, this[funcName(name)], this)
-      },
-      $$off(name) {
-        off(name, this[funcName(name)])
-      },
-      $$emit: emit,
-    }
-  })
-}
-
 export default {
   emit,
   on,
   off,
-  once,
-  _mixin
+  once
 }

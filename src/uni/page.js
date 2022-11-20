@@ -3,7 +3,7 @@ import lr from '../index.js'
 /**
  * 解析url参数
  */
-function params(opt) {
+function handleOption(opt) {
   if (opt.q) {
     return lr.url.option(decodeURIComponent(opt.q))
   } else if (opt.scene) {
@@ -16,7 +16,7 @@ function params(opt) {
   return result
 }
 
-function getPage() {
+function getCurrent() {
   return new Promise((resolve, reject) => {
     let pages = getCurrentPages()
     let l = pages.length
@@ -25,7 +25,7 @@ function getPage() {
       let vm = page.$vm
       if (vm) {
         vm.pagePath = vm.__route__ || vm.route
-        vm.option = params(vm.$mp.query)
+        vm.option = handleOption(vm.$mp.query)
         resolve(vm)
         return
       }
@@ -34,19 +34,16 @@ function getPage() {
   })
 }
 
-function getLaunchInfo() {
-  let launch = {}
-  if (lr.env.isH5) {
-    launch.path = window.location.pathname
-    launch.option = lr.url.option(window.location.hash)
-    launch.auth = lr.url.option(window.location.href)
-  } else {
-    let opt = wx.getLaunchOptionsSync() || {}
-    launch.path = opt.path
-    launch.option = params(opt.query)
+lr.launch = {
+  getOption: () => {
+    return handleOption(uni.getEnterOptionsSync().query)
+  },
+  getPath: () => {
+    return uni.getEnterOptionsSync().path
   }
-  return launch
 }
 
-lr.getPage = getPage
-lr.launch = getLaunchInfo()
+lr.page = {
+  handleOption,
+  getCurrent,
+}

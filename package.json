@@ -1,6 +1,6 @@
 {
   "name": "@lr17/lr",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "lr",
   "main": "index.js",
   "publishConfig": {
@@ -21,8 +21,7 @@
   ],
   "author": "Wmileo",
   "license": "ISC",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {},
   "homepage": "https://github.com/Wmileo/lr_base#readme"
 }

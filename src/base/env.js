@@ -16,6 +16,7 @@ if (isUni) {
 
 if (env.isH5) {
   env.isH5InMp = window.__wxjs_environment === 'miniprogram'
+  env.isH5InWx = !!window.WeixinJSBridge
 }
 
 export default env

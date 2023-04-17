@@ -1,6 +1,6 @@
 {
   "name": "@lr17/lr",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "lr",
   "main": "src/index.js",
   "publishConfig": {

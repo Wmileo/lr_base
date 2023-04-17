@@ -1,4 +1,5 @@
 const isUni = typeof uni != 'undefined'
+const isWindow = typeof window != 'undefined'
 
 let env = {
   isUni,
@@ -18,7 +19,7 @@ if (isUni) {
   env.isAndroid = system.system.indexOf('Android') == 0
 }
 
-if (env.isH5 && typeof window != 'undefined') {
+if (env.isH5 && isWindow) {
   env.isH5InMp = window.__wxjs_environment === 'miniprogram'
 }
 

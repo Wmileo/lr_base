@@ -6,7 +6,7 @@ import url from './base/url.js'
 
 let lr = {
   storage,
-  notify,
+  notify, // 即将废弃
   memory,
   env,
   url

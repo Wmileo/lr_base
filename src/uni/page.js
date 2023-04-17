@@ -4,14 +4,16 @@ import lr from '../index.js'
  * 解析url参数
  */
 function handleOption(opt) {
-  if (opt.q) {
-    return lr.url.option(decodeURIComponent(opt.q))
-  } else if (opt.scene) {
-    return lr.url.option(decodeURIComponent(opt.scene))
-  }
   let result = {}
-  for (let key in opt) {
-    result[key] = decodeURIComponent(opt[key])
+  if (opt.q) {
+    result = lr.url.option(decodeURIComponent(opt.q))
+  } else if (opt.scene) { // 微信扫码
+    result = lr.url.option(decodeURIComponent(opt.scene))
+  }
+  if (Object.keys(result).length == 0) {
+    for (let key in opt) {
+      result[key] = decodeURIComponent(opt[key])
+    }
   }
   return result
 }

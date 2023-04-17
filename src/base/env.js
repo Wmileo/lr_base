@@ -1,4 +1,4 @@
-const isUni = typeof(uni) != 'undefined'
+const isUni = typeof uni != 'undefined'
 
 let env = {
   isUni,
@@ -7,8 +7,11 @@ let env = {
 
 if (isUni) {
   const system = uni.getSystemInfoSync()
-  const safeBottom = (system.model.indexOf('iPhone X') >= 0 || system.model.indexOf(
-    'iPhone 1') >= 0) ? 34 : 0
+  const safeBottom =
+    system.model.indexOf('iPhone X') >= 0 ||
+    system.model.indexOf('iPhone 1') >= 0
+      ? 34
+      : 0
   env.isH5 = process.env.VUE_APP_PLATFORM == 'h5'
   env.isQy = system.environment == 'wxwork'
   env.safeBottom = safeBottom
@@ -17,12 +20,6 @@ if (isUni) {
 
 if (env.isH5) {
   env.isH5InMp = window.__wxjs_environment === 'miniprogram'
-  env = {
-    ...env,
-    get isH5InWx() {
-      return !!window.WeixinJSBridge
-    }
-  }
 }
 
 export default env

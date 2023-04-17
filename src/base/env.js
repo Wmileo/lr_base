@@ -18,7 +18,7 @@ if (isUni) {
   env.isAndroid = system.system.indexOf('Android') == 0
 }
 
-if (env.isH5) {
+if (env.isH5 && typeof window != 'undefined') {
   env.isH5InMp = window.__wxjs_environment === 'miniprogram'
 }
 

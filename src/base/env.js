@@ -3,6 +3,7 @@ const isWindow = typeof window != 'undefined'
 
 let env = {
   isUni,
+  isWindow,
   isH5: true
 }
 

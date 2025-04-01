@@ -1,10 +1,10 @@
 {
-  "name": "@jm/lr",
-  "version": "1.0.8",
+  "name": "@lr17/lr",
+  "version": "1.0.9",
   "description": "lr",
   "main": "src/index.js",
   "publishConfig": {
-    "registry": "http://192.168.10.234:8081/repository/npm_jm/"
+    "registry": "https://registry.npmjs.org/"
   },
   "scripts": {
     "upload": "sh ./upload.sh",
